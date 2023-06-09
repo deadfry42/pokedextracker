@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../index.css">
+        <title>funny pokedex tracker - tracker</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+    </head>
+    <body>
+        <center id="centered">
+            <div class="head">
+                <div id="home" class="home">
+                    <img style="float: left; margin-top: 10px;" src="../other imgs/home.png" width="25" height="25" />
+                    <p style="float:right; margin-left: 7px;">Home</p>
+                </div>
+                <div class="user">
+                    <img src="../other imgs/png.png" width="75" height="25">
+                </div>
+                <h1>funny pokedex tracker</h1>
+                <h2>Multi-generational pokedex tracker<br><small class="smaller">WIP</small></h2>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>            
+            <div id="main-index">
+                <br>
+                <div id="trackermenu" style="visibility: visible;">
+                    <h1>Info</h1>
+                    <h3>How did this website come to be?</h3>
+                    <p class="blktxt">I started this website because (to put it bluntly) all the other pokédex trackers sucked. Most were a pain to deal with or set up, some relied on localstorage (which on mac - my device - gets cleared after a week of inactivity) and more importantly, there was not a single Pokemon Box: Ruby & Sapphire tracker. This is why the first tracker on this website was Pokemon Box. Yeah so instead of making a tracker in google docs, I made this. That's what programming's all about - spending more time fixing problems by coding instead of using an easier solution !!111!11</p>
+                    <h3>How does this website work?</h3>
+                    <p class="blktxt">This website works using an external database that stores all user data, which this website connects to. This is important because all of the data is stored on that database other than your token which is kept in local storage (yes, this means you will have to log back in after a week of inactivity on a mac, but i can get behind that). This database updates almost instantaneously, making multiple devices be able to edit the same data at the same time without corrupting it. All of the images used in the trackers are from a custom image hoster I made specifically for this website, because publishing the site with all those images was too much for netlify. This unfortunately makes loading the images a bit laggy and the emerald animations change size weirdly because the scaling change for the new gif happens before the image changes.</p>
+                    <h3>Are there any generic pieces of information?</h3>
+                    <p class="blktxt">Yes! (Shockingly).</p>
+                    <li><p class="blktxt">This website started development on the 27th of May, 2023</p></li>
+                    <li><p class="blktxt">This webpage started development on the 29th of May, 2023</p></li>
+                    <li><p class="blktxt">The first game that was able to be tracker was Pokémon Box: Ruby & Sapphire</p></li>
+                    <li><p class="blktxt">The Pokémon Box: Ruby and Sapphire box sprites are screenshots from an emulator (<b id="dolphins">dolphin emulator</b> - good luck on ur dmca) (Nintendo, don't raid me - I own the physical PAL copy)</p></li>
+                    <li><p class="blktxt">The information for Pokémon were taken from <b id="bulba">Bulbapedia</b> and <b id="sereb">Serebii</b></p></li>
+                    <li><p class="blktxt">The gen 3 Pokémon sprites were ripped from <b id="veekun">Veekun</b></p></li>
+                    <li><p class="blktxt">This website is heavily inspired by <b id="lyras">Lyra's i-made-a.website</b></p></li>
+                    <p class="blktxt">(I put the title of this question the way it is because changing from a question to a statement would be weird)</p>
+                </div>
+                <br>
+            </div>
+        </center>
+        <script src="./index.js"></script>
+    </body>
+    <footer>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="footer">
+            <br>
+            <br>
+            <center>
+                <p>This website is not at all affiliated with The Pokémon Company International (Nintendo, Gamefreak, Creatures).<br>This website's purpose is to inform and help people organise.<br>If you need any information or help on this website, please contact me at: <b id="email">nk.personal.work@gmail.com</b></p>
+            </center>
+                
+            <br>
+            <br>
+        </div>
+    </footer>
+</html>

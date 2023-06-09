@@ -1,0 +1,276 @@
+.boxcontainer {
+    width: 1000px;
+    min-height: 300px;
+    border-color: black;
+    background-color: rgba(200, 200, 200, 0.5);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    user-select: none;
+}
+
+.box {
+    background-color: rgba(200, 250, 200, 0.5);
+    width: 90%;
+    height: 90%;
+    margin-bottom: 10px;
+    /* background-image: url("../boxes/box ruby and sapphire/box1.png"); */
+    background-clip: content-box;
+    background-size: contain;
+    user-select: none;
+}
+
+.boxdb {
+    background-color: rgba(200, 250, 200, 0.5);
+    border: 2px solid rgba(162, 202, 162, 0.5);
+    border-radius: 5px;
+    width: 90%;
+    height: 90%;
+    margin-bottom: 10px;
+    /* background-image: url("../boxes/box ruby and sapphire/box1.png"); */
+    background-clip: content-box;
+    background-size: contain;
+    user-select: none;
+}
+
+.boxheader {
+    width: 300px;
+    height: 50px;
+}
+
+.pkmnSubtitle {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    -webkit-text-stroke: 0.3px rgb(200, 200, 200);
+    max-width: 90%;
+    font-size: 0.7vw;
+}
+
+.loadingicon {
+    object-fit:contain;
+    user-select: none;
+}
+
+.smaller {
+    font-size: small;
+    -webkit-text-stroke: 0.2px black;
+}
+
+.footer {
+    background-color: gray;
+}
+
+.head {
+    background-color: rgb(180, 180, 180);
+    padding-top: 2px;
+    padding-bottom: 20px;
+}
+
+.taboption {
+    font-size: 20px;
+    display: inline;
+    margin: 10px;
+}
+
+.home {
+    float: left;
+    margin-left: 15px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.combineimgandtxt {
+    align-items: center;
+    justify-content: center;
+    display: inline-block;
+    cursor: auto;
+}
+
+.combineimgandtxtwoutcenter {
+    display: inline-block;
+    cursor: auto;
+}
+
+.user {
+    float: right;
+    margin-right: 15px;
+}
+
+.button {
+    width: 300px;
+    height: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: greenyellow;
+    cursor: pointer;
+}
+
+.buttonsmol {
+    width: 120px;
+    height: 27px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    border-radius: 10px;
+    background-color: rgb(120, 160, 26);
+    cursor: pointer;
+}
+
+.taboption {
+    cursor: pointer;
+    color: black;
+}
+
+.taboption:hover {
+    color: grey;
+}
+
+.warningTitle {
+    color: rgba(199, 166, 19, 0.8);
+    font-size: 25px;
+    cursor: auto;
+}
+
+.warningDiv {
+    background-color: rgba(255, 225, 0, 0.4);
+    /*border: rgba(199, 166, 19, 0.8);*/
+    border: 2px solid rgba(199, 166, 19, 0.4);
+    border-radius: 5px;
+    max-width: 90%;
+    cursor: auto;
+}
+
+.blktxt {
+    color: black;
+}
+
+.bigtxt {
+    font-size: 20px;
+}
+
+.rubytxt {
+    color: red;
+    -webkit-text-stroke: 0.3px black;
+}
+
+.sapphiretxt {
+    color: blue;
+    -webkit-text-stroke: 0.3px black;
+}
+
+.frtxt {
+    color: orange;
+    -webkit-text-stroke: 0.3px black;
+}
+
+.lgtxt {
+    color: greenyellow;
+    -webkit-text-stroke: 0.3px black;
+}
+
+.emeraldtxt {
+    color: green;
+    -webkit-text-stroke: 0.3px black;
+}
+
+.colosseumtxt {
+    color: rgb(137, 137, 9);
+    -webkit-text-stroke: 0.3px black;
+}
+
+.xdtxt {
+    color: rgb(58, 2, 58);
+    -webkit-text-stroke: 0.3px black;
+}
+
+.smolbr {
+    content: "";
+    margin: 2em;
+    display: block;
+    font-size: 24%;
+}
+
+.headinglmao {
+    text-decoration: underline;
+    font-size: 30px;
+}
+
+.innertxtindbe {
+    width: 100%;
+}
+
+#eandc {
+    font-size: 15px;
+    color: black;
+}
+
+#bulba, #sereb, #lyras, #reftxt, #veekun, #dolphins {
+    cursor: pointer;
+    color: blue;
+}
+
+#bulba:hover, #sereb:hover, #lyras:hover, #reftxt:hover, #nerdlink:hover, #veekun:hover, #dolphins:hover {
+    color: rgb(150,150,255);
+}
+
+#sign-up {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#sign-in {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#main {
+    background-color: rgb(220,220,220);
+    min-width: 1100px;
+    max-width: 1100px;
+    border-radius: 10px;
+}
+
+#main-index {
+    background-color: rgb(220,220,220);
+    max-width: 1100px;
+    border-radius: 10px;
+}
+
+#loading {
+    display: inline;
+    position: relative;
+    text-align: center;
+}
+
+#email {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+h1 {
+    -webkit-text-stroke: 1px black;
+}
+
+h2 {
+    -webkit-text-stroke: 0.5px black;
+}
+
+h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+h4 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+h1, h2, h5, h6, p {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+#nerdlink {
+    cursor: pointer;
+    color: blue;
+}
