@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../index.css">
+        <title>funny pokedex tracker - tracker</title>
+        <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+    </head>
+    <body>
+        <center id="centered">
+            <div class="head">
+                <div id="home" class="home">
+                    <img style="float: left; margin-top: 10px;" src="../other imgs/home.png" width="25" height="25" />
+                    <p style="float:right; margin-left: 7px;">Home</p>
+                </div>
+                <div class="user">
+                    <p id="user">Signing in...</p>
+                </div>
+                <h1>funny pokedex tracker</h1>
+                <!--<h2>Gen 3 Standard Living Dex<br><small class="smaller">(Pokemon Box: Ruby & Sapphire)</small></h2>-->
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div id="loading">
+                <h1 style="position: absolute; top:-280%; right:50%; transform:translate(50%, -50%); min-width: 100%; opacity: 50%;">Please wait, your data is loading...</h1>
+                <img src="https://i.gifer.com/ZZ5H.gif" class="loadingicon" width=50 height=50 style="width: 100%;" />
+            </div>
+            
+            <div id="main">
+                <br>
+                <div id="trackermenu">
+                    
+                </div>
+                <br>
+            </div>
+        </center>
+        <script type="module" src="./games.js"></script>
+        <script type="module" src="./index.js"></script>
+    </body>
+    <footer>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="footer">
+            <br>
+            <br>
+            <center>
+                <p>This website is not at all affiliated with The Pokémon Company International (Nintendo, Gamefreak, Creatures).<br>This website's purpose is to inform and help people organise.<br>If you need any information or help on this website, please contact me at: <b id="email">nk.personal.work@gmail.com</b></p>
+            </center>
+                
+            <br>
+            <br>
+        </div>
+    </footer>
+</html>
