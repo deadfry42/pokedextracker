@@ -8,6 +8,15 @@
     user-select: none;
 }
 
+.boxcontainershort {
+    width: 1000px;
+    border-color: black;
+    background-color: rgba(200, 200, 200, 0.5);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    user-select: none;
+}
+
 .box {
     background-color: rgba(200, 250, 200, 0.5);
     width: 90%;

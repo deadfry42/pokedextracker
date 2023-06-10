@@ -23,13 +23,6 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 const db = firebase.database()
 
-const url = "https://fpt-imgs.up.railway.app/"
-
-const baseImgURL = `${url}icon/pbrs` //https://fpt-imgs.up.railway.app/icon/pbrs/{spritesNum}/{normal/frame2/animated}/{shiny/no}/{file}
-const endURL = ""
-
-const baseBoxURL = `${url}box/pbrs` //https://fpt-imgs.up.railway.app/box/(body/head)/(standard/numbered head only)/{file}
-
 function getIndicesOf(searchStr, str, caseSensitive) {
     var searchStrLen = searchStr.length;
     if (searchStrLen == 0) {
@@ -50,242 +43,41 @@ function getIndicesOf(searchStr, str, caseSensitive) {
 //content stuff
 let game = "pbrs"
 
+const url = "https://fpt-imgs.up.railway.app/"
+
+const baseImgURL = `${url}icon/${game}` //https://fpt-imgs.up.railway.app/icon/pbrs/{vars.spritesNum}/{normal/frame2/animated}/{shiny/no}/{file}
+const endURL = ""
+
+const baseBoxURL = `${url}box/${game}` //https://fpt-imgs.up.railway.app/box/(body/head)/(standard/numbered head only)/{file}
+
 //changable by user
 let ctrl = false
 
 //hard coded vars
 const imgSize = 12
 
-//settings
-let sprites = 3
-let emeraldAnimation = 0
-let numberedHeadings = true
-let shiny = "no"
-let darkenWhenUnobtained = true
-let extras = false
-
-let refreshC1 = 0
-let refreshC2 = 0
-let refreshC3 = 0
-
-const settings = [
-    {
-        name: "Gen 3 Sprite Type",
-        dbname: "sprites",
-        desc: "Changes the type of sprite shown on the Pokédex Tracker & Pokémon Database pages. Note: Pokémon Database images do not animate.",
-        var: sprites,
-        type: {
-            type: "linear",
-            options: [
-                {name: "Ruby & Sapphire", short: "RS"},
-                {name: "FireRed & LeafGreen", short: "FRLG"},
-                {name: "Emerald", short: "E"},
-                {name: "Box Icons (Incompatible with shinyness)", short: "I"},
-            ],
-            func: function (val, input, current) {
-                sprites = val
-                input.value = val
-                current.innerText = this.options[val].name
-                if (val == 2 && emeraldAnimation == 4) {
-                    const dbicons = document.getElementsByClassName("pkmnimgdb")
-                    for (let element of dbicons) {
-                        const id = element.getAttribute("pkmnId")
-                        element.src = `${baseImgURL}/${val}/animated/${shiny}/${id}.gif${endURL}`
-                    };
-                    const names = document.getElementsByClassName("pkmnimg")
-                    for (let element of names) {
-                        const id = element.getAttribute("pkmnId")
-                        element.src = `${baseImgURL}/${val}/animated/${shiny}/${id}.gif${endURL}`
-                        element.style.scale = 1.5
-                    };
-                } else if (val == 2 && emeraldAnimation == 3) {
-                    const names = document.getElementsByClassName("pkmnimg")
-                    const dbicons = document.getElementsByClassName("pkmnimgdb")
-                    for (let element of dbicons) {
-                        const id = element.getAttribute("pkmnId")
-                        element.src = `${baseImgURL}/${val}/normal/${shiny}/${id}.png${endURL}`
-                    };
-                    for (let element of names) {
-                        const id = element.getAttribute("pkmnId")
-                        if (element.style.opacity == 1) {
-                            element.src = `${baseImgURL}/${val}/animated/${shiny}/${id}.gif${endURL}`
-                            element.style.scale = 1.5
-                        } else {
-                            element.src = `${baseImgURL}/${val}/normal/${shiny}/${id}.png${endURL}`
-                            element.style.scale = 1
-                        }
-                    };
-                } else {
-                    const dbicons = document.getElementsByClassName("pkmnimgdb")
-                    for (let element of dbicons) {
-                        const id = element.getAttribute("pkmnId")
-                        element.src = `${baseImgURL}/${val}/normal/${shiny}/${id}.png${endURL}`
-                    };
-                    const names = document.getElementsByClassName("pkmnimg")
-                    for (let element of names) {
-                        const id = element.getAttribute("pkmnId")
-                        element.src = `${baseImgURL}/${val}/normal/${shiny}/${id}.png${endURL}`
-                        element.style.scale = 1
-                    };
-                }
-                
-            }
-        },
-    },
-    {
-        name: "Emerald animations",
-        dbname: "eAnim",
-        desc: "Changes the way the sprites (when in the 'Emerald' option) animate. Note: Pokémon Database images do not animate.",
-        var: emeraldAnimation,
-        type: {
-            type: "linear",
-            options: [
-                {name: "Unanimated", short: "No"},
-                {name: "Change frame on hover", short: "Frame"},
-                {name: "Animate on hover", short: "Hover"},
-                {name: "Constantly animating when obtained (Unstable)", short: "Selection"},
-                {name: "Constantly animating (Unstable)", short: "Always"},
-            ],
-            func: function (val, input, current) {
-                if (refreshC1 != 0) {document.getElementById("refpls").style.display = "block"} else {refreshC1 = 1}
-                emeraldAnimation = val
-                input.value = val
-                current.innerText = this.options[val].name
-                if (shiny == "no") {
-                    if (val == 4 && sprites == 2) {
-                        const names = document.getElementsByClassName("pkmnimg")
-                        for (let element of names) {
-                            const id = element.getAttribute("pkmnId")
-                            element.src = `${baseImgURL}/${sprites}/animated/${shiny}/${id}.gif${endURL}`
-                            element.style.scale = 1.5
-                        };
-                    } if (val == 3 && sprites == 2) {
-                        const names = document.getElementsByClassName("pkmnimg")
-                        for (let element of names) {
-                            const id = element.getAttribute("pkmnId")
-                            if (element.style.opacity == 1) {
-                                element.src = `${baseImgURL}/${sprites}/animated/${shiny}/${id}.gif${endURL}`
-                                element.style.scale = 1.5
-                            } else {
-                                element.src = `${baseImgURL}/${sprites}/normal/${shiny}/${id}.png${endURL}`
-                                element.style.scale = 1
-                            }
-                        };
-                    } else {
-                        const names = document.getElementsByClassName("pkmnimg")
-                        for (let element of names) {
-                            const id = element.getAttribute("pkmnId")
-                            element.src = `${baseImgURL}/${sprites}/normal/${shiny}/${id}.png${endURL}`
-                            element.style.scale = 1
-                        };
-                    }
-                }
-            }
-        },
-    },
-    {
-        name: "Numbered headings",
-        dbname: "numHead",
-        desc: "Changes what the box headers say. If true, an example would be (1-60). If false, an example would be (BOX 1)",
-        value: true,
-        var: numberedHeadings,
-        type: {
-            type: "boolean",
-            func: function (val, input, current) {
-                numberedHeadings = val
-                input.checked = val
-                current.innerText = val
-                const names = document.getElementsByClassName("boxheader")
-                for (let element of names) {
-                    
-                    const id = element.getAttribute("boxid")
-                    if (val) element.src = `${baseBoxURL}/header/numbered/box${id}.png`
-                    if (!val) element.src = `${baseBoxURL}/header/standard/box${id}.png`
-                };
-            }
-        },
-    },
-    {
-        name: "Shiny pokémon",
-        dbname: "isshiny",
-        desc: "Changes if the Pokémon shown in the Pokédex Tracker & Pokémon Database pages are shiny or not. Note: Incompatible with box sprites.",
-        value: false,
-        var: shiny,
-        type: {
-            type: "boolean",
-            func: function (val, input, current) {
-                if (refreshC2 != 0) {document.getElementById("refpls").style.display = "block"} else {refreshC2 = 1}
-                if (val) shiny = "shiny"
-                if (!val) shiny = "no"
-                input.checked = val
-                current.innerText = val
-            }
-        },
-    },
-    {
-        name: "Boxes with extra content",
-        dbname: "extraboxes",
-        desc: "Changes if there are any extra boxes that may contain different forms of a Pokemon.",
-        value: false,
-        var: extras,
-        type: {
-            type: "boolean",
-            func: function (val, input, current) {
-                if (val) extras = true
-                if (!val) extras = false
-                input.checked = val
-                current.innerText = val
-                
-                if (!val) {
-                    const names = document.getElementsByClassName("extrabox")
-                    for (let element of names) {
-                        element.style.display = "none"
-                    };
-                } else {
-                    const names = document.getElementsByClassName("extrabox")
-                    for (let element of names) {
-                        element.style.display = "block"
-                    };
-                }
-            }
-        },
-    },
-    {
-        name: "Darker when unobtained",
-        dbname: "dwu",
-        desc: "Changes if the Pokémon shown in the Pokédex Tracker turn darker when they are unobtained.",
-        value: true,
-        var: darkenWhenUnobtained,
-        type: {
-            type: "boolean",
-            func: function (val, input, current) {
-                if (refreshC3 != 0) {document.getElementById("refpls").style.display = "block"} else {refreshC3 = 1}
-                darkenWhenUnobtained = val
-                input.checked = val
-                current.innerText = val
-                if (!val) {
-                    const names = document.getElementsByClassName("pkmnimg")
-                    for (let element of names) {
-                        element.style.filter = "brightness(100%)"
-                    };
-                }
-                
-            }
-        },
-    }
-]
-
 let boxes = []
 let pokemonData = {}
+let settings = []
+let vars = {}
 
 import {obtainStatus, obtainMethod} from "./data/basedata.js"
 import {gen3pokemonData} from "./data/gen3data.js"
 import {pbrsboxes} from "./data/pbrsboxesdata.js"
+import {pbrssettings, pbrsvars} from "./data/pbrssettingsdata.js"
 
-if (game == "pbrs") boxes = pbrsboxes
-if (game == "pbrs" || game == "gen3") pokemonData = gen3pokemonData
+if (game == "pbrs") {
+    boxes = pbrsboxes
+    pokemonData = gen3pokemonData
+    settings = pbrssettings
+    vars = pbrsvars
+}
+if (game == "gen3") {
+    pokemonData = gen3pokemonData
+}
 
 addEventListener("load", () => {
+    if (localStorage.getItem("token") == null) window.location.href = "../"
     const trackermenu = document.getElementById("trackermenu")
     const databasemenu = document.getElementById("databasemenu")
     const optionsmenu = document.getElementById("optionsmenu")
@@ -293,7 +85,7 @@ addEventListener("load", () => {
     const database = document.getElementById("database")
     const options = document.getElementById("options")
     try {
-        db.ref(`/users/${localStorage.getItem("token")}/pbrs/settings/${settings[0].dbname}`).on("value", function(snapshot) {
+        db.ref(`/users/${localStorage.getItem("token")}/${game}/settings/${settings[0].dbname}`).on("value", function(snapshot) {
             const val = snapshot.val().value
             const setting = 0
             const optionDiv = document.getElementById(settings[setting].dbname)
@@ -301,7 +93,7 @@ addEventListener("load", () => {
             const input = optionDiv.childNodes[2]
             try {settings[setting].type.func(val, input, current)} catch(e) {console.log(e)}
         })
-        db.ref(`/users/${localStorage.getItem("token")}/pbrs/settings/${settings[1].dbname}`).on("value", function(snapshot) {
+        db.ref(`/users/${localStorage.getItem("token")}/${game}/settings/${settings[1].dbname}`).on("value", function(snapshot) {
             const val = snapshot.val().value
             const setting = 1
             const optionDiv = document.getElementById(settings[setting].dbname)
@@ -309,7 +101,7 @@ addEventListener("load", () => {
             const input = optionDiv.childNodes[2]
             try {settings[setting].type.func(val, input, current)} catch(e) {console.log(e)}
         })
-        db.ref(`/users/${localStorage.getItem("token")}/pbrs/settings/${settings[2].dbname}`).on("value", function(snapshot) {
+        db.ref(`/users/${localStorage.getItem("token")}/${game}/settings/${settings[2].dbname}`).on("value", function(snapshot) {
             const val = snapshot.val().value
             const setting = 2
             const optionDiv = document.getElementById(settings[setting].dbname)
@@ -317,7 +109,7 @@ addEventListener("load", () => {
             const input = optionDiv.childNodes[2]
             try {settings[setting].type.func(val, input, current)} catch(e) {console.log(e)}
         })
-        db.ref(`/users/${localStorage.getItem("token")}/pbrs/settings/${settings[3].dbname}`).on("value", function(snapshot) {
+        db.ref(`/users/${localStorage.getItem("token")}/${game}/settings/${settings[3].dbname}`).on("value", function(snapshot) {
             const val = snapshot.val().value
             const setting = 3
             const optionDiv = document.getElementById(settings[setting].dbname)
@@ -325,7 +117,7 @@ addEventListener("load", () => {
             const input = optionDiv.childNodes[2]
             try {settings[setting].type.func(val, input, current)} catch(e) {console.log(e)}
         })
-        db.ref(`/users/${localStorage.getItem("token")}/pbrs/settings/${settings[4].dbname}`).on("value", function(snapshot) {
+        db.ref(`/users/${localStorage.getItem("token")}/${game}/settings/${settings[4].dbname}`).on("value", function(snapshot) {
             const val = snapshot.val().value
             const setting = 4
             const optionDiv = document.getElementById(settings[setting].dbname)
@@ -333,7 +125,7 @@ addEventListener("load", () => {
             const input = optionDiv.childNodes[2]
             try {settings[setting].type.func(val, input, current)} catch(e) {console.log(e)}
         })
-        db.ref(`/users/${localStorage.getItem("token")}/pbrs/settings/${settings[5].dbname}`).on("value", function(snapshot) {
+        db.ref(`/users/${localStorage.getItem("token")}/${game}/settings/${settings[5].dbname}`).on("value", function(snapshot) {
             const val = snapshot.val().value
             const setting = 5
             const optionDiv = document.getElementById(settings[setting].dbname)
@@ -348,20 +140,6 @@ addEventListener("load", () => {
         try {
             const pkmnData = pokemonData[pkmnNum]
             if (pkmnData.database) {
-                let rubyArray = Object.keys(pkmnData.ruby)
-                let sapphireArray = Object.keys(pkmnData.sapphire)
-                let fireredArray = Object.keys(pkmnData.firered)
-                let leafgreenArray = Object.keys(pkmnData.leafgreen)
-                let emeraldArray = Object.keys(pkmnData.emerald)
-                let colosseumArray = Object.keys(pkmnData.colosseum)
-                let xdArray = Object.keys(pkmnData.xd)
-                // if (rubyArray.length == 0 || rubyArray == null) rubyArray = Object.keys({methods: [{status: obtainStatus.incomplete}]})
-                // if (sapphireArray.length == 0 || sapphireArray == null) sapphireArray = Object.keys({methods: [{status: obtainStatus.incomplete}]})
-                // if (fireredArray.length == 0 || fireredArray == null) fireredArray = Object.keys({methods: [{status: obtainStatus.incomplete}]})
-                // if (leafgreenArray.length == 0 || leafgreenArray == null) leafgreenArray = Object.keys({methods: [{status: obtainStatus.incomplete}]})
-                // if (emeraldArray.length == 0 || emeraldArray == null) emeraldArray = Object.keys({methods: [{status: obtainStatus.incomplete}]})
-                // if (colosseumArray.length == 0 || colosseumArray == null) colosseumArray = Object.keys({methods: [{status: obtainStatus.incomplete}]})
-                // if (xdArray.length == 0 || xdArray == null) xdArray = Object.keys({methods: [{status: obtainStatus.incomplete}]})
                 function getPkmnSummaryFromData(dta, endTxt) {
                     let methodSeperation = `<p class="blktxt smolbr">---</p>`
                     let rubyMsg = "";
@@ -380,336 +158,345 @@ addEventListener("load", () => {
                     let colosseumA = dta.colosseum;
                     let xdA = dta.xd;
 
-                    if (rubyA.methods == undefined) rubyA = {methods: [{status: obtainStatus.incomplete}]};
-                    if (sapphireA.methods == undefined) sapphireA = {methods: [{status: obtainStatus.incomplete}]}
-                    if (fireredA.methods == undefined) fireredA = {methods: [{status: obtainStatus.incomplete}]}
-                    if (leafgreenA.methods == undefined) leafgreenA = {methods: [{status: obtainStatus.incomplete}]}
-                    if (emeraldA.methods == undefined) emeraldA = {methods: [{status: obtainStatus.incomplete}]}
-                    if (colosseumA.methods == undefined) colosseumA = {methods: [{status: obtainStatus.incomplete}]}
-                    if (xdA.methods == undefined) xdA = {methods: [{status: obtainStatus.incomplete}]}
-                    rubyA.methods.forEach((method, i) => {
-                        if (i > 0) rubyMsg = rubyMsg + methodSeperation
-                        if (method.status == obtainStatus.obtainable) {
-                            rubyMsg = rubyMsg + method.method
-                            switch (method.method) {
-                                case obtainMethod.catch:
-                                    rubyMsg = rubyMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
-                                break;
-                                case obtainMethod.snag:
-                                    rubyMsg = rubyMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
-                                break;
-                                case obtainMethod.gift:
-                                    rubyMsg = rubyMsg + ".<br>Location: "+method.location
-                                break;
-                                case obtainMethod.gift_req:
-                                    rubyMsg = rubyMsg + method.req+".<br>Location: "+method.location
-                                break;
-                                case obtainMethod.box_egg:
-                                    rubyMsg = rubyMsg + method.pkmnDepost+" Pokémon"
-                                break;
-                                case obtainMethod.evolve_level:
-                                    rubyMsg = rubyMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" at level "+method.level
-                                break;
-                                case obtainMethod.evolve_trade_item:
-                                    rubyMsg = rubyMsg + method.item
-                                break;
-                                case obtainMethod.evolve_item:
-                                    rubyMsg = rubyMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
-                                break;
-                                case obtainMethod.pomeg_location:
-                                    rubyMsg = rubyMsg + `${method.ticket} to go to ${method.location}`
-                                break;
-                                case obtainMethod.save_editing:
-                                    rubyMsg = rubyMsg + `${method.ticket} to go to ${method.location}`
-                                break;
-                                case obtainMethod.purchased:
-                                    rubyMsg = rubyMsg + method.location+" for "+method.amount+" "+method.currency
-                                break;
-                            }  
-                        } else {
-                            rubyMsg = method.status
-                        }
-                    })
-                    sapphireA.methods.forEach((method, i) => {
-                        if (i > 0) sapphireMsg = sapphireMsg + methodSeperation
-                        if (method.status == obtainStatus.obtainable) {
-                            sapphireMsg = sapphireMsg + method.method
-                            switch (method.method) {
-                                case obtainMethod.catch:
-                                    sapphireMsg = sapphireMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
-                                break;
-                                case obtainMethod.snag:
-                                    sapphireMsg = sapphireMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
-                                break;
-                                case obtainMethod.gift:
-                                    sapphireMsg = sapphireMsg + ".<br>Location: "+method.location
-                                break;
-                                case obtainMethod.gift_req:
-                                    sapphireMsg = sapphireMsg + method.req+".<br>Location: "+method.location
-                                break;
-                                case obtainMethod.box_egg:
-                                    sapphireMsg = sapphireMsg + method.pkmnDepost+" Pokémon."
-                                break;
-                                case obtainMethod.evolve_level:
-                                    sapphireMsg = sapphireMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" at level "+method.level
-                                break;
-                                case obtainMethod.evolve_trade_item:
-                                    sapphireMsg = sapphireMsg + method.item
-                                break;
-                                case obtainMethod.evolve_item:
-                                    sapphireMsg = sapphireMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
-                                break;
-                                case obtainMethod.pomeg_location:
-                                    sapphireMsg = sapphireMsg + `${method.ticket} to go to ${method.location}`
-                                break;
-                                case obtainMethod.save_editing:
-                                    sapphireMsg = sapphireMsg + `${method.ticket} to go to ${method.location}`
-                                break;
-                                case obtainMethod.purchased:
-                                    sapphireMsg = sapphireMsg + method.location+" for "+method.amount+" "+method.currency
-                                break;
-                            }  
-                        } else {
-                            sapphireMsg = method.status
-                        }
-                    })
-                    fireredA.methods.forEach((method, i) => {
-                        if (i > 0) fireredMsg = fireredMsg + methodSeperation
-                        if (method.status == obtainStatus.obtainable) {
-                            fireredMsg = fireredMsg + method.method
-                            switch (method.method) {
-                                case obtainMethod.catch:
-                                    fireredMsg = fireredMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
-                                break;
-                                case obtainMethod.snag:
-                                    fireredMsg = fireredMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
-                                break;
-                                case obtainMethod.gift:
-                                    fireredMsg = fireredMsg + ".<br>Location: "+method.location
-                                break;
-                                case obtainMethod.gift_req:
-                                    fireredMsg = fireredMsg + method.req+".<br>Location: "+method.location
-                                break;
-                                case obtainMethod.box_egg:
-                                    fireredMsg = fireredMsg + method.pkmnDepost+" Pokémon"
-                                break;
-                                case obtainMethod.evolve_level:
-                                    fireredMsg = fireredMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" at level "+method.level
-                                break;
-                                case obtainMethod.evolve_trade_item:
-                                    fireredMsg = fireredMsg + method.item
-                                break;
-                                case obtainMethod.evolve_item:
-                                    fireredMsg = fireredMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
-                                break;
-                                case obtainMethod.pomeg_location:
-                                    fireredMsg = fireredMsg + `${method.ticket} to go to ${method.location}`
-                                break;
-                                case obtainMethod.save_editing:
-                                    fireredMsg = fireredMsg + `${method.ticket} to go to ${method.location}`
-                                break;
-                                case obtainMethod.purchased:
-                                    fireredMsg = fireredMsg + method.location+" for "+method.amount+" "+method.currency
-                                break;
-                            }  
-                        } else {
-                            fireredMsg = method.status
-                        }
-                    })
-                    leafgreenA.methods.forEach((method, i) => {
-                        if (i > 0) leafgreenMsg = leafgreenMsg + methodSeperation
-                        if (method.status == obtainStatus.obtainable) {
-                            leafgreenMsg = leafgreenMsg + method.method
-                            switch (method.method) {
-                                case obtainMethod.catch:
-                                    leafgreenMsg = leafgreenMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
-                                break;
-                                case obtainMethod.snag:
-                                    leafgreenMsg = leafgreenMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
-                                break;
-                                case obtainMethod.gift:
-                                    leafgreenMsg = leafgreenMsg + ".<br>Location: "+method.location
-                                break;
-                                case obtainMethod.gift_req:
-                                    leafgreenMsg = leafgreenMsg + method.req+".<br>Location: "+method.location
-                                break;
-                                case obtainMethod.box_egg:
-                                    leafgreenMsg = leafgreenMsg + method.pkmnDepost+" Pokémon"
-                                break;
-                                case obtainMethod.evolve_level:
-                                    leafgreenMsg = leafgreenMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" at level "+method.level
-                                break;
-                                case obtainMethod.evolve_trade_item:
-                                    leafgreenMsg = leafgreenMsg + method.item
-                                break;
-                                case obtainMethod.evolve_item:
-                                    leafgreenMsg = leafgreenMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
-                                break;
-                                case obtainMethod.pomeg_location:
-                                    leafgreenMsg = leafgreenMsg + `${method.ticket} to go to ${method.location}`
-                                break;
-                                case obtainMethod.save_editing:
-                                    leafgreenMsg = leafgreenMsg + `${method.ticket} to go to ${method.location}`
-                                break;
-                                case obtainMethod.purchased:
-                                    leafgreenMsg = leafgreenMsg + method.location+" for "+method.amount+" "+method.currency
-                                break;
-                            }  
-                        } else {
-                            leafgreenMsg = method.status
-                        }
-                    })
-                    emeraldA.methods.forEach((method, i) => {
-                        if (i > 0) emeraldMsg = emeraldMsg + methodSeperation
-                        if (method.status == obtainStatus.obtainable) {
-                            emeraldMsg = emeraldMsg + method.method
-                            switch (method.method) {
-                                case obtainMethod.catch:
-                                    emeraldMsg = emeraldMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
-                                break;
-                                case obtainMethod.snag:
-                                    emeraldMsg = emeraldMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
-                                break;
-                                case obtainMethod.gift:
-                                    emeraldMsg = emeraldMsg + ".<br>Location: "+method.location
-                                break;
-                                case obtainMethod.gift_req:
-                                    emeraldMsg = emeraldMsg + method.req+".<br>Location: "+method.location
-                                break;
-                                case obtainMethod.box_egg:
-                                    emeraldMsg = emeraldMsg + method.pkmnDepost+" Pokémon"
-                                break;
-                                case obtainMethod.evolve_level:
-                                    emeraldMsg = emeraldMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" at level "+method.level
-                                break;
-                                case obtainMethod.evolve_trade_item:
-                                    emeraldMsg = emeraldMsg + method.item
-                                break;
-                                case obtainMethod.evolve_item:
-                                    emeraldMsg = emeraldMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
-                                break;
-                                case obtainMethod.pomeg_location:
-                                    emeraldMsg = emeraldMsg + `${method.ticket} to go to ${method.location}`
-                                break;
-                                case obtainMethod.save_editing:
-                                    emeraldMsg = emeraldMsg + `${method.ticket} to go to ${method.location}`
-                                break;
-                                case obtainMethod.purchased:
-                                    emeraldMsg = emeraldMsg + method.location+" for "+method.amount+" "+method.currency
-                                break;
-                            }  
-                        } else {
-                            emeraldMsg = method.status
-                        }
-                    })
-                    colosseumA.methods.forEach((method, i) => {
-                        if (i > 0) colosseumMsg = colosseumMsg + methodSeperation
-                        if (method.status == obtainStatus.obtainable) {
-                            colosseumMsg = colosseumMsg + method.method
-                            switch (method.method) {
-                                case obtainMethod.catch:
-                                    colosseumMsg = colosseumMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
-                                break;
-                                case obtainMethod.snag:
-                                    colosseumMsg = colosseumMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
-                                break;
-                                case obtainMethod.gift:
-                                    colosseumMsg = colosseumMsg + ".<br>Location: "+method.location
-                                break;
-                                case obtainMethod.gift_req:
-                                    colosseumMsg = colosseumMsg + method.req+".<br>Location: "+method.location
-                                break;
-                                case obtainMethod.box_egg:
-                                    colosseumMsg = colosseumMsg + method.pkmnDepost+" Pokémon"
-                                break;
-                                case obtainMethod.evolve_level:
-                                    colosseumMsg = colosseumMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" at level "+method.level
-                                break;
-                                case obtainMethod.evolve_trade_item:
-                                    colosseumMsg = colosseumMsg + method.item
-                                break;
-                                case obtainMethod.evolve_item:
-                                    colosseumMsg = colosseumMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
-                                break;
-                                case obtainMethod.pomeg_location:
-                                    colosseumMsg = colosseumMsg + `${method.ticket} to go to ${method.location}`
-                                break;
-                                case obtainMethod.save_editing:
-                                    colosseumMsg = colosseumMsg + `${method.ticket} to go to ${method.location}`
-                                break;
-                                case obtainMethod.purchased:
-                                    colosseumMsg = colosseumMsg + method.location+" for "+method.amount+" "+method.currency
-                                break;
-                            }  
-                        } else {
-                            colosseumMsg = method.status
-                        }
-                    })
-                    xdA.methods.forEach((method, i) => {
-                        if (i > 0) xdMsg = xdMsg + methodSeperation
-                        if (method.status == obtainStatus.obtainable) {
-                            xdMsg = xdMsg + method.method
-                            switch (method.method) {
-                                case obtainMethod.catch:
-                                    xdMsg = xdMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
-                                break;
-                                case obtainMethod.snag:
-                                    xdMsg = xdMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
-                                break;
-                                case obtainMethod.gift:
-                                    xdMsg = xdMsg + ".<br>Location: "+method.location
-                                break;
-                                case obtainMethod.gift_req:
-                                    xdMsg = xdMsg + method.req+".<br>Location: "+method.location
-                                break;
-                                case obtainMethod.box_egg:
-                                    xdMsg = xdMsg + method.pkmnDepost+" Pokémon"
-                                break;
-                                case obtainMethod.evolve_level:
-                                    xdMsg = xdMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" at level "+method.level
-                                break;
-                                case obtainMethod.evolve_trade_item:
-                                    xdMsg = xdMsg + method.item
-                                break;
-                                case obtainMethod.evolve_item:
-                                    xdMsg = xdMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
-                                break;
-                                case obtainMethod.pomeg_location:
-                                    xdMsg = xdMsg + `${method.ticket} to go to ${method.location}`
-                                break;
-                                case obtainMethod.save_editing:
-                                    xdMsg = xdMsg + `${method.ticket} to go to ${method.location}`
-                                break;
-                                case obtainMethod.purchased:
-                                    xdMsg = xdMsg + method.location+" for "+method.amount+" "+method.currency
-                                break;
-                            }  
-                        } else {
-                            xdMsg = method.status
-                        }
-                    })
-                    var bundleRaS = false
-                    var bundleFRaLG = false
-                    var bundleCaXD = false
-                    if (rubyMsg == sapphireMsg) bundleRaS = true
-                    if (fireredMsg == leafgreenMsg) bundleFRaLG = true
-                    if (colosseumMsg == xdMsg) bundleCaXD = true
-                    var r = `<b class="rubytxt">Pokémon Ruby:</b> ${rubyMsg}`
-                    var rs = `<b class="rubytxt">Pokémon Ruby</b> <b class="sapphiretxt">and Sapphire:</b> ${rubyMsg}`
-                    var s = `<br><p class="smolbr"></p><b class="sapphiretxt">Pokémon Sapphire:</b> ${sapphireMsg}`
-                    var fr = `<b class="frtxt">Pokémon FireRed:</b> ${fireredMsg}`
-                    var frlg = `<b class="frtxt">Pokémon FireRed</b> <b class="lgtxt">and LeafGreen:</b> ${fireredMsg}`
-                    var lg = `<br><p class="smolbr"></p><b class="lgtxt">Pokémon LeafGreen:</b> ${leafgreenMsg}`
-                    var c = `<b class="colosseumtxt">Pokémon Colosseum:</b> ${colosseumMsg}`
-                    var cxd = `<b class="colosseumtxt">Pokémon Colosseum</b> <b class="xdtxt">and XD:</b> ${colosseumMsg}`
-                    var xd = `<br><p class="smolbr"></p><b class="xdtxt">Pokémon XD:</b> ${xdMsg}`
-                    var ras;
-                    var fralg;
-                    var caxd;
-                    if (bundleRaS) { ras = rs } else { ras = r+s }
-                    if (bundleFRaLG) { fralg = frlg } else { fralg = fr+lg }
-                    if (bundleCaXD) { caxd = cxd } else { caxd = c+xd }
-                    var extended = `<h6 class="bigtxt blktxt"><b class="headinglmao">${dta.name}</b><p class="smolbr"></p><p class="smolbr"></p>${ras}<br><p class="smolbr"></p>${fralg}<br><p class="smolbr"></p><b class="emeraldtxt">Pokémon Emerald:</b> ${emeraldMsg}<br><p class="smolbr"></p>${caxd}<br><p class="smolbr"><b id="eandc">${endTxt}</b></h6>`
+                    const incomplete = {methods: [{status: obtainStatus.incomplete}]};
+
+                    if (rubyA.methods == undefined) rubyA = incomplete
+                    if (sapphireA.methods == undefined) sapphireA = incomplete
+                    if (fireredA.methods == undefined) fireredA = incomplete
+                    if (leafgreenA.methods == undefined) leafgreenA = incomplete
+                    if (emeraldA.methods == undefined) emeraldA = incomplete
+                    if (colosseumA.methods == undefined) colosseumA = incomplete
+                    if (xdA.methods == undefined) xdA = incomplete
+
+                    let extended;
+
+                    if (rubyA == incomplete && sapphireA == incomplete && fireredA == incomplete && leafgreenA == incomplete && emeraldA == incomplete && colosseumA == incomplete && xdA == incomplete) {
+                        extended = `<h6 class="bigtxt blktxt"><b class="headinglmao">${dta.name}</b><p class="smolbr"></p><p class="smolbr"></p>${obtainStatus.incomplete}</h6>`
+                    } else {
+                        rubyA.methods.forEach((method, i) => {
+                            if (i > 0) rubyMsg = rubyMsg + methodSeperation
+                            if (method.status == obtainStatus.obtainable) {
+                                rubyMsg = rubyMsg + method.method
+                                switch (method.method) {
+                                    case obtainMethod.catch:
+                                        rubyMsg = rubyMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
+                                    break;
+                                    case obtainMethod.snag:
+                                        rubyMsg = rubyMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
+                                    break;
+                                    case obtainMethod.gift:
+                                        rubyMsg = rubyMsg + ".<br>Location: "+method.location
+                                    break;
+                                    case obtainMethod.gift_req:
+                                        rubyMsg = rubyMsg + method.req+".<br>Location: "+method.location
+                                    break;
+                                    case obtainMethod.box_egg:
+                                        rubyMsg = rubyMsg + method.pkmnDepost+" Pokémon"
+                                    break;
+                                    case obtainMethod.evolve_level:
+                                        rubyMsg = rubyMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" at level "+method.level
+                                    break;
+                                    case obtainMethod.evolve_trade_item:
+                                        rubyMsg = rubyMsg + method.item
+                                    break;
+                                    case obtainMethod.evolve_item:
+                                        rubyMsg = rubyMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
+                                    break;
+                                    case obtainMethod.pomeg_location:
+                                        rubyMsg = rubyMsg + `${method.ticket} to go to ${method.location}`
+                                    break;
+                                    case obtainMethod.save_editing:
+                                        rubyMsg = rubyMsg + `${method.ticket} to go to ${method.location}`
+                                    break;
+                                    case obtainMethod.purchased:
+                                        rubyMsg = rubyMsg + method.location+" for "+method.amount+" "+method.currency
+                                    break;
+                                }  
+                            } else {
+                                rubyMsg = method.status
+                            }
+                        })
+                        sapphireA.methods.forEach((method, i) => {
+                            if (i > 0) sapphireMsg = sapphireMsg + methodSeperation
+                            if (method.status == obtainStatus.obtainable) {
+                                sapphireMsg = sapphireMsg + method.method
+                                switch (method.method) {
+                                    case obtainMethod.catch:
+                                        sapphireMsg = sapphireMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
+                                    break;
+                                    case obtainMethod.snag:
+                                        sapphireMsg = sapphireMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
+                                    break;
+                                    case obtainMethod.gift:
+                                        sapphireMsg = sapphireMsg + ".<br>Location: "+method.location
+                                    break;
+                                    case obtainMethod.gift_req:
+                                        sapphireMsg = sapphireMsg + method.req+".<br>Location: "+method.location
+                                    break;
+                                    case obtainMethod.box_egg:
+                                        sapphireMsg = sapphireMsg + method.pkmnDepost+" Pokémon."
+                                    break;
+                                    case obtainMethod.evolve_level:
+                                        sapphireMsg = sapphireMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" at level "+method.level
+                                    break;
+                                    case obtainMethod.evolve_trade_item:
+                                        sapphireMsg = sapphireMsg + method.item
+                                    break;
+                                    case obtainMethod.evolve_item:
+                                        sapphireMsg = sapphireMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
+                                    break;
+                                    case obtainMethod.pomeg_location:
+                                        sapphireMsg = sapphireMsg + `${method.ticket} to go to ${method.location}`
+                                    break;
+                                    case obtainMethod.save_editing:
+                                        sapphireMsg = sapphireMsg + `${method.ticket} to go to ${method.location}`
+                                    break;
+                                    case obtainMethod.purchased:
+                                        sapphireMsg = sapphireMsg + method.location+" for "+method.amount+" "+method.currency
+                                    break;
+                                }  
+                            } else {
+                                sapphireMsg = method.status
+                            }
+                        })
+                        fireredA.methods.forEach((method, i) => {
+                            if (i > 0) fireredMsg = fireredMsg + methodSeperation
+                            if (method.status == obtainStatus.obtainable) {
+                                fireredMsg = fireredMsg + method.method
+                                switch (method.method) {
+                                    case obtainMethod.catch:
+                                        fireredMsg = fireredMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
+                                    break;
+                                    case obtainMethod.snag:
+                                        fireredMsg = fireredMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
+                                    break;
+                                    case obtainMethod.gift:
+                                        fireredMsg = fireredMsg + ".<br>Location: "+method.location
+                                    break;
+                                    case obtainMethod.gift_req:
+                                        fireredMsg = fireredMsg + method.req+".<br>Location: "+method.location
+                                    break;
+                                    case obtainMethod.box_egg:
+                                        fireredMsg = fireredMsg + method.pkmnDepost+" Pokémon"
+                                    break;
+                                    case obtainMethod.evolve_level:
+                                        fireredMsg = fireredMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" at level "+method.level
+                                    break;
+                                    case obtainMethod.evolve_trade_item:
+                                        fireredMsg = fireredMsg + method.item
+                                    break;
+                                    case obtainMethod.evolve_item:
+                                        fireredMsg = fireredMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
+                                    break;
+                                    case obtainMethod.pomeg_location:
+                                        fireredMsg = fireredMsg + `${method.ticket} to go to ${method.location}`
+                                    break;
+                                    case obtainMethod.save_editing:
+                                        fireredMsg = fireredMsg + `${method.ticket} to go to ${method.location}`
+                                    break;
+                                    case obtainMethod.purchased:
+                                        fireredMsg = fireredMsg + method.location+" for "+method.amount+" "+method.currency
+                                    break;
+                                }  
+                            } else {
+                                fireredMsg = method.status
+                            }
+                        })
+                        leafgreenA.methods.forEach((method, i) => {
+                            if (i > 0) leafgreenMsg = leafgreenMsg + methodSeperation
+                            if (method.status == obtainStatus.obtainable) {
+                                leafgreenMsg = leafgreenMsg + method.method
+                                switch (method.method) {
+                                    case obtainMethod.catch:
+                                        leafgreenMsg = leafgreenMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
+                                    break;
+                                    case obtainMethod.snag:
+                                        leafgreenMsg = leafgreenMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
+                                    break;
+                                    case obtainMethod.gift:
+                                        leafgreenMsg = leafgreenMsg + ".<br>Location: "+method.location
+                                    break;
+                                    case obtainMethod.gift_req:
+                                        leafgreenMsg = leafgreenMsg + method.req+".<br>Location: "+method.location
+                                    break;
+                                    case obtainMethod.box_egg:
+                                        leafgreenMsg = leafgreenMsg + method.pkmnDepost+" Pokémon"
+                                    break;
+                                    case obtainMethod.evolve_level:
+                                        leafgreenMsg = leafgreenMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" at level "+method.level
+                                    break;
+                                    case obtainMethod.evolve_trade_item:
+                                        leafgreenMsg = leafgreenMsg + method.item
+                                    break;
+                                    case obtainMethod.evolve_item:
+                                        leafgreenMsg = leafgreenMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
+                                    break;
+                                    case obtainMethod.pomeg_location:
+                                        leafgreenMsg = leafgreenMsg + `${method.ticket} to go to ${method.location}`
+                                    break;
+                                    case obtainMethod.save_editing:
+                                        leafgreenMsg = leafgreenMsg + `${method.ticket} to go to ${method.location}`
+                                    break;
+                                    case obtainMethod.purchased:
+                                        leafgreenMsg = leafgreenMsg + method.location+" for "+method.amount+" "+method.currency
+                                    break;
+                                }  
+                            } else {
+                                leafgreenMsg = method.status
+                            }
+                        })
+                        emeraldA.methods.forEach((method, i) => {
+                            if (i > 0) emeraldMsg = emeraldMsg + methodSeperation
+                            if (method.status == obtainStatus.obtainable) {
+                                emeraldMsg = emeraldMsg + method.method
+                                switch (method.method) {
+                                    case obtainMethod.catch:
+                                        emeraldMsg = emeraldMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
+                                    break;
+                                    case obtainMethod.snag:
+                                        emeraldMsg = emeraldMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
+                                    break;
+                                    case obtainMethod.gift:
+                                        emeraldMsg = emeraldMsg + ".<br>Location: "+method.location
+                                    break;
+                                    case obtainMethod.gift_req:
+                                        emeraldMsg = emeraldMsg + method.req+".<br>Location: "+method.location
+                                    break;
+                                    case obtainMethod.box_egg:
+                                        emeraldMsg = emeraldMsg + method.pkmnDepost+" Pokémon"
+                                    break;
+                                    case obtainMethod.evolve_level:
+                                        emeraldMsg = emeraldMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" at level "+method.level
+                                    break;
+                                    case obtainMethod.evolve_trade_item:
+                                        emeraldMsg = emeraldMsg + method.item
+                                    break;
+                                    case obtainMethod.evolve_item:
+                                        emeraldMsg = emeraldMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
+                                    break;
+                                    case obtainMethod.pomeg_location:
+                                        emeraldMsg = emeraldMsg + `${method.ticket} to go to ${method.location}`
+                                    break;
+                                    case obtainMethod.save_editing:
+                                        emeraldMsg = emeraldMsg + `${method.ticket} to go to ${method.location}`
+                                    break;
+                                    case obtainMethod.purchased:
+                                        emeraldMsg = emeraldMsg + method.location+" for "+method.amount+" "+method.currency
+                                    break;
+                                }  
+                            } else {
+                                emeraldMsg = method.status
+                            }
+                        })
+                        colosseumA.methods.forEach((method, i) => {
+                            if (i > 0) colosseumMsg = colosseumMsg + methodSeperation
+                            if (method.status == obtainStatus.obtainable) {
+                                colosseumMsg = colosseumMsg + method.method
+                                switch (method.method) {
+                                    case obtainMethod.catch:
+                                        colosseumMsg = colosseumMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
+                                    break;
+                                    case obtainMethod.snag:
+                                        colosseumMsg = colosseumMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
+                                    break;
+                                    case obtainMethod.gift:
+                                        colosseumMsg = colosseumMsg + ".<br>Location: "+method.location
+                                    break;
+                                    case obtainMethod.gift_req:
+                                        colosseumMsg = colosseumMsg + method.req+".<br>Location: "+method.location
+                                    break;
+                                    case obtainMethod.box_egg:
+                                        colosseumMsg = colosseumMsg + method.pkmnDepost+" Pokémon"
+                                    break;
+                                    case obtainMethod.evolve_level:
+                                        colosseumMsg = colosseumMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" at level "+method.level
+                                    break;
+                                    case obtainMethod.evolve_trade_item:
+                                        colosseumMsg = colosseumMsg + method.item
+                                    break;
+                                    case obtainMethod.evolve_item:
+                                        colosseumMsg = colosseumMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
+                                    break;
+                                    case obtainMethod.pomeg_location:
+                                        colosseumMsg = colosseumMsg + `${method.ticket} to go to ${method.location}`
+                                    break;
+                                    case obtainMethod.save_editing:
+                                        colosseumMsg = colosseumMsg + `${method.ticket} to go to ${method.location}`
+                                    break;
+                                    case obtainMethod.purchased:
+                                        colosseumMsg = colosseumMsg + method.location+" for "+method.amount+" "+method.currency
+                                    break;
+                                }  
+                            } else {
+                                colosseumMsg = method.status
+                            }
+                        })
+                        xdA.methods.forEach((method, i) => {
+                            if (i > 0) xdMsg = xdMsg + methodSeperation
+                            if (method.status == obtainStatus.obtainable) {
+                                xdMsg = xdMsg + method.method
+                                switch (method.method) {
+                                    case obtainMethod.catch:
+                                        xdMsg = xdMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
+                                    break;
+                                    case obtainMethod.snag:
+                                        xdMsg = xdMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
+                                    break;
+                                    case obtainMethod.gift:
+                                        xdMsg = xdMsg + ".<br>Location: "+method.location
+                                    break;
+                                    case obtainMethod.gift_req:
+                                        xdMsg = xdMsg + method.req+".<br>Location: "+method.location
+                                    break;
+                                    case obtainMethod.box_egg:
+                                        xdMsg = xdMsg + method.pkmnDepost+" Pokémon"
+                                    break;
+                                    case obtainMethod.evolve_level:
+                                        xdMsg = xdMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" at level "+method.level
+                                    break;
+                                    case obtainMethod.evolve_trade_item:
+                                        xdMsg = xdMsg + method.item
+                                    break;
+                                    case obtainMethod.evolve_item:
+                                        xdMsg = xdMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
+                                    break;
+                                    case obtainMethod.pomeg_location:
+                                        xdMsg = xdMsg + `${method.ticket} to go to ${method.location}`
+                                    break;
+                                    case obtainMethod.save_editing:
+                                        xdMsg = xdMsg + `${method.ticket} to go to ${method.location}`
+                                    break;
+                                    case obtainMethod.purchased:
+                                        xdMsg = xdMsg + method.location+" for "+method.amount+" "+method.currency
+                                    break;
+                                }  
+                            } else {
+                                xdMsg = method.status
+                            }
+                        })
+                        var bundleRaS = false
+                        var bundleFRaLG = false
+                        var bundleCaXD = false
+                        if (rubyMsg == sapphireMsg) bundleRaS = true
+                        if (fireredMsg == leafgreenMsg) bundleFRaLG = true
+                        if (colosseumMsg == xdMsg) bundleCaXD = true
+                        var r = `<b class="rubytxt">Pokémon Ruby:</b> ${rubyMsg}`
+                        var rs = `<b class="rubytxt">Pokémon Ruby</b> <b class="sapphiretxt">and Sapphire:</b> ${rubyMsg}`
+                        var s = `<br><p class="smolbr"></p><b class="sapphiretxt">Pokémon Sapphire:</b> ${sapphireMsg}`
+                        var fr = `<b class="frtxt">Pokémon FireRed:</b> ${fireredMsg}`
+                        var frlg = `<b class="frtxt">Pokémon FireRed</b> <b class="lgtxt">and LeafGreen:</b> ${fireredMsg}`
+                        var lg = `<br><p class="smolbr"></p><b class="lgtxt">Pokémon LeafGreen:</b> ${leafgreenMsg}`
+                        var c = `<b class="colosseumtxt">Pokémon Colosseum:</b> ${colosseumMsg}`
+                        var cxd = `<b class="colosseumtxt">Pokémon Colosseum</b> <b class="xdtxt">and XD:</b> ${colosseumMsg}`
+                        var xd = `<br><p class="smolbr"></p><b class="xdtxt">Pokémon XD:</b> ${xdMsg}`
+                        var ras;
+                        var fralg;
+                        var caxd;
+                        if (bundleRaS) { ras = rs } else { ras = r+s }
+                        if (bundleFRaLG) { fralg = frlg } else { fralg = fr+lg }
+                        if (bundleCaXD) { caxd = cxd } else { caxd = c+xd }
+                        extended = `<h6 class="bigtxt blktxt"><b class="headinglmao">${dta.name}</b><p class="smolbr"></p><p class="smolbr"></p>${ras}<br><p class="smolbr"></p>${fralg}<br><p class="smolbr"></p><b class="emeraldtxt">Pokémon Emerald:</b> ${emeraldMsg}<br><p class="smolbr"></p>${caxd}<br><p class="smolbr"><b id="eandc">${endTxt}</b></h6>`
+                    }
                     return extended
                 }
                 const forms = pkmnData.forms
@@ -726,7 +513,7 @@ addEventListener("load", () => {
                     const img = document.createElement("img")
                     img.setAttribute("class", "pkmnimgdb")
                     img.setAttribute("pkmnId", pkmnData.id)
-                    img.src = `${baseImgURL}/${sprites}/normal/${shiny}/${pkmnData.id}.png${endURL}`
+                    img.src = `${baseImgURL}/${vars.sprites}/normal/${vars.shiny}/${pkmnData.id}.png${endURL}`
                     img.style = `width: 150px; height: 150px; float: left; cursor: auto;`
                     const txtdiv = document.createElement("div")
                     txtdiv.setAttribute("id", "txtdivfordbentry")
@@ -756,7 +543,7 @@ addEventListener("load", () => {
                         const img2 = document.createElement("img")
                         img2.setAttribute("class", "pkmnimgdb")
                         img2.setAttribute("pkmnId", pkmnDataFromID.id)
-                        img2.src = `${baseImgURL}/${sprites}/normal/${shiny}/${pkmnDataFromID.id}.png${endURL}`
+                        img2.src = `${baseImgURL}/${vars.sprites}/normal/${vars.shiny}/${pkmnDataFromID.id}.png${endURL}`
                         img2.style = `width: 150px; height: 150px; float: left; cursor: auto;`
                         const txtdiv2 = document.createElement("div")
                         txtdiv2.setAttribute("id", "txtdivfordbentry")
@@ -824,7 +611,7 @@ addEventListener("load", () => {
                     const img = document.createElement("img")
                     img.setAttribute("class", "pkmnimgdb")
                     img.setAttribute("pkmnId", pkmnData.id)
-                    img.src = `${baseImgURL}/${sprites}/normal/${shiny}/${pkmnData.id}.png${endURL}`
+                    img.src = `${baseImgURL}/${vars.sprites}/normal/${vars.shiny}/${pkmnData.id}.png${endURL}`
                     img.style = `width: 150px; height: 150px; float: left; cursor: auto;`
                     const txtdiv = document.createElement("div")
                     txtdiv.setAttribute("id", "txtdivfordbentry")
@@ -869,6 +656,7 @@ addEventListener("load", () => {
     document.onkeydown = (e) => {
         if (e.key == "Control" || e.key == "Meta" || e.key == "Alt") {
             ctrl = true
+            infoDbIcon.style.display = "inline"
         }
     }
     
@@ -885,8 +673,13 @@ addEventListener("load", () => {
         if (box[0].header == true) {
             const headerId = box[0].id
             const headerContainer = document.createElement("div")
-            headerContainer.setAttribute("class", "boxcontainer")
-            headerContainer.setAttribute("id", `box${headerId}container`)
+            headerContainer.setAttribute("class", "boxcontainershort")
+            headerContainer.setAttribute("id", `boxH${headerId}container`)
+            const header = document.createElement("h1")
+            header.innerText = box[0].boxName
+            header.style = "font-size: 50px;"
+            headerContainer.append(header)
+            document.getElementById("trackermenu").append(headerContainer)
         } else {
             const boxId = box[0].id
             const extraVal = box[0].extra
@@ -921,7 +714,7 @@ addEventListener("load", () => {
                     pkmnDiv.setAttribute("class", "pokemonDiv")
                     pkmnDiv.setAttribute("id", "pkmn"+pokemon.id)
                     const pkmnImg = document.createElement("img")
-                    pkmnImg.src = `${baseImgURL}/${sprites}/normal/${shiny}/${pokemon.id}.png${endURL}`
+                    pkmnImg.src = `${baseImgURL}/${vars.sprites}/normal/${vars.shiny}/${pokemon.id}.png${endURL}`
                     pkmnImg.setAttribute("id", "pkmnimg"+pokemon.id)
                     pkmnImg.setAttribute("pkmnid", pokemon.id)
                     pkmnImg.setAttribute("class", "pkmnimg")
@@ -938,29 +731,26 @@ addEventListener("load", () => {
                     boxE.append(pkmnDiv)
                     if (pokemon.id != 0) {
                         pkmnImg.style.opacity = 0.4
-                        if (darkenWhenUnobtained) pkmnImg.style.filter = "brightness(30%)"
+                        if (vars.darkenWhenUnobtained) pkmnImg.style.filter = "brightness(30%)"
                         pkmnDiv.style.cursor = "pointer"
                         let obtained = false
                         pkmnDiv.onmouseenter = () => {
                             //fade into something
                             pkmnSubtitleDiv.style.display = "block"
-                            if (ctrl) {
-                                infoDbIcon.style.display = "inline"
-                                infoDbIcon.style.pointerEvents = "none"
-                                infoDbIcon.style.opacity = 0.4
-                                infoDbIcon.style.width = `${pkmnImg.style.width}`
-                                infoDbIcon.style.height = `${pkmnImg.style.height}`
-                                const top = pkmnImg.getBoundingClientRect().top+window.scrollY; const left = pkmnImg.getBoundingClientRect().left+window.scrollX;
-                                infoDbIcon.style.top = `${top}px`
-                                infoDbIcon.style.left = `${left}px`
-                                infoDbIcon.style.position = "absolute"
-                            }
-                            if (sprites == 2) {
-                                if (emeraldAnimation == 2) {
-                                    pkmnImg.src = `${baseImgURL}/${sprites}/animated/${shiny}/${pokemon.id}.gif${endURL}`
+                            infoDbIcon.style.pointerEvents = "none"
+                            infoDbIcon.style.opacity = 0.4
+                            infoDbIcon.style.width = `${pkmnImg.style.width}`
+                            infoDbIcon.style.height = `${pkmnImg.style.height}`
+                            const top = pkmnImg.getBoundingClientRect().top+window.scrollY; const left = pkmnImg.getBoundingClientRect().left+window.scrollX;
+                            infoDbIcon.style.top = `${top}px`
+                            infoDbIcon.style.left = `${left}px`
+                            infoDbIcon.style.position = "absolute"
+                            if (vars.sprites == 2) {
+                                if (vars.emeraldAnimation == 2) {
+                                    pkmnImg.src = `${baseImgURL}/${vars.sprites}/animated/${vars.shiny}/${pokemon.id}.gif${endURL}`
                                     pkmnImg.style.scale = 1.5
-                                } else if (emeraldAnimation == 1) {
-                                    pkmnImg.src = `${baseImgURL}/${sprites}/frame2/${shiny}/${pokemon.id}.png${endURL}`
+                                } else if (vars.emeraldAnimation == 1) {
+                                    pkmnImg.src = `${baseImgURL}/${vars.sprites}/frame2/${vars.shiny}/${pokemon.id}.png${endURL}`
                                     pkmnImg.style.scale = 1
                                 }
                             }
@@ -969,11 +759,10 @@ addEventListener("load", () => {
                         pkmnDiv.onmouseleave = () => {
                             //fade out lmao
                             pkmnSubtitleDiv.style.display = "none"
-                            if (emeraldAnimation != 4 && emeraldAnimation != 3) {
-                                pkmnImg.src = `${baseImgURL}/${sprites}/normal/${shiny}/${pokemon.id}.png${endURL}`
+                            if (vars.emeraldAnimation != 4 && vars.emeraldAnimation != 3) {
+                                pkmnImg.src = `${baseImgURL}/${vars.sprites}/normal/${vars.shiny}/${pokemon.id}.png${endURL}`
                                 pkmnImg.style.scale = 1
                             }
-                            infoDbIcon.style.display = "none"
                         }
 
                         pkmnDiv.onmouseup = () => {
@@ -998,17 +787,17 @@ addEventListener("load", () => {
                                 }
                             } else {
                                 try {
-                                    db.ref(`/users/${localStorage.getItem("token")}/pbrs/pkmn/${pokemon.id}`).once("value", function(snapshot) {
+                                    db.ref(`/users/${localStorage.getItem("token")}/${game}/pkmn/${pokemon.id}`).once("value", function(snapshot) {
                                         try {
                                             const data = snapshot.val()
                                             const obtained = data["obtained"]
-                                            db.ref(`/users/${localStorage.getItem("token")}/pbrs/pkmn/${pokemon.id}`).set({
+                                            db.ref(`/users/${localStorage.getItem("token")}/${game}/pkmn/${pokemon.id}`).set({
                                                 id: pokemon.id,
                                                 obtained: !obtained,
                                             })
                                         } catch(e) {
                                             try {
-                                                db.ref(`/users/${localStorage.getItem("token")}/pbrs/pkmn/${pokemon.id}`).set({
+                                                db.ref(`/users/${localStorage.getItem("token")}/${game}/pkmn/${pokemon.id}`).set({
                                                     id: pokemon.id,
                                                     obtained: true,
                                                 })
@@ -1048,7 +837,7 @@ addEventListener("load", () => {
         const usernameTxt = document.getElementById("user")
         usernameTxt.innerText = "Signed in as: "+username
     })
-    db.ref(`/users/${localStorage.getItem("token")}/pbrs/pkmn/`).on("value", function(snapshot) {
+    db.ref(`/users/${localStorage.getItem("token")}/${game}/pkmn/`).on("value", function(snapshot) {
         const data = snapshot.val()
         let array;
         try {array = Object.keys(data)} catch(e) {array=0;console.log(e)}
@@ -1062,20 +851,20 @@ addEventListener("load", () => {
                     if (id) {
                         if (bool == true) {
                             pkmnElement.style.opacity = 1
-                            if (darkenWhenUnobtained) pkmnElement.style.filter = "brightness(100%)"
-                            if (!darkenWhenUnobtained) pkmnElement.style.filter = "brightness(100%)"
-                            if (emeraldAnimation == 3 && sprites == 2) {
+                            if (vars.darkenWhenUnobtained) pkmnElement.style.filter = "brightness(100%)"
+                            if (!vars.darkenWhenUnobtained) pkmnElement.style.filter = "brightness(100%)"
+                            if (vars.emeraldAnimation == 3 && vars.sprites == 2) {
                                 pkmnElement.style.scale == 1.5
-                                pkmnElement.src = `${baseImgURL}/${sprites}/animated/${shiny}/${id}.gif${endURL}`
+                                pkmnElement.src = `${baseImgURL}/${vars.sprites}/animated/${vars.shiny}/${id}.gif${endURL}`
                                 
                             }
                         } else {
                             pkmnElement.style.opacity = 0.4
-                            if (darkenWhenUnobtained) pkmnElement.style.filter = "brightness(30%)"
-                            if (!darkenWhenUnobtained) pkmnElement.style.filter = "brightness(100%)"
-                            if (emeraldAnimation == 3 && sprites == 2) {
+                            if (vars.darkenWhenUnobtained) pkmnElement.style.filter = "brightness(30%)"
+                            if (!vars.darkenWhenUnobtained) pkmnElement.style.filter = "brightness(100%)"
+                            if (vars.emeraldAnimation == 3 && vars.sprites == 2) {
                                 pkmnElement.style.scale == 1
-                                pkmnElement.src = `${baseImgURL}/${sprites}/normal/${shiny}/${id}.png${endURL}`
+                                pkmnElement.src = `${baseImgURL}/${vars.sprites}/normal/${vars.shiny}/${id}.png${endURL}`
                             }
                         }
                         
@@ -1114,7 +903,7 @@ addEventListener("load", () => {
             element.onchange = () => {
                 setting["value"] = element.value
                 const dbname = setting.dbname
-                db.ref(`/users/${localStorage.getItem("token")}/pbrs/settings/${dbname}`).set({
+                db.ref(`/users/${localStorage.getItem("token")}/${game}/settings/${dbname}`).set({
                     value: element.value
                 })
             }
@@ -1136,7 +925,7 @@ addEventListener("load", () => {
             element.onchange = () => {
                 setting["value"] = element.checked
                 const dbname = setting.dbname
-                db.ref(`/users/${localStorage.getItem("token")}/pbrs/settings/${dbname}`).set({
+                db.ref(`/users/${localStorage.getItem("token")}/${game}/settings/${dbname}`).set({
                     value: element.checked
                 })
             }
