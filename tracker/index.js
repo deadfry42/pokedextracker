@@ -24,10 +24,10 @@ const db = firebase.database()
 
 const url = "https://fpt-imgs.up.railway.app/"
 
-const baseImgURL = `${url}icon/pbrs` //https://imghoster-fpd.up.railway.app/icon/pbrs/{spritesNum}/{normal/frame2/animated}/{shiny/no}/{file}
+const baseImgURL = `${url}icon/pbrs` //https://fpt-imgs.up.railway.app/icon/pbrs/{spritesNum}/{normal/frame2/animated}/{shiny/no}/{file}
 const endURL = ""
 
-const baseBoxURL = `${url}box/pbrs` //https://imghoster-fpd.up.railway.app/box/(body/head)/(standard/numbered head only)/{file}
+const baseBoxURL = `${url}box/pbrs` //https://fpt-imgs.up.railway.app/box/(body/head)/(standard/numbered head only)/{file}
 
 function getIndicesOf(searchStr, str, caseSensitive) {
     var searchStrLen = searchStr.length;
@@ -52,6 +52,7 @@ let emeraldAnimation = 0
 let numberedHeadings = true
 let shiny = "no"
 let darkenWhenUnobtained = true
+let extras = false
 
 const settings = [
     {
@@ -212,6 +213,41 @@ const settings = [
         },
     },
     {
+        name: "Boxes with extra content",
+        dbname: "extraboxes",
+        desc: "Changes if there are any extra boxes that may contain different forms of a Pokemon.",
+        value: false,
+        refresh: false,
+        var: extras,
+        type: {
+            type: "boolean",
+            func: function (val, input, current) {
+                if (val) extras = true
+                if (!val) extras = false
+                input.checked = val
+                current.innerText = val
+                
+                if (!val) {
+                    const names = document.getElementsByClassName("extrabox")
+                    console.log("scanningaa")
+                    for (let element of names) {
+                        console.log("scanningab")
+                        console.log(element)
+                        element.style.display = "none"
+                    };
+                } else {
+                    const names = document.getElementsByClassName("extrabox")
+                    console.log("scanningba")
+                    for (let element of names) {
+                        console.log("scanningbb")
+                        console.log(element)
+                        element.style.display = "block"
+                    };
+                }
+            }
+        },
+    },
+    {
         name: "Darker when unobtained",
         dbname: "dwu",
         desc: "Changes if the Pokémon shown in the Pokédex Tracker turn darker when they are unobtained.",
@@ -236,12 +272,12 @@ const settings = [
     }
 ]
 
-import {obtainStatus, obtainMethod} from "./basedata.js"
-import {pokemonData} from "./gen3data.js"
+import {obtainStatus, obtainMethod} from "./data/basedata.js"
+import {pokemonData} from "./data/gen3data.js"
 
 const box1basenum = 0
 const box1 = [
-    {name:"getinfo", boxName:"box1",},
+    {id: 1, name:"getinfo", boxName:"box1", header: false, extra: false,},
     //row1
     pokemonData[box1basenum+1], pokemonData[box1basenum+2], pokemonData[box1basenum+3],
     pokemonData[box1basenum+4],pokemonData[box1basenum+5],pokemonData[box1basenum+6],
@@ -271,7 +307,7 @@ const box1 = [
 
 const box2basenum = 60
 const box2 = [
-    {name:"getinfo", boxName:"box2",},
+    {id: 2, name:"getinfo", boxName:"box2", header: false, extra: false,},
     //row1
     pokemonData[box2basenum+1], pokemonData[box2basenum+2], pokemonData[box2basenum+3],
     pokemonData[box2basenum+4],pokemonData[box2basenum+5],pokemonData[box2basenum+6],
@@ -301,7 +337,7 @@ const box2 = [
 
 const box3basenum = 120
 const box3 = [
-    {name:"getinfo", boxName:"box3",},
+    {id: 3, name:"getinfo", boxName:"box3", header: false, extra: false,},
     //row1
     pokemonData[box3basenum+1], pokemonData[box3basenum+2], pokemonData[box3basenum+3],
     pokemonData[box3basenum+4],pokemonData[box3basenum+5],pokemonData[box3basenum+6],
@@ -331,7 +367,7 @@ const box3 = [
 
 const box4basenum = 180
 const box4 = [
-    {name:"getinfo", boxName:"box4",},
+    {id: 4, name:"getinfo", boxName:"box4", header: false, extra: false,},
     //row1
     pokemonData[box4basenum+1], pokemonData[box4basenum+2], pokemonData[box4basenum+3],
     pokemonData[box4basenum+4],pokemonData[box4basenum+5],pokemonData[box4basenum+6],
@@ -361,7 +397,7 @@ const box4 = [
 
 const box5basenum = 240
 const box5 = [
-    {name:"getinfo", boxName:"box5",},
+    {id: 5, name:"getinfo", boxName:"box5", header: false, extra: false,},
     //row1
     pokemonData[box5basenum+1], pokemonData[box5basenum+2], pokemonData[box5basenum+3],
     pokemonData[box5basenum+4],pokemonData[box5basenum+5],pokemonData[box5basenum+6],
@@ -391,7 +427,7 @@ const box5 = [
 
 const box6basenum = 300
 const box6 = [
-    {name:"getinfo", boxName:"box6",},
+    {id: 6, name:"getinfo", boxName:"box6", header: false, extra: false,},
     //row1
     pokemonData[box6basenum+1], pokemonData[box6basenum+2], pokemonData[box6basenum+3],
     pokemonData[box6basenum+4],pokemonData[box6basenum+5],pokemonData[box6basenum+6],
@@ -421,7 +457,7 @@ const box6 = [
 
 const box7basenum = 360
 const box7 = [
-    {name:"getinfo", boxName:"box7",},
+    {id: 7, name:"getinfo", boxName:"box7", header: false, extra: false,},
     //row1
     pokemonData[box7basenum+1], pokemonData[box7basenum+2], pokemonData[box7basenum+3],
     pokemonData[box7basenum+4],pokemonData[box7basenum+5],pokemonData[box7basenum+6],
@@ -451,20 +487,20 @@ const box7 = [
 
 const box8basenum = 420
 const box8 = [
-    {name:"getinfo", boxName:"box8",},
+    {id: 8, name:"getinfo", boxName:"box8", header: false, extra: true,},
     //row1
-    pokemonData[0],pokemonData[0],pokemonData[0],
-    pokemonData[0],pokemonData[0],pokemonData[0],
-    pokemonData[0],pokemonData[0],pokemonData[0],
-    pokemonData[0],pokemonData[0],pokemonData[0],
+    pokemonData[box8basenum+1],pokemonData[box8basenum+2],pokemonData[box8basenum+3],
+    pokemonData[box8basenum+4],pokemonData[box8basenum+5],pokemonData[box8basenum+6],
+    pokemonData[box8basenum+7],pokemonData[box8basenum+8],pokemonData[box8basenum+9],
+    pokemonData[box8basenum+10],pokemonData[box8basenum+11],pokemonData[box8basenum+12],
     //row2
-    pokemonData[0],pokemonData[0],pokemonData[0],
-    pokemonData[0],pokemonData[0],pokemonData[0],
-    pokemonData[0],pokemonData[0],pokemonData[0],
-    pokemonData[0],pokemonData[0],pokemonData[0],
+    pokemonData[box8basenum+13],pokemonData[box8basenum+14],pokemonData[box8basenum+15],
+    pokemonData[box8basenum+16],pokemonData[box8basenum+17],pokemonData[box8basenum+18],
+    pokemonData[box8basenum+19],pokemonData[box8basenum+20],pokemonData[box8basenum+21],
+    pokemonData[box8basenum+22],pokemonData[box8basenum+23],pokemonData[box8basenum+24],
     //row3
-    pokemonData[0],pokemonData[0],pokemonData[0],
-    pokemonData[0],pokemonData[0],pokemonData[0],
+    pokemonData[box8basenum+25],pokemonData[box8basenum+26],pokemonData[box8basenum+27],
+    pokemonData[box8basenum+28],pokemonData[0],pokemonData[0],
     pokemonData[0],pokemonData[0],pokemonData[0],
     pokemonData[0],pokemonData[0],pokemonData[0],
     //row4
@@ -479,6 +515,8 @@ const box8 = [
     pokemonData[0],pokemonData[0],pokemonData[0],
 ]
 
+const extraHeader = [{id: 1, name:"getinfo", boxName:"Boxes w/ extras", header: true,},]
+
 const boxes = [
     box1,
     box2,
@@ -487,6 +525,8 @@ const boxes = [
     box5,
     box6,
     box7,
+    extraHeader,
+    box8,
 ]
 
 addEventListener("load", () => {
@@ -537,390 +577,445 @@ addEventListener("load", () => {
             const input = optionDiv.childNodes[2]
             try {settings[setting].type.func(val, input, current)} catch(e) {console.log(e)}
         })
+        db.ref(`/users/${localStorage.getItem("token")}/pbrs/settings/${settings[5].dbname}`).on("value", function(snapshot) {
+            const val = snapshot.val().value
+            const setting = 5
+            const optionDiv = document.getElementById(settings[setting].dbname)
+            const current = optionDiv.childNodes[1]
+            const input = optionDiv.childNodes[2]
+            try {settings[setting].type.func(val, input, current)} catch(e) {console.log(e)}
+        })
     } catch(e) {
         console.log(e)
     }
     Object.keys(pokemonData).forEach((pkmnNum, i) => {
         try {
             const pkmnData = pokemonData[pkmnNum]
-            const rubyArray = Object.keys(pkmnData.ruby)
-            const sapphireArray = Object.keys(pkmnData.sapphire)
-            const fireredArray = Object.keys(pkmnData.firered)
-            const leafgreenArray = Object.keys(pkmnData.leafgreen)
-            const emeraldArray = Object.keys(pkmnData.emerald)
-            const colosseumArray = Object.keys(pkmnData.colosseum)
-            const xdArray = Object.keys(pkmnData.xd)
-            if (rubyArray.length == 0 || sapphireArray.length == 0 || fireredArray.length == 0 || leafgreenArray.length == 0 || emeraldArray.length == 0 || colosseumArray.length == 0 || xdArray.length == 0 || rubyArray == null || sapphireArray == null || fireredArray == null || leafgreenArray == null || emeraldArray == null || colosseumArray == null || xdArray == null) {
-                console.log("invalid for db")
-            } else {
-                let methodSeperation = `<p class="blktxt smolbr">---</p>`
-                let rubyMsg = "";
-                let sapphireMsg = "";
-                let fireredMsg = "";
-                let leafgreenMsg = "";
-                let emeraldMsg = "";
-                let colosseumMsg = "";
-                let xdMsg = "";
-                pkmnData.ruby.methods.forEach((method, i) => {
-                    if (i > 0) rubyMsg = rubyMsg + methodSeperation
-                    if (method.status == obtainStatus.obtainable) {
-                        rubyMsg = rubyMsg + method.method
-                        console.log(rubyMsg)
-                        switch (method.method) {
-                            case obtainMethod.catch:
-                                rubyMsg = rubyMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
-                            break;
-                            case obtainMethod.snag:
-                                rubyMsg = rubyMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
-                            break;
-                            case obtainMethod.gift:
-                                rubyMsg = rubyMsg + ".<br>Location: "+method.location
-                            break;
-                            case obtainMethod.gift_req:
-                                rubyMsg = rubyMsg + method.req+".<br>Location: "+method.location
-                            break;
-                            case obtainMethod.box_egg:
-                                rubyMsg = rubyMsg + method.pkmnDepost+" Pokémon"
-                            break;
-                            case obtainMethod.evolve_level:
-                                rubyMsg = rubyMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" at level "+method.level
-                            break;
-                            case obtainMethod.evolve_trade_item:
-                                rubyMsg = rubyMsg + method.item
-                            break;
-                            case obtainMethod.evolve_item:
-                                rubyMsg = rubyMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
-                            break;
-                            case obtainMethod.pomeg_location:
-                                rubyMsg = rubyMsg + `${method.ticket} to go to ${method.location}`
-                            break;
-                            case obtainMethod.save_editing:
-                                rubyMsg = rubyMsg + `${method.ticket} to go to ${method.location}`
-                            break;
-                            case obtainMethod.purchased:
-                                rubyMsg = rubyMsg + method.location+" for "+method.amount+" "+method.currency
-                            break;
-                        }  
-                    } else {
-                        rubyMsg = method.status
-                    }
-                })
-                pkmnData.sapphire.methods.forEach((method, i) => {
-                    if (i > 0) sapphireMsg = sapphireMsg + methodSeperation
-                    if (method.status == obtainStatus.obtainable) {
-                        sapphireMsg = sapphireMsg + method.method
-                        switch (method.method) {
-                            case obtainMethod.catch:
-                                sapphireMsg = sapphireMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
-                            break;
-                            case obtainMethod.snag:
-                                sapphireMsg = sapphireMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
-                            break;
-                            case obtainMethod.gift:
-                                sapphireMsg = sapphireMsg + ".<br>Location: "+method.location
-                            break;
-                            case obtainMethod.gift_req:
-                                sapphireMsg = sapphireMsg + method.req+".<br>Location: "+method.location
-                            break;
-                            case obtainMethod.box_egg:
-                                sapphireMsg = sapphireMsg + method.pkmnDepost+" Pokémon."
-                            break;
-                            case obtainMethod.evolve_level:
-                                sapphireMsg = sapphireMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" at level "+method.level
-                            break;
-                            case obtainMethod.evolve_trade_item:
-                                sapphireMsg = sapphireMsg + method.item
-                            break;
-                            case obtainMethod.evolve_item:
-                                sapphireMsg = sapphireMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
-                            break;
-                            case obtainMethod.pomeg_location:
-                                sapphireMsg = sapphireMsg + `${method.ticket} to go to ${method.location}`
-                            break;
-                            case obtainMethod.save_editing:
-                                sapphireMsg = sapphireMsg + `${method.ticket} to go to ${method.location}`
-                            break;
-                            case obtainMethod.purchased:
-                                sapphireMsg = sapphireMsg + method.location+" for "+method.amount+" "+method.currency
-                            break;
-                        }  
-                    } else {
-                        sapphireMsg = method.status
-                    }
-                })
-                pkmnData.firered.methods.forEach((method, i) => {
-                    if (i > 0) fireredMsg = fireredMsg + methodSeperation
-                    if (method.status == obtainStatus.obtainable) {
-                        fireredMsg = fireredMsg + method.method
-                        switch (method.method) {
-                            case obtainMethod.catch:
-                                fireredMsg = fireredMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
-                            break;
-                            case obtainMethod.snag:
-                                fireredMsg = fireredMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
-                            break;
-                            case obtainMethod.gift:
-                                fireredMsg = fireredMsg + ".<br>Location: "+method.location
-                            break;
-                            case obtainMethod.gift_req:
-                                fireredMsg = fireredMsg + method.req+".<br>Location: "+method.location
-                            break;
-                            case obtainMethod.box_egg:
-                                fireredMsg = fireredMsg + method.pkmnDepost+" Pokémon"
-                            break;
-                            case obtainMethod.evolve_level:
-                                fireredMsg = fireredMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" at level "+method.level
-                            break;
-                            case obtainMethod.evolve_trade_item:
-                                fireredMsg = fireredMsg + method.item
-                            break;
-                            case obtainMethod.evolve_item:
-                                fireredMsg = fireredMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
-                            break;
-                            case obtainMethod.pomeg_location:
-                                fireredMsg = fireredMsg + `${method.ticket} to go to ${method.location}`
-                            break;
-                            case obtainMethod.save_editing:
-                                fireredMsg = fireredMsg + `${method.ticket} to go to ${method.location}`
-                            break;
-                            case obtainMethod.purchased:
-                                fireredMsg = fireredMsg + method.location+" for "+method.amount+" "+method.currency
-                            break;
-                        }  
-                    } else {
-                        fireredMsg = method.status
-                    }
-                })
-                pkmnData.leafgreen.methods.forEach((method, i) => {
-                    if (i > 0) leafgreenMsg = leafgreenMsg + methodSeperation
-                    if (method.status == obtainStatus.obtainable) {
-                        leafgreenMsg = leafgreenMsg + method.method
-                        switch (method.method) {
-                            case obtainMethod.catch:
-                                leafgreenMsg = leafgreenMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
-                            break;
-                            case obtainMethod.snag:
-                                leafgreenMsg = leafgreenMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
-                            break;
-                            case obtainMethod.gift:
-                                leafgreenMsg = leafgreenMsg + ".<br>Location: "+method.location
-                            break;
-                            case obtainMethod.gift_req:
-                                leafgreenMsg = leafgreenMsg + method.req+".<br>Location: "+method.location
-                            break;
-                            case obtainMethod.box_egg:
-                                leafgreenMsg = leafgreenMsg + method.pkmnDepost+" Pokémon"
-                            break;
-                            case obtainMethod.evolve_level:
-                                leafgreenMsg = leafgreenMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" at level "+method.level
-                            break;
-                            case obtainMethod.evolve_trade_item:
-                                leafgreenMsg = leafgreenMsg + method.item
-                            break;
-                            case obtainMethod.evolve_item:
-                                leafgreenMsg = leafgreenMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
-                            break;
-                            case obtainMethod.pomeg_location:
-                                leafgreenMsg = leafgreenMsg + `${method.ticket} to go to ${method.location}`
-                            break;
-                            case obtainMethod.save_editing:
-                                leafgreenMsg = leafgreenMsg + `${method.ticket} to go to ${method.location}`
-                            break;
-                            case obtainMethod.purchased:
-                                leafgreenMsg = leafgreenMsg + method.location+" for "+method.amount+" "+method.currency
-                            break;
-                        }  
-                    } else {
-                        leafgreenMsg = method.status
-                    }
-                })
-                pkmnData.emerald.methods.forEach((method, i) => {
-                    if (i > 0) emeraldMsg = emeraldMsg + methodSeperation
-                    if (method.status == obtainStatus.obtainable) {
-                        emeraldMsg = emeraldMsg + method.method
-                        switch (method.method) {
-                            case obtainMethod.catch:
-                                emeraldMsg = emeraldMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
-                            break;
-                            case obtainMethod.snag:
-                                emeraldMsg = emeraldMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
-                            break;
-                            case obtainMethod.gift:
-                                emeraldMsg = emeraldMsg + ".<br>Location: "+method.location
-                            break;
-                            case obtainMethod.gift_req:
-                                emeraldMsg = emeraldMsg + method.req+".<br>Location: "+method.location
-                            break;
-                            case obtainMethod.box_egg:
-                                emeraldMsg = emeraldMsg + method.pkmnDepost+" Pokémon"
-                            break;
-                            case obtainMethod.evolve_level:
-                                emeraldMsg = emeraldMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" at level "+method.level
-                            break;
-                            case obtainMethod.evolve_trade_item:
-                                emeraldMsg = emeraldMsg + method.item
-                            break;
-                            case obtainMethod.evolve_item:
-                                emeraldMsg = emeraldMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
-                            break;
-                            case obtainMethod.pomeg_location:
-                                emeraldMsg = emeraldMsg + `${method.ticket} to go to ${method.location}`
-                            break;
-                            case obtainMethod.save_editing:
-                                emeraldMsg = emeraldMsg + `${method.ticket} to go to ${method.location}`
-                            break;
-                            case obtainMethod.purchased:
-                                emeraldMsg = emeraldMsg + method.location+" for "+method.amount+" "+method.currency
-                            break;
-                        }  
-                    } else {
-                        emeraldMsg = method.status
-                    }
-                })
-                pkmnData.colosseum.methods.forEach((method, i) => {
-                    if (i > 0) colosseumMsg = colosseumMsg + methodSeperation
-                    if (method.status == obtainStatus.obtainable) {
-                        colosseumMsg = colosseumMsg + method.method
-                        switch (method.method) {
-                            case obtainMethod.catch:
-                                colosseumMsg = colosseumMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
-                            break;
-                            case obtainMethod.snag:
-                                colosseumMsg = colosseumMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
-                            break;
-                            case obtainMethod.gift:
-                                colosseumMsg = colosseumMsg + ".<br>Location: "+method.location
-                            break;
-                            case obtainMethod.gift_req:
-                                colosseumMsg = colosseumMsg + method.req+".<br>Location: "+method.location
-                            break;
-                            case obtainMethod.box_egg:
-                                colosseumMsg = colosseumMsg + method.pkmnDepost+" Pokémon"
-                            break;
-                            case obtainMethod.evolve_level:
-                                colosseumMsg = colosseumMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" at level "+method.level
-                            break;
-                            case obtainMethod.evolve_trade_item:
-                                colosseumMsg = colosseumMsg + method.item
-                            break;
-                            case obtainMethod.evolve_item:
-                                colosseumMsg = colosseumMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
-                            break;
-                            case obtainMethod.pomeg_location:
-                                colosseumMsg = colosseumMsg + `${method.ticket} to go to ${method.location}`
-                            break;
-                            case obtainMethod.save_editing:
-                                colosseumMsg = colosseumMsg + `${method.ticket} to go to ${method.location}`
-                            break;
-                            case obtainMethod.purchased:
-                                colosseumMsg = colosseumMsg + method.location+" for "+method.amount+" "+method.currency
-                            break;
-                        }  
-                    } else {
-                        colosseumMsg = method.status
-                    }
-                })
-                pkmnData.xd.methods.forEach((method, i) => {
-                    if (i > 0) xdMsg = xdMsg + methodSeperation
-                    if (method.status == obtainStatus.obtainable) {
-                        xdMsg = xdMsg + method.method
-                        switch (method.method) {
-                            case obtainMethod.catch:
-                                xdMsg = xdMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
-                            break;
-                            case obtainMethod.snag:
-                                xdMsg = xdMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
-                            break;
-                            case obtainMethod.gift:
-                                xdMsg = xdMsg + ".<br>Location: "+method.location
-                            break;
-                            case obtainMethod.gift_req:
-                                xdMsg = xdMsg + method.req+".<br>Location: "+method.location
-                            break;
-                            case obtainMethod.box_egg:
-                                xdMsg = xdMsg + method.pkmnDepost+" Pokémon"
-                            break;
-                            case obtainMethod.evolve_level:
-                                xdMsg = xdMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" at level "+method.level
-                            break;
-                            case obtainMethod.evolve_trade_item:
-                                xdMsg = xdMsg + method.item
-                            break;
-                            case obtainMethod.evolve_item:
-                                xdMsg = xdMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
-                            break;
-                            case obtainMethod.pomeg_location:
-                                xdMsg = xdMsg + `${method.ticket} to go to ${method.location}`
-                            break;
-                            case obtainMethod.save_editing:
-                                xdMsg = xdMsg + `${method.ticket} to go to ${method.location}`
-                            break;
-                            case obtainMethod.purchased:
-                                xdMsg = xdMsg + method.location+" for "+method.amount+" "+method.currency
-                            break;
-                        }  
-                    } else {
-                        xdMsg = method.status
-                    }
-                })
-                var bundleRaS = false
-                var bundleFRaLG = false
-                var bundleCaXD = false
-                if (rubyMsg == sapphireMsg) bundleRaS = true
-                if (fireredMsg == leafgreenMsg) bundleFRaLG = true
-                if (colosseumMsg == xdMsg) bundleCaXD = true
-                const box = document.createElement("div")
-                box.setAttribute("class", "boxdb")
-                const br = document.createElement("br")
-                const coexistance = document.createElement("div")
-                coexistance.setAttribute("class", "combineimgandtxtwoutcenter")
-                const img = document.createElement("img")
-                img.setAttribute("class", "pkmnimgdb")
-                img.setAttribute("pkmnId", pkmnData.id)
-                img.src = `${baseImgURL}/${sprites}/normal/${shiny}/${pkmnData.id}.png${endURL}`
-                img.style = `width: 150px; height: 150px; float: left; cursor: auto;`
-                const txtdiv = document.createElement("div")
-                txtdiv.setAttribute("id", "txtdivfordbentry")
-                txtdiv.style = `float: left; cursor: auto;`
-                const p = document.createElement("p")
-                p.setAttribute("class", "innertxtindbe")
-                var iscollapsed = true
-                var r = `<b class="rubytxt">Pokémon Ruby:</b> ${rubyMsg}`
-                var rs = `<b class="rubytxt">Pokémon Ruby</b> <b class="sapphiretxt">and Sapphire:</b> ${rubyMsg}`
-                var s = `<br><p class="smolbr"></p><b class="sapphiretxt">Pokémon Sapphire:</b> ${sapphireMsg}`
-                var fr = `<b class="frtxt">Pokémon FireRed:</b> ${fireredMsg}`
-                var frlg = `<b class="frtxt">Pokémon FireRed</b> <b class="lgtxt">and LeafGreen:</b> ${fireredMsg}`
-                var lg = `<br><p class="smolbr"></p><b class="lgtxt">Pokémon LeafGreen:</b> ${leafgreenMsg}`
-                var c = `<b class="colosseumtxt">Pokémon Colosseum:</b> ${colosseumMsg}`
-                var cxd = `<b class="colosseumtxt">Pokémon Colosseum</b> <b class="xdtxt">and XD:</b> ${colosseumMsg}`
-                var xd = `<br><p class="smolbr"></p><b class="xdtxt">Pokémon XD:</b> ${xdMsg}`
-                var ras;
-                var fralg;
-                var caxd;
-                if (bundleRaS) { ras = rs } else { ras = r+s }
-                if (bundleFRaLG) { fralg = frlg } else { fralg = fr+lg }
-                if (bundleCaXD) { caxd = cxd } else { caxd = c+xd }
-                var collapsed = `<h6 class="bigtxt blktxt"><b class="headinglmao">${pkmnData.name}</b><p class="smolbr"></p><b id="eandc">(Click to expand and collapse)</b></h6>`
-                var extended = `<h6 class="bigtxt blktxt"><b class="headinglmao">${pkmnData.name}</b><p class="smolbr"></p><p class="smolbr"></p>${ras}<br><p class="smolbr"></p>${fralg}<br><p class="smolbr"></p><b class="emeraldtxt">Pokémon Emerald:</b> ${emeraldMsg}<br><p class="smolbr"></p>${caxd}<br><p class="smolbr"><b id="eandc">(Click to expand and collapse)</b></h6>`
-                p.innerHTML = collapsed
-                p.style = `cursor: auto;`
+            if (pkmnData.database) {
+                const rubyArray = Object.keys(pkmnData.ruby)
+                const sapphireArray = Object.keys(pkmnData.sapphire)
+                const fireredArray = Object.keys(pkmnData.firered)
+                const leafgreenArray = Object.keys(pkmnData.leafgreen)
+                const emeraldArray = Object.keys(pkmnData.emerald)
+                const colosseumArray = Object.keys(pkmnData.colosseum)
+                const xdArray = Object.keys(pkmnData.xd)
+                if (rubyArray.length == 0 || sapphireArray.length == 0 || fireredArray.length == 0 || leafgreenArray.length == 0 || emeraldArray.length == 0 || colosseumArray.length == 0 || xdArray.length == 0 || rubyArray == null || sapphireArray == null || fireredArray == null || leafgreenArray == null || emeraldArray == null || colosseumArray == null || xdArray == null) {
 
-                p.onclick = () => {
-                    iscollapsed = !iscollapsed
-                    if (iscollapsed) p.innerHTML = collapsed
-                    if (!iscollapsed) p.innerHTML = extended
+                } else {
+                    function getPkmnSummaryFromData(dta) {
+                        let methodSeperation = `<p class="blktxt smolbr">---</p>`
+                        let rubyMsg = "";
+                        let sapphireMsg = "";
+                        let fireredMsg = "";
+                        let leafgreenMsg = "";
+                        let emeraldMsg = "";
+                        let colosseumMsg = "";
+                        let xdMsg = "";
+                        dta.ruby.methods.forEach((method, i) => {
+                            if (i > 0) rubyMsg = rubyMsg + methodSeperation
+                            if (method.status == obtainStatus.obtainable) {
+                                rubyMsg = rubyMsg + method.method
+                                console.log(rubyMsg)
+                                switch (method.method) {
+                                    case obtainMethod.catch:
+                                        rubyMsg = rubyMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
+                                    break;
+                                    case obtainMethod.snag:
+                                        rubyMsg = rubyMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
+                                    break;
+                                    case obtainMethod.gift:
+                                        rubyMsg = rubyMsg + ".<br>Location: "+method.location
+                                    break;
+                                    case obtainMethod.gift_req:
+                                        rubyMsg = rubyMsg + method.req+".<br>Location: "+method.location
+                                    break;
+                                    case obtainMethod.box_egg:
+                                        rubyMsg = rubyMsg + method.pkmnDepost+" Pokémon"
+                                    break;
+                                    case obtainMethod.evolve_level:
+                                        rubyMsg = rubyMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" at level "+method.level
+                                    break;
+                                    case obtainMethod.evolve_trade_item:
+                                        rubyMsg = rubyMsg + method.item
+                                    break;
+                                    case obtainMethod.evolve_item:
+                                        rubyMsg = rubyMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
+                                    break;
+                                    case obtainMethod.pomeg_location:
+                                        rubyMsg = rubyMsg + `${method.ticket} to go to ${method.location}`
+                                    break;
+                                    case obtainMethod.save_editing:
+                                        rubyMsg = rubyMsg + `${method.ticket} to go to ${method.location}`
+                                    break;
+                                    case obtainMethod.purchased:
+                                        rubyMsg = rubyMsg + method.location+" for "+method.amount+" "+method.currency
+                                    break;
+                                }  
+                            } else {
+                                rubyMsg = method.status
+                            }
+                        })
+                        dta.sapphire.methods.forEach((method, i) => {
+                            if (i > 0) sapphireMsg = sapphireMsg + methodSeperation
+                            if (method.status == obtainStatus.obtainable) {
+                                sapphireMsg = sapphireMsg + method.method
+                                switch (method.method) {
+                                    case obtainMethod.catch:
+                                        sapphireMsg = sapphireMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
+                                    break;
+                                    case obtainMethod.snag:
+                                        sapphireMsg = sapphireMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
+                                    break;
+                                    case obtainMethod.gift:
+                                        sapphireMsg = sapphireMsg + ".<br>Location: "+method.location
+                                    break;
+                                    case obtainMethod.gift_req:
+                                        sapphireMsg = sapphireMsg + method.req+".<br>Location: "+method.location
+                                    break;
+                                    case obtainMethod.box_egg:
+                                        sapphireMsg = sapphireMsg + method.pkmnDepost+" Pokémon."
+                                    break;
+                                    case obtainMethod.evolve_level:
+                                        sapphireMsg = sapphireMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" at level "+method.level
+                                    break;
+                                    case obtainMethod.evolve_trade_item:
+                                        sapphireMsg = sapphireMsg + method.item
+                                    break;
+                                    case obtainMethod.evolve_item:
+                                        sapphireMsg = sapphireMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
+                                    break;
+                                    case obtainMethod.pomeg_location:
+                                        sapphireMsg = sapphireMsg + `${method.ticket} to go to ${method.location}`
+                                    break;
+                                    case obtainMethod.save_editing:
+                                        sapphireMsg = sapphireMsg + `${method.ticket} to go to ${method.location}`
+                                    break;
+                                    case obtainMethod.purchased:
+                                        sapphireMsg = sapphireMsg + method.location+" for "+method.amount+" "+method.currency
+                                    break;
+                                }  
+                            } else {
+                                sapphireMsg = method.status
+                            }
+                        })
+                        dta.firered.methods.forEach((method, i) => {
+                            if (i > 0) fireredMsg = fireredMsg + methodSeperation
+                            if (method.status == obtainStatus.obtainable) {
+                                fireredMsg = fireredMsg + method.method
+                                switch (method.method) {
+                                    case obtainMethod.catch:
+                                        fireredMsg = fireredMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
+                                    break;
+                                    case obtainMethod.snag:
+                                        fireredMsg = fireredMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
+                                    break;
+                                    case obtainMethod.gift:
+                                        fireredMsg = fireredMsg + ".<br>Location: "+method.location
+                                    break;
+                                    case obtainMethod.gift_req:
+                                        fireredMsg = fireredMsg + method.req+".<br>Location: "+method.location
+                                    break;
+                                    case obtainMethod.box_egg:
+                                        fireredMsg = fireredMsg + method.pkmnDepost+" Pokémon"
+                                    break;
+                                    case obtainMethod.evolve_level:
+                                        fireredMsg = fireredMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" at level "+method.level
+                                    break;
+                                    case obtainMethod.evolve_trade_item:
+                                        fireredMsg = fireredMsg + method.item
+                                    break;
+                                    case obtainMethod.evolve_item:
+                                        fireredMsg = fireredMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
+                                    break;
+                                    case obtainMethod.pomeg_location:
+                                        fireredMsg = fireredMsg + `${method.ticket} to go to ${method.location}`
+                                    break;
+                                    case obtainMethod.save_editing:
+                                        fireredMsg = fireredMsg + `${method.ticket} to go to ${method.location}`
+                                    break;
+                                    case obtainMethod.purchased:
+                                        fireredMsg = fireredMsg + method.location+" for "+method.amount+" "+method.currency
+                                    break;
+                                }  
+                            } else {
+                                fireredMsg = method.status
+                            }
+                        })
+                        dta.leafgreen.methods.forEach((method, i) => {
+                            if (i > 0) leafgreenMsg = leafgreenMsg + methodSeperation
+                            if (method.status == obtainStatus.obtainable) {
+                                leafgreenMsg = leafgreenMsg + method.method
+                                switch (method.method) {
+                                    case obtainMethod.catch:
+                                        leafgreenMsg = leafgreenMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
+                                    break;
+                                    case obtainMethod.snag:
+                                        leafgreenMsg = leafgreenMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
+                                    break;
+                                    case obtainMethod.gift:
+                                        leafgreenMsg = leafgreenMsg + ".<br>Location: "+method.location
+                                    break;
+                                    case obtainMethod.gift_req:
+                                        leafgreenMsg = leafgreenMsg + method.req+".<br>Location: "+method.location
+                                    break;
+                                    case obtainMethod.box_egg:
+                                        leafgreenMsg = leafgreenMsg + method.pkmnDepost+" Pokémon"
+                                    break;
+                                    case obtainMethod.evolve_level:
+                                        leafgreenMsg = leafgreenMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" at level "+method.level
+                                    break;
+                                    case obtainMethod.evolve_trade_item:
+                                        leafgreenMsg = leafgreenMsg + method.item
+                                    break;
+                                    case obtainMethod.evolve_item:
+                                        leafgreenMsg = leafgreenMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
+                                    break;
+                                    case obtainMethod.pomeg_location:
+                                        leafgreenMsg = leafgreenMsg + `${method.ticket} to go to ${method.location}`
+                                    break;
+                                    case obtainMethod.save_editing:
+                                        leafgreenMsg = leafgreenMsg + `${method.ticket} to go to ${method.location}`
+                                    break;
+                                    case obtainMethod.purchased:
+                                        leafgreenMsg = leafgreenMsg + method.location+" for "+method.amount+" "+method.currency
+                                    break;
+                                }  
+                            } else {
+                                leafgreenMsg = method.status
+                            }
+                        })
+                        dta.emerald.methods.forEach((method, i) => {
+                            if (i > 0) emeraldMsg = emeraldMsg + methodSeperation
+                            if (method.status == obtainStatus.obtainable) {
+                                emeraldMsg = emeraldMsg + method.method
+                                switch (method.method) {
+                                    case obtainMethod.catch:
+                                        emeraldMsg = emeraldMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
+                                    break;
+                                    case obtainMethod.snag:
+                                        emeraldMsg = emeraldMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
+                                    break;
+                                    case obtainMethod.gift:
+                                        emeraldMsg = emeraldMsg + ".<br>Location: "+method.location
+                                    break;
+                                    case obtainMethod.gift_req:
+                                        emeraldMsg = emeraldMsg + method.req+".<br>Location: "+method.location
+                                    break;
+                                    case obtainMethod.box_egg:
+                                        emeraldMsg = emeraldMsg + method.pkmnDepost+" Pokémon"
+                                    break;
+                                    case obtainMethod.evolve_level:
+                                        emeraldMsg = emeraldMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" at level "+method.level
+                                    break;
+                                    case obtainMethod.evolve_trade_item:
+                                        emeraldMsg = emeraldMsg + method.item
+                                    break;
+                                    case obtainMethod.evolve_item:
+                                        emeraldMsg = emeraldMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
+                                    break;
+                                    case obtainMethod.pomeg_location:
+                                        emeraldMsg = emeraldMsg + `${method.ticket} to go to ${method.location}`
+                                    break;
+                                    case obtainMethod.save_editing:
+                                        emeraldMsg = emeraldMsg + `${method.ticket} to go to ${method.location}`
+                                    break;
+                                    case obtainMethod.purchased:
+                                        emeraldMsg = emeraldMsg + method.location+" for "+method.amount+" "+method.currency
+                                    break;
+                                }  
+                            } else {
+                                emeraldMsg = method.status
+                            }
+                        })
+                        dta.colosseum.methods.forEach((method, i) => {
+                            if (i > 0) colosseumMsg = colosseumMsg + methodSeperation
+                            if (method.status == obtainStatus.obtainable) {
+                                colosseumMsg = colosseumMsg + method.method
+                                switch (method.method) {
+                                    case obtainMethod.catch:
+                                        colosseumMsg = colosseumMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
+                                    break;
+                                    case obtainMethod.snag:
+                                        colosseumMsg = colosseumMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
+                                    break;
+                                    case obtainMethod.gift:
+                                        colosseumMsg = colosseumMsg + ".<br>Location: "+method.location
+                                    break;
+                                    case obtainMethod.gift_req:
+                                        colosseumMsg = colosseumMsg + method.req+".<br>Location: "+method.location
+                                    break;
+                                    case obtainMethod.box_egg:
+                                        colosseumMsg = colosseumMsg + method.pkmnDepost+" Pokémon"
+                                    break;
+                                    case obtainMethod.evolve_level:
+                                        colosseumMsg = colosseumMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" at level "+method.level
+                                    break;
+                                    case obtainMethod.evolve_trade_item:
+                                        colosseumMsg = colosseumMsg + method.item
+                                    break;
+                                    case obtainMethod.evolve_item:
+                                        colosseumMsg = colosseumMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
+                                    break;
+                                    case obtainMethod.pomeg_location:
+                                        colosseumMsg = colosseumMsg + `${method.ticket} to go to ${method.location}`
+                                    break;
+                                    case obtainMethod.save_editing:
+                                        colosseumMsg = colosseumMsg + `${method.ticket} to go to ${method.location}`
+                                    break;
+                                    case obtainMethod.purchased:
+                                        colosseumMsg = colosseumMsg + method.location+" for "+method.amount+" "+method.currency
+                                    break;
+                                }  
+                            } else {
+                                colosseumMsg = method.status
+                            }
+                        })
+                        dta.xd.methods.forEach((method, i) => {
+                            if (i > 0) xdMsg = xdMsg + methodSeperation
+                            if (method.status == obtainStatus.obtainable) {
+                                xdMsg = xdMsg + method.method
+                                switch (method.method) {
+                                    case obtainMethod.catch:
+                                        xdMsg = xdMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
+                                    break;
+                                    case obtainMethod.snag:
+                                        xdMsg = xdMsg + ".<br>Locations: "+method.locations.toString().split(",").join(", ")
+                                    break;
+                                    case obtainMethod.gift:
+                                        xdMsg = xdMsg + ".<br>Location: "+method.location
+                                    break;
+                                    case obtainMethod.gift_req:
+                                        xdMsg = xdMsg + method.req+".<br>Location: "+method.location
+                                    break;
+                                    case obtainMethod.box_egg:
+                                        xdMsg = xdMsg + method.pkmnDepost+" Pokémon"
+                                    break;
+                                    case obtainMethod.evolve_level:
+                                        xdMsg = xdMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" at level "+method.level
+                                    break;
+                                    case obtainMethod.evolve_trade_item:
+                                        xdMsg = xdMsg + method.item
+                                    break;
+                                    case obtainMethod.evolve_item:
+                                        xdMsg = xdMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
+                                    break;
+                                    case obtainMethod.pomeg_location:
+                                        xdMsg = xdMsg + `${method.ticket} to go to ${method.location}`
+                                    break;
+                                    case obtainMethod.save_editing:
+                                        xdMsg = xdMsg + `${method.ticket} to go to ${method.location}`
+                                    break;
+                                    case obtainMethod.purchased:
+                                        xdMsg = xdMsg + method.location+" for "+method.amount+" "+method.currency
+                                    break;
+                                }  
+                            } else {
+                                xdMsg = method.status
+                            }
+                        })
+                        var bundleRaS = false
+                        var bundleFRaLG = false
+                        var bundleCaXD = false
+                        if (rubyMsg == sapphireMsg) bundleRaS = true
+                        if (fireredMsg == leafgreenMsg) bundleFRaLG = true
+                        if (colosseumMsg == xdMsg) bundleCaXD = true
+                        var r = `<b class="rubytxt">Pokémon Ruby:</b> ${rubyMsg}`
+                        var rs = `<b class="rubytxt">Pokémon Ruby</b> <b class="sapphiretxt">and Sapphire:</b> ${rubyMsg}`
+                        var s = `<br><p class="smolbr"></p><b class="sapphiretxt">Pokémon Sapphire:</b> ${sapphireMsg}`
+                        var fr = `<b class="frtxt">Pokémon FireRed:</b> ${fireredMsg}`
+                        var frlg = `<b class="frtxt">Pokémon FireRed</b> <b class="lgtxt">and LeafGreen:</b> ${fireredMsg}`
+                        var lg = `<br><p class="smolbr"></p><b class="lgtxt">Pokémon LeafGreen:</b> ${leafgreenMsg}`
+                        var c = `<b class="colosseumtxt">Pokémon Colosseum:</b> ${colosseumMsg}`
+                        var cxd = `<b class="colosseumtxt">Pokémon Colosseum</b> <b class="xdtxt">and XD:</b> ${colosseumMsg}`
+                        var xd = `<br><p class="smolbr"></p><b class="xdtxt">Pokémon XD:</b> ${xdMsg}`
+                        var ras;
+                        var fralg;
+                        var caxd;
+                        if (bundleRaS) { ras = rs } else { ras = r+s }
+                        if (bundleFRaLG) { fralg = frlg } else { fralg = fr+lg }
+                        if (bundleCaXD) { caxd = cxd } else { caxd = c+xd }
+                        var extended = `<h6 class="bigtxt blktxt"><b class="headinglmao">${dta.name}</b><p class="smolbr"></p><p class="smolbr"></p>${ras}<br><p class="smolbr"></p>${fralg}<br><p class="smolbr"></p><b class="emeraldtxt">Pokémon Emerald:</b> ${emeraldMsg}<br><p class="smolbr"></p>${caxd}<br><p class="smolbr"><b id="eandc">(Click to expand and collapse)</b></h6>`
+                        return extended
+                    }
+                    const forms = pkmnData.forms
+                    if (forms) {
+                        const extendedSummary = getPkmnSummaryFromData(pkmnData)
+                        var collapsed = `<h6 class="bigtxt blktxt"><b class="headinglmao">${pkmnData.name}</b><p class="smolbr"></p><b id="eandc">(Click to see all forms)</b></h6>`
+                        const box = document.createElement("div")
+                        box.setAttribute("class", "boxdb")
+                        const br = document.createElement("br")
+                        const coexistance = document.createElement("div")
+                        coexistance.setAttribute("class", "combineimgandtxtwoutcenter")
+                        const img = document.createElement("img")
+                        img.setAttribute("class", "pkmnimgdb")
+                        img.setAttribute("pkmnId", pkmnData.id)
+                        img.src = `${baseImgURL}/${sprites}/normal/${shiny}/${pkmnData.id}.png${endURL}`
+                        img.style = `width: 150px; height: 150px; float: left; cursor: auto;`
+                        const txtdiv = document.createElement("div")
+                        txtdiv.setAttribute("id", "txtdivfordbentry")
+                        txtdiv.style = `float: left; cursor: auto;`
+                        const p = document.createElement("p")
+                        p.setAttribute("class", "innertxtindbe")
+                        var iscollapsed = true
+                        p.innerHTML = collapsed
+                        p.style = `cursor: auto;`
+
+                        p.onclick = () => {
+                            iscollapsed = !iscollapsed
+                            if (iscollapsed) p.innerHTML = collapsed
+                            if (!iscollapsed) p.innerHTML = extendedSummary
+                        }
+
+                        const br3 = document.createElement("br")
+                        box.append(br)
+                        
+                        txtdiv.append(p)
+                        coexistance.append(img)
+                        coexistance.append(txtdiv)
+                        box.append(coexistance)
+                        box.append(br3)
+                        databasemenu.append(box)
+                    } else {
+                        const extendedSummary = getPkmnSummaryFromData(pkmnData)
+                        var collapsed = `<h6 class="bigtxt blktxt"><b class="headinglmao">${pkmnData.name}</b><p class="smolbr"></p><b id="eandc">(Click to expand and collapse)</b></h6>`
+                        const box = document.createElement("div")
+                        box.setAttribute("class", "boxdb")
+                        const br = document.createElement("br")
+                        const coexistance = document.createElement("div")
+                        coexistance.setAttribute("class", "combineimgandtxtwoutcenter")
+                        const img = document.createElement("img")
+                        img.setAttribute("class", "pkmnimgdb")
+                        img.setAttribute("pkmnId", pkmnData.id)
+                        img.src = `${baseImgURL}/${sprites}/normal/${shiny}/${pkmnData.id}.png${endURL}`
+                        img.style = `width: 150px; height: 150px; float: left; cursor: auto;`
+                        const txtdiv = document.createElement("div")
+                        txtdiv.setAttribute("id", "txtdivfordbentry")
+                        txtdiv.style = `float: left; cursor: auto;`
+                        const p = document.createElement("p")
+                        p.setAttribute("class", "innertxtindbe")
+                        var iscollapsed = true
+                        p.innerHTML = collapsed
+                        p.style = `cursor: auto;`
+
+                        p.onclick = () => {
+                            iscollapsed = !iscollapsed
+                            if (iscollapsed) p.innerHTML = collapsed
+                            if (!iscollapsed) p.innerHTML = extendedSummary
+                        }
+
+                        const br3 = document.createElement("br")
+                        box.append(br)
+                        
+                        txtdiv.append(p)
+                        coexistance.append(img)
+                        coexistance.append(txtdiv)
+                        box.append(coexistance)
+                        box.append(br3)
+                        databasemenu.append(box)
+                    }
                 }
-
-                const br3 = document.createElement("br")
-                box.append(br)
-                
-                txtdiv.append(p)
-                coexistance.append(img)
-                coexistance.append(txtdiv)
-                box.append(coexistance)
-                box.append(br3)
-                databasemenu.append(box)
             }
+            
         } catch(e) {
             console.log(e)
         }
@@ -932,110 +1027,121 @@ addEventListener("load", () => {
     databasemenu.append(br2)
    
     boxes.forEach((box, i) => {
-        const boxcontainer = document.createElement("div")
-        boxcontainer.setAttribute("class", "boxcontainer")
-        boxcontainer.setAttribute("id", `box${i+1}container`)
-        const boxheader = document.createElement("img")
-        const numberedHeadings = settings[2].value
-        if (numberedHeadings) boxheader.src = `${baseBoxURL}/header/numbered/box${i+1}.png`
-        if (!numberedHeadings) boxheader.src = `${baseBoxURL}/header/standard/box${i+1}.png`
-        boxheader.setAttribute("class", "boxheader")
-        boxheader.setAttribute("id", `box${i+1}header`)
-        boxheader.setAttribute("boxid", `${i+1}`)
-        const boxE = document.createElement("div")
-        boxE.setAttribute("class", "box")
-        boxE.setAttribute("id", `box${i+1}`)
-        const br = document.createElement("br")
-        const br2 = document.createElement("br")
-        boxcontainer.append(br)
-        boxcontainer.append(boxheader)
-        boxcontainer.append(boxE)
-        boxcontainer.append(br2)
-        document.getElementById("trackermenu").append(boxcontainer)
-        box.forEach(pokemon => {
-            if (pokemon == null) pokemon = pokemonData[0]
-            if (pokemon.name != "getinfo") {
-                boxE.style = `background-image: url("${baseBoxURL}/body/standard/box${i+1}.png");`
-                const pkmnDiv = document.createElement("div")
-                pkmnDiv.style = `display: inline; position: relative; text-align: center; object-fit: contain; user-select: none;`
-                pkmnDiv.setAttribute("class", "pokemonDiv")
-                pkmnDiv.setAttribute("id", "pkmn"+pokemon.id)
-                const pkmnImg = document.createElement("img")
-                pkmnImg.src = `${baseImgURL}/${sprites}/normal/${shiny}/${pokemon.id}.png${endURL}`
-                pkmnImg.setAttribute("id", "pkmnimg"+pokemon.id)
-                pkmnImg.setAttribute("pkmnid", pokemon.id)
-                pkmnImg.setAttribute("class", "pkmnimg")
-                const size = 12
-                pkmnImg.style = `object-fit: contain; opacity: 1; border-radius: 10px; width: ${boxE.clientWidth / size}px; height: ${boxE.clientWidth / (size+1.5)}px; user-select: none;`;
-                const pkmnSubtitleDiv = document.createElement("div")
-                pkmnSubtitleDiv.style = `text-align:center; position: absolute; top:-100%; right:50%; transform:translate(50%, -50%); background-color: rgba(255, 255, 255, 0.2); border-radius: 15px; height: 1vw; user-select: none; display:none;`
-                const pkmnSubtitle = document.createElement("p")
-                pkmnSubtitle.innerText = pokemon.name
-                pkmnSubtitle.style = `position: relative; top: -10px; width: 75px;user-select: none;`
-                pkmnSubtitle.setAttribute("class", "pkmnSubtitle")
-                pkmnSubtitleDiv.append(pkmnSubtitle)
-                pkmnDiv.append(pkmnImg)
-                pkmnDiv.append(pkmnSubtitleDiv)
-                boxE.append(pkmnDiv)
+        if (box[0].header == true) {
+            const headerId = box[0].id
+            const headerContainer = document.createElement("div")
+            headerContainer.setAttribute("class", "boxcontainer")
+            headerContainer.setAttribute("id", `box${headerId}container`)
+        } else {
+            const boxId = box[0].id
+            const extraVal = box[0].extra
+            const boxcontainer = document.createElement("div")
+            if (extraVal) boxcontainer.setAttribute("class", "boxcontainer extrabox")
+            if (!extraVal) boxcontainer.setAttribute("class", "boxcontainer")
+            boxcontainer.setAttribute("id", `box${boxId}container`)
+            const boxheader = document.createElement("img")
+            const numberedHeadings = settings[2].value
+            if (numberedHeadings) boxheader.src = `${baseBoxURL}/header/numbered/box${boxId}.png`
+            if (!numberedHeadings) boxheader.src = `${baseBoxURL}/header/standard/box${boxId}.png`
+            boxheader.setAttribute("class", "boxheader")
+            boxheader.setAttribute("id", `box${boxId}header`)
+            boxheader.setAttribute("boxid", `${boxId}`)
+            const boxE = document.createElement("div")
+            boxE.setAttribute("class", "box")
+            boxE.setAttribute("id", `box${boxId}`)
+            const br = document.createElement("br")
+            const br2 = document.createElement("br")
+            boxcontainer.append(br)
+            boxcontainer.append(boxheader)
+            boxcontainer.append(boxE)
+            boxcontainer.append(br2)
+            document.getElementById("trackermenu").append(boxcontainer)
+            box.forEach(pokemon => {
+                console.log(box[0].boxName)
+                if (pokemon == null) pokemon = pokemonData[0]
+                if (pokemon.name != "getinfo") {
+                    boxE.style = `background-image: url("${baseBoxURL}/body/standard/box${boxId}.png");`
+                    const pkmnDiv = document.createElement("div")
+                    pkmnDiv.style = `display: inline; position: relative; text-align: center; object-fit: contain; user-select: none;`
+                    pkmnDiv.setAttribute("class", "pokemonDiv")
+                    pkmnDiv.setAttribute("id", "pkmn"+pokemon.id)
+                    const pkmnImg = document.createElement("img")
+                    pkmnImg.src = `${baseImgURL}/${sprites}/normal/${shiny}/${pokemon.id}.png${endURL}`
+                    pkmnImg.setAttribute("id", "pkmnimg"+pokemon.id)
+                    pkmnImg.setAttribute("pkmnid", pokemon.id)
+                    pkmnImg.setAttribute("class", "pkmnimg")
+                    const size = 12
+                    pkmnImg.style = `object-fit: contain; opacity: 1; border-radius: 10px; width: ${boxE.clientWidth / size}px; height: ${boxE.clientWidth / (size+1.5)}px; user-select: none;`;
+                    const pkmnSubtitleDiv = document.createElement("div")
+                    pkmnSubtitleDiv.style = `text-align:center; position: absolute; top:-100%; right:50%; transform:translate(50%, -50%); background-color: rgba(255, 255, 255, 0.2); border-radius: 15px; height: 1vw; user-select: none; display:none;`
+                    const pkmnSubtitle = document.createElement("p")
+                    pkmnSubtitle.innerText = pokemon.name
+                    pkmnSubtitle.style = `position: relative; top: -10px; width: 75px;user-select: none;`
+                    pkmnSubtitle.setAttribute("class", "pkmnSubtitle")
+                    pkmnSubtitleDiv.append(pkmnSubtitle)
+                    pkmnDiv.append(pkmnImg)
+                    pkmnDiv.append(pkmnSubtitleDiv)
+                    boxE.append(pkmnDiv)
 
-                if (pokemon.id > 0) {
-                    pkmnImg.style.opacity = 0.4
-                    if (darkenWhenUnobtained) pkmnImg.style.filter = "brightness(30%)"
-                    pkmnDiv.style.cursor = "pointer"
-                    let obtained = false
-                    pkmnDiv.onmouseenter = () => {
-                        //fade into something
-                        pkmnSubtitleDiv.style.display = "block"
-                        if (sprites == 2) {
-                            if (emeraldAnimation == 2) {
-                                pkmnImg.src = `${baseImgURL}/${sprites}/animated/${shiny}/${pokemon.id}.gif${endURL}`
-                                pkmnImg.style.scale = 1.5
-                            } else if (emeraldAnimation == 1) {
-                                pkmnImg.src = `${baseImgURL}/${sprites}/frame2/${shiny}/${pokemon.id}.png${endURL}`
+                    if (pokemon.id > 0) {
+                        pkmnImg.style.opacity = 0.4
+                        if (darkenWhenUnobtained) pkmnImg.style.filter = "brightness(30%)"
+                        pkmnDiv.style.cursor = "pointer"
+                        let obtained = false
+                        pkmnDiv.onmouseenter = () => {
+                            //fade into something
+                            pkmnSubtitleDiv.style.display = "block"
+                            if (sprites == 2) {
+                                if (emeraldAnimation == 2) {
+                                    pkmnImg.src = `${baseImgURL}/${sprites}/animated/${shiny}/${pokemon.id}.gif${endURL}`
+                                    pkmnImg.style.scale = 1.5
+                                } else if (emeraldAnimation == 1) {
+                                    pkmnImg.src = `${baseImgURL}/${sprites}/frame2/${shiny}/${pokemon.id}.png${endURL}`
+                                    pkmnImg.style.scale = 1
+                                }
+                            }
+                        }
+
+                        pkmnDiv.onmouseleave = () => {
+                            //fade out lmao
+                            pkmnSubtitleDiv.style.display = "none"
+                            if (emeraldAnimation != 4 && emeraldAnimation != 3) {
+                                pkmnImg.src = `${baseImgURL}/${sprites}/normal/${shiny}/${pokemon.id}.png${endURL}`
                                 pkmnImg.style.scale = 1
+                            }
+                            
+                        }
+
+                        pkmnDiv.onmouseup = () => {
+                            try {
+                                db.ref(`/users/${localStorage.getItem("token")}/pbrs/pkmn/${pokemon.id}`).once("value", function(snapshot) {
+                                    try {
+                                        const data = snapshot.val()
+                                        const obtained = data["obtained"]
+                                        db.ref(`/users/${localStorage.getItem("token")}/pbrs/pkmn/${pokemon.id}`).set({
+                                            id: pokemon.id,
+                                            obtained: !obtained,
+                                        })
+                                    } catch(e) {
+                                        try {
+                                            db.ref(`/users/${localStorage.getItem("token")}/pbrs/pkmn/${pokemon.id}`).set({
+                                                id: pokemon.id,
+                                                obtained: true,
+                                            })
+                                        } catch(e) {
+                                            console.log(e)
+                                        }
+                                    }
+                                    
+                                })
+                            } catch(e) {
+                                console.log(e)
                             }
                         }
                     }
-
-                    pkmnDiv.onmouseleave = () => {
-                        //fade out lmao
-                        pkmnSubtitleDiv.style.display = "none"
-                        if (emeraldAnimation != 4 && emeraldAnimation != 3) {
-                            pkmnImg.src = `${baseImgURL}/${sprites}/normal/${shiny}/${pokemon.id}.png${endURL}`
-                            pkmnImg.style.scale = 1
-                        }
-                        
-                    }
-
-                    pkmnDiv.onmouseup = () => {
-                        try {
-                            db.ref(`/users/${localStorage.getItem("token")}/pbrs/pkmn/${pokemon.id}`).once("value", function(snapshot) {
-                                try {
-                                    const data = snapshot.val()
-                                    const obtained = data["obtained"]
-                                    db.ref(`/users/${localStorage.getItem("token")}/pbrs/pkmn/${pokemon.id}`).set({
-                                        id: pokemon.id,
-                                        obtained: !obtained,
-                                    })
-                                } catch(e) {
-                                    try {
-                                        db.ref(`/users/${localStorage.getItem("token")}/pbrs/pkmn/${pokemon.id}`).set({
-                                            id: pokemon.id,
-                                            obtained: true,
-                                        })
-                                    } catch(e) {
-                                        console.log(e)
-                                    }
-                                }
-                                
-                            })
-                        } catch(e) {
-                            console.log(e)
-                        }
-                    }
                 }
-            }
-        })
+            })
+        }
     });
     document.getElementById("email").onclick = () => { window.location.href = "mailto:nk.personal.work@gmail.com" }
     document.getElementById("home").onclick = () => { window.location.href = "../" }
@@ -1048,6 +1154,7 @@ addEventListener("load", () => {
     document.getElementById("trackermenu").style.display = "inline"
     document.getElementById("databasemenu").style.display = "none"
     document.getElementById("optionsmenu").style.display = "none"
+    document.getElementById("notutd").style.display = "block"
     document.getElementById("tracker").style.textDecoration = "underline"
     db.ref(`/users/${localStorage.getItem("token")}`).once("value", function(snapshot) {
         const data = snapshot.val()

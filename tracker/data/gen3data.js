@@ -90,7 +90,16 @@ const obtainLocation = {
     _sevii_islands: "Sevii Islands",
     _silph_co: "Silph Co.",
     _six_island__town_: "Six Island (Town)",
+
     _tanoby_chambers: "Tanoby Chambers",
+    _monean_chamber: "Tanoby Chambers (Monean)",
+    _liptoo_chamber: "Tanoby Chambers (Liptoo)",
+    _weepth_chamber: "Tanoby Chambers (Weepth)",
+    _dilford_chamber: "Tanoby Chambers (Dilford)",
+    _scufib_chamber: "Tanoby Chambers (Scufib)",
+    _rixy_chamber: "Tanoby Chambers (Rixy)",
+    _viapois_chamber: "Tanoby Chambers (Viapois)",
+
     _tanoby_key: "Tanoby Key",
     _tanoby_ruins: "Tanoby Ruins",
     _team_rocket_hideout: "Team Rocket Hideout",
@@ -294,6 +303,7 @@ const obtainLocation = {
 const pokemonData = {
     0: {
         name: "",
+        database: false,
         id: 0,
         ruby: {},
         sapphire: {},
@@ -305,6 +315,7 @@ const pokemonData = {
     },
     1: {
         name: "Bulbasaur",
+        database: true,
         id: 1,
         ruby: {methods:[{status: obtainStatus.importable},]},
         sapphire: {methods:[{status: obtainStatus.importable},]},
@@ -316,6 +327,7 @@ const pokemonData = {
     },
     2: {
         name: "Ivysaur",
+        database: true,
         id: 2,
         ruby: {methods:[{status: obtainStatus.importable},]},
         sapphire: {methods:[{status: obtainStatus.importable},]},
@@ -327,6 +339,7 @@ const pokemonData = {
     },
     3: {
         name: "Venusaur",
+        database: true,
         id: 3,
         ruby: {methods:[{status: obtainStatus.importable},]},
         sapphire: {methods:[{status: obtainStatus.importable},]},
@@ -338,6 +351,7 @@ const pokemonData = {
     },
     4: {
         name: "Charmander",
+        database: true,
         id: 4,
         ruby: {methods:[{status: obtainStatus.importable},]},
         sapphire: {methods:[{status: obtainStatus.importable},]},
@@ -349,6 +363,7 @@ const pokemonData = {
     },
    5: {
         name: "Charmeleon",
+        database: true,
         id: 5,
         ruby: {methods:[{status: obtainStatus.importable},]},
         sapphire: {methods:[{status: obtainStatus.importable},]},
@@ -360,6 +375,7 @@ const pokemonData = {
     },
     6: {
         name: "Charizard",
+        database: true,
         id: 6,
         ruby: {methods:[{status: obtainStatus.importable},]},
         sapphire: {methods:[{status: obtainStatus.importable},]},
@@ -371,6 +387,7 @@ const pokemonData = {
     },
     7: {
         name: "Squirtle",
+        database: true,
         id: 7,
         ruby: {methods:[{status: obtainStatus.importable},]},
         sapphire: {methods:[{status: obtainStatus.importable},]},
@@ -382,6 +399,7 @@ const pokemonData = {
     },
     8: {
         name: "Wartortle",
+        database: true,
         id: 8,
         ruby: {methods:[{status: obtainStatus.importable},]},
         sapphire: {methods:[{status: obtainStatus.importable},]},
@@ -393,6 +411,7 @@ const pokemonData = {
     },
     9: {
         name: "Blastoise",
+        database: true,
         id: 9,
         ruby: {methods:[{status: obtainStatus.importable},]},
         sapphire: {methods:[{status: obtainStatus.importable},]},
@@ -404,6 +423,7 @@ const pokemonData = {
     },
     10: {
         name: "Caterpie",
+        database: true,
         id: 10,
         ruby: {methods:[{status: obtainStatus.importable},]},
         sapphire: {methods:[{status: obtainStatus.importable},]},
@@ -415,6 +435,7 @@ const pokemonData = {
     },
     11: {
         name: "Metapod",
+        database: true,
         id: 11,
         ruby: {methods:[{status: obtainStatus.importable},]},
         sapphire: {methods:[{status: obtainStatus.importable},]},
@@ -426,6 +447,7 @@ const pokemonData = {
     },
     12: {
         name: "Butterfree",
+        database: true,
         id: 12,
         ruby: {methods:[{status: obtainStatus.importable},]},
         sapphire: {methods:[{status: obtainStatus.importable},]},
@@ -437,6 +459,7 @@ const pokemonData = {
     },
     13: {
         name: "Weedle",
+        database: true,
         id: 13,
         ruby: {methods:[{status: obtainStatus.importable},]},
         sapphire: {methods:[{status: obtainStatus.importable},]},
@@ -448,6 +471,7 @@ const pokemonData = {
     },
     14: {
         name: "Kakuna",
+        database: true,
         id: 14,
         ruby: {methods:[{status: obtainStatus.importable},]},
         sapphire: {methods:[{status: obtainStatus.importable},]},
@@ -459,6 +483,7 @@ const pokemonData = {
     },
     15: {
         name: "Beedrill",
+        database: true,
         id: 15,
         ruby: {methods:[{status: obtainStatus.importable},]},
         sapphire: {methods:[{status: obtainStatus.importable},]},
@@ -470,6 +495,7 @@ const pokemonData = {
     },
     16: {
         name: "Pidgey",
+        database: true,
         id: 16,
         ruby: {methods:[{status: obtainStatus.importable},]},
         sapphire: {methods:[{status: obtainStatus.importable},]},
@@ -481,6 +507,7 @@ const pokemonData = {
     },
     17: {
         name: "Pidgeotto",
+        database: true,
         id: 17,
         ruby: {methods:[{status: obtainStatus.importable},]},
         sapphire: {methods:[{status: obtainStatus.importable},]},
@@ -492,6 +519,7 @@ const pokemonData = {
     },
     18: {
         name: "Pidgeot",
+        database: true,
         id: 18,
         ruby: {methods:[{status: obtainStatus.importable},]},
         sapphire: {methods:[{status: obtainStatus.importable},]},
@@ -503,6 +531,7 @@ const pokemonData = {
     },
     19: {
         name: "Rattata",
+        database: true,
         id: 19,
         ruby: {methods:[{status: obtainStatus.importable},]},
         sapphire: {methods:[{status: obtainStatus.importable},]},
@@ -514,6 +543,7 @@ const pokemonData = {
     },
     20: {
         name: "Raticate",
+        database: true,
         id: 20,
         ruby: {methods:[{status: obtainStatus.importable},]},
         sapphire: {methods:[{status: obtainStatus.importable},]},
@@ -525,6 +555,7 @@ const pokemonData = {
     },
     21: {
         name: "Spearow",
+        database: true,
         id: 21,
         ruby: {methods:[{status: obtainStatus.importable},]},
         sapphire: {methods:[{status: obtainStatus.importable},]},
@@ -536,6 +567,7 @@ const pokemonData = {
     },
     22: {
         name: "Fearow",
+        database: true,
         id: 22,
         ruby: {methods:[{status: obtainStatus.importable},]},
         sapphire: {methods:[{status: obtainStatus.importable},]},
@@ -547,6 +579,7 @@ const pokemonData = {
     },
     23: {
         name: "Ekans",
+        database: true,
         id: 23,
         ruby: {methods:[{status: obtainStatus.importable},]},
         sapphire: {methods:[{status: obtainStatus.importable},]},
@@ -558,6 +591,7 @@ const pokemonData = {
     },
     24: {
         name: "Arbok",
+        database: true,
         id: 24,
         ruby: {methods:[{status: obtainStatus.importable},]},
         sapphire: {methods:[{status: obtainStatus.importable},]},
@@ -569,6 +603,7 @@ const pokemonData = {
     },
     25: {
         name: "Pikachu",
+        database: true,
         id: 25,
         ruby: {methods:[{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._hoenn_safari_zone]},]},
         sapphire: {methods:[{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._hoenn_safari_zone]},]},
@@ -580,6 +615,7 @@ const pokemonData = {
     },
     26: {
         name: "Raichu",
+        database: true,
         id: 26,
         ruby: {methods:[{status: obtainStatus.obtainable, method:obtainMethod.evolve_item, item: items._thunder_stone, base: 25},]},
         sapphire: {methods:[{status: obtainStatus.obtainable, method:obtainMethod.evolve_item, item: items._thunder_stone, base: 25},]},
@@ -591,6 +627,7 @@ const pokemonData = {
     },
     27: {
         name: "Sandshrew",
+        database: true,
         id: 27,
         ruby: {methods:[{status: obtainStatus.obtainable, method:obtainMethod.catch, locations: [obtainLocation._hoenn_route_111, obtainLocation._hoenn_route_113]},]},
         sapphire: {methods:[{status: obtainStatus.obtainable, method:obtainMethod.catch, locations: [obtainLocation._hoenn_route_111, obtainLocation._hoenn_route_113]},]},
@@ -602,6 +639,7 @@ const pokemonData = {
     },
     28: {
         name: "Sandslash",
+        database: true,
         id: 28,
         ruby: {methods:[{status: obtainStatus.obtainable, method: obtainMethod.evolve_level, level: 22, base: 27},]},
         sapphire: {methods:[{status: obtainStatus.obtainable, method: obtainMethod.evolve_level, level: 22, base: 27},]},
@@ -613,6 +651,7 @@ const pokemonData = {
     },
     29: {
         name: "Nidoran F♀",
+        database: true,
         id: 29,
         ruby: {},
         sapphire: {},
@@ -624,6 +663,7 @@ const pokemonData = {
     },
     30: {
         name: "Nidorina",
+        database: true,
         id: 30,
         ruby: {},
         sapphire: {},
@@ -635,6 +675,7 @@ const pokemonData = {
     },
     31: {
         name: "Nidoqueen",
+        database: true,
         id: 31,
         ruby: {},
         sapphire: {},
@@ -646,6 +687,7 @@ const pokemonData = {
     },
     32: {
         name: "Nidoran M♂",
+        database: true,
         id: 32,
         ruby: {},
         sapphire: {},
@@ -657,6 +699,7 @@ const pokemonData = {
     },
     33: {
         name: "Nidorino",
+        database: true,
         id: 33,
         ruby: {},
         sapphire: {},
@@ -668,6 +711,7 @@ const pokemonData = {
     },
     34: {
         name: "Nidoking",
+        database: true,
         id: 34,
         ruby: {},
         sapphire: {},
@@ -679,6 +723,7 @@ const pokemonData = {
     },
     35: {
         name: "Clefairy",
+        database: true,
         id: 35,
         ruby: {methods: [{status: obtainStatus.importable}]},
         sapphire: {methods: [{status: obtainStatus.importable}]},
@@ -690,6 +735,7 @@ const pokemonData = {
     },
     36: {
         name: "Clefable",
+        database: true,
         id: 36,
         ruby: {methods: [{status: obtainStatus.importable}]},
         sapphire: {methods: [{status: obtainStatus.importable}]},
@@ -701,6 +747,7 @@ const pokemonData = {
     },
     37: {
         name: "Vulpix",
+        database: true,
         id: 37,
         ruby: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._mt_pyre_ext]}]},
         sapphire: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._mt_pyre_ext]}]},
@@ -712,6 +759,7 @@ const pokemonData = {
     },
     38: {
         name: "Ninetales",
+        database: true,
         id: 38,
         ruby: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.evolve_item, item: items._fire_stone, base: 37}]},
         sapphire: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.evolve_item, item: items._fire_stone, base: 37}]},
@@ -723,6 +771,7 @@ const pokemonData = {
     },
     39: {
         name: "Jigglypuff",
+        database: true,
         id: 39,
         ruby: {methods: [{status: obtainStatus.obtainable , method: obtainMethod.catch, locations: [obtainLocation._hoenn_route_115]}]},
         sapphire: {methods: [{status: obtainStatus.obtainable , method: obtainMethod.catch, locations: [obtainLocation._hoenn_route_115]}]},
@@ -734,6 +783,7 @@ const pokemonData = {
     },
     40: {
         name: "Wigglytuff",
+        database: true,
         id: 40,
         ruby: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.evolve_item, item: items._moon_stone, base: 39}]},
         sapphire: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.evolve_item, item: items._moon_stone, base: 39}]},
@@ -745,6 +795,7 @@ const pokemonData = {
     },
     41: {
         name: "Zubat",
+        database: true,
         id: 41,
         ruby: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._cave_of_origin, obtainLocation._granite_cave, obtainLocation._victory_road__hoenn_, obtainLocation._meteor_falls, obtainLocation._seafloor_cavern, obtainLocation._shoal_cave]}]},
         sapphire: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._cave_of_origin, obtainLocation._granite_cave, obtainLocation._victory_road__hoenn_, obtainLocation._meteor_falls, obtainLocation._seafloor_cavern, obtainLocation._shoal_cave]}]},
@@ -756,6 +807,7 @@ const pokemonData = {
     },
     42: {
         name: "Golbat",
+        database: true,
         id: 42,
         ruby: {},
         sapphire: {},
@@ -767,6 +819,7 @@ const pokemonData = {
     },
     43: {
         name: "Oddish",
+        database: true,
         id: 43,
         ruby: {},
         sapphire: {},
@@ -778,6 +831,7 @@ const pokemonData = {
     },
     44: {
         name: "Gloom",
+        database: true,
         id: 44,
         ruby: {},
         sapphire: {},
@@ -789,6 +843,7 @@ const pokemonData = {
     },
     45: {
         name: "Vileplume",
+        database: true,
         id: 45,
         ruby: {},
         sapphire: {},
@@ -800,6 +855,7 @@ const pokemonData = {
     },
     46: {
         name: "Paras",
+        database: true,
         id: 46,
         ruby: {},
         sapphire: {},
@@ -811,6 +867,7 @@ const pokemonData = {
     },
     47: {
         name: "Parasect",
+        database: true,
         id: 47,
         ruby: {},
         sapphire: {},
@@ -822,6 +879,7 @@ const pokemonData = {
     },
     48: {
         name: "Venonat",
+        database: true,
         id: 48,
         ruby: {},
         sapphire: {},
@@ -833,6 +891,7 @@ const pokemonData = {
     },
     49: {
         name: "Venomoth",
+        database: true,
         id: 49,
         ruby: {},
         sapphire: {},
@@ -844,6 +903,7 @@ const pokemonData = {
     },
     50: {
         name: "Diglet",
+        database: true,
         id: 50,
         ruby: {},
         sapphire: {},
@@ -855,6 +915,7 @@ const pokemonData = {
     },
     51: {
         name: "Dugtrio",
+        database: true,
         id: 51,
         ruby: {},
         sapphire: {},
@@ -866,6 +927,7 @@ const pokemonData = {
     },
     52: {
         name: "Meowth",
+        database: true,
         id: 52,
         ruby: {},
         sapphire: {},
@@ -877,6 +939,7 @@ const pokemonData = {
     },
     53: {
         name: "Persian",
+        database: true,
         id: 53,
         ruby: {},
         sapphire: {},
@@ -888,6 +951,7 @@ const pokemonData = {
     },
     54: {
         name: "Psyduck",
+        database: true,
         id: 54,
         ruby: {},
         sapphire: {},
@@ -899,6 +963,7 @@ const pokemonData = {
     },
     55: {
         name: "Golduck",
+        database: true,
         id: 55,
         ruby: {},
         sapphire: {},
@@ -910,6 +975,7 @@ const pokemonData = {
     },
     56: {
         name: "Mankey",
+        database: true,
         id: 56,
         ruby: {},
         sapphire: {},
@@ -921,6 +987,7 @@ const pokemonData = {
     },
     57: {
         name: "Primape",
+        database: true,
         id: 57,
         ruby: {},
         sapphire: {},
@@ -932,6 +999,7 @@ const pokemonData = {
     },
     58: {
         name: "Growlithe",
+        database: true,
         id: 58,
         ruby: {},
         sapphire: {},
@@ -943,6 +1011,7 @@ const pokemonData = {
     },
     59: {
         name: "Arcanine",
+        database: true,
         id: 59,
         ruby: {},
         sapphire: {},
@@ -954,6 +1023,7 @@ const pokemonData = {
     },
     60: {
         name: "Poliwag",
+        database: true,
         id: 60,
         ruby: {},
         sapphire: {},
@@ -965,6 +1035,7 @@ const pokemonData = {
     },
     61: {
         name: "Poliwhirl",
+        database: true,
         id: 61,
         ruby: {},
         sapphire: {},
@@ -976,6 +1047,7 @@ const pokemonData = {
     },
     62: {
         name: "Poliwrath",
+        database: true,
         id: 62,
         ruby: {},
         sapphire: {},
@@ -987,6 +1059,7 @@ const pokemonData = {
     },
     63: {
         name: "Abra",
+        database: true,
         id: 63,
         ruby: {},
         sapphire: {},
@@ -998,6 +1071,7 @@ const pokemonData = {
     },
     64: {
         name: "Kadabra",
+        database: true,
         id: 64,
         ruby: {},
         sapphire: {},
@@ -1009,6 +1083,7 @@ const pokemonData = {
     },
     65: {
         name: "Alakazam",
+        database: true,
         id: 65,
         ruby: {},
         sapphire: {},
@@ -1020,6 +1095,7 @@ const pokemonData = {
     },
     66: {
         name: "Machop",
+        database: true,
         id: 66,
         ruby: {},
         sapphire: {},
@@ -1031,6 +1107,7 @@ const pokemonData = {
     },
     67: {
         name: "Machoke",
+        database: true,
         id: 67,
         ruby: {},
         sapphire: {},
@@ -1042,6 +1119,7 @@ const pokemonData = {
     },
     68: {
         name: "Machamp",
+        database: true,
         id: 68,
         ruby: {},
         sapphire: {},
@@ -1053,6 +1131,7 @@ const pokemonData = {
     },
     69: {
         name: "Bellsprout",
+        database: true,
         id: 69,
         ruby: {},
         sapphire: {},
@@ -1064,6 +1143,7 @@ const pokemonData = {
     },
     70: {
         name: "Weepinbell",
+        database: true,
         id: 70,
         ruby: {},
         sapphire: {},
@@ -1075,6 +1155,7 @@ const pokemonData = {
     },
     71: {
         name: "Victreebel",
+        database: true,
         id: 71,
         ruby: {},
         sapphire: {},
@@ -1086,6 +1167,7 @@ const pokemonData = {
     },
     72: {
         name: "Tentacool",
+        database: true,
         id: 72,
         ruby: {},
         sapphire: {},
@@ -1097,6 +1179,7 @@ const pokemonData = {
     },
     73: {
         name: "Tentacruel",
+        database: true,
         id: 73,
         ruby: {},
         sapphire: {},
@@ -1108,6 +1191,7 @@ const pokemonData = {
     },
     74: {
         name: "Geodude",
+        database: true,
         id: 74,
         ruby: {},
         sapphire: {},
@@ -1119,6 +1203,7 @@ const pokemonData = {
     },
     75: {
         name: "Graveller",
+        database: true,
         id: 75,
         ruby: {},
         sapphire: {},
@@ -1130,6 +1215,7 @@ const pokemonData = {
     },
     76: {
         name: "Golem",
+        database: true,
         id: 76,
         ruby: {},
         sapphire: {},
@@ -1141,6 +1227,7 @@ const pokemonData = {
     },
     77: {
         name: "Ponyta",
+        database: true,
         id: 77,
         ruby: {},
         sapphire: {},
@@ -1152,6 +1239,7 @@ const pokemonData = {
     },
     78: {
         name: "Rapidash",
+        database: true,
         id: 78,
         ruby: {},
         sapphire: {},
@@ -1163,6 +1251,7 @@ const pokemonData = {
     },
     79: {
         name: "Slowpoke",
+        database: true,
         id: 79,
         ruby: {},
         sapphire: {},
@@ -1174,6 +1263,7 @@ const pokemonData = {
     },
     80: {
         name: "Slowbro",
+        database: true,
         id: 80,
         ruby: {},
         sapphire: {},
@@ -1185,6 +1275,7 @@ const pokemonData = {
     },
     81: {
         name: "Magnemite",
+        database: true,
         id: 81,
         ruby: {},
         sapphire: {},
@@ -1196,6 +1287,7 @@ const pokemonData = {
     },
     82: {
         name: "Magneton",
+        database: true,
         id: 82,
         ruby: {},
         sapphire: {},
@@ -1207,6 +1299,7 @@ const pokemonData = {
     },
     83: {
         name: "Farfetch'd",
+        database: true,
         id: 83,
         ruby: {},
         sapphire: {},
@@ -1218,6 +1311,7 @@ const pokemonData = {
     },
     84: {
         name: "Doduo",
+        database: true,
         id: 84,
         ruby: {},
         sapphire: {},
@@ -1229,6 +1323,7 @@ const pokemonData = {
     },
     85: {
         name: "Dodrio",
+        database: true,
         id: 85,
         ruby: {},
         sapphire: {},
@@ -1240,6 +1335,7 @@ const pokemonData = {
     },
     86: {
         name: "Seel",
+        database: true,
         id: 86,
         ruby: {},
         sapphire: {},
@@ -1251,6 +1347,7 @@ const pokemonData = {
     },
     87: {
         name: "Dewgong",
+        database: true,
         id: 87,
         ruby: {},
         sapphire: {},
@@ -1262,6 +1359,7 @@ const pokemonData = {
     },
     88: {
         name: "Grimer",
+        database: true,
         id: 88,
         ruby: {},
         sapphire: {},
@@ -1273,6 +1371,7 @@ const pokemonData = {
     },
     89: {
         name: "Muk",
+        database: true,
         id: 89,
         ruby: {},
         sapphire: {},
@@ -1284,6 +1383,7 @@ const pokemonData = {
     },
     90: {
         name: "Shellder",
+        database: true,
         id: 90,
         ruby: {},
         sapphire: {},
@@ -1295,6 +1395,7 @@ const pokemonData = {
     },
     91: {
         name: "Cloyster",
+        database: true,
         id: 91,
         ruby: {},
         sapphire: {},
@@ -1306,6 +1407,7 @@ const pokemonData = {
     },
     92: {
         name: "Gastly",
+        database: true,
         id: 92,
         ruby: {},
         sapphire: {},
@@ -1317,6 +1419,7 @@ const pokemonData = {
     },
     93: {
         name: "Haunter",
+        database: true,
         id: 93,
         ruby: {},
         sapphire: {},
@@ -1328,6 +1431,7 @@ const pokemonData = {
     },
     94: {
         name: "Gengar",
+        database: true,
         id: 94,
         ruby: {},
         sapphire: {},
@@ -1339,6 +1443,7 @@ const pokemonData = {
     },
     95: {
         name: "Onix",
+        database: true,
         id: 95,
         ruby: {},
         sapphire: {},
@@ -1350,6 +1455,7 @@ const pokemonData = {
     },
     96: {
         name: "Drowzee",
+        database: true,
         id: 96,
         ruby: {},
         sapphire: {},
@@ -1361,6 +1467,7 @@ const pokemonData = {
     },
     97: {
         name: "Hypno",
+        database: true,
         id: 97,
         ruby: {},
         sapphire: {},
@@ -1372,6 +1479,7 @@ const pokemonData = {
     },
     98: {
         name: "Krabby",
+        database: true,
         id: 98,
         ruby: {},
         sapphire: {},
@@ -1383,6 +1491,7 @@ const pokemonData = {
     },
     99: {
         name: "Kingler",
+        database: true,
         id: 99,
         ruby: {},
         sapphire: {},
@@ -1394,6 +1503,7 @@ const pokemonData = {
     },
     100: {
         name: "Voltorb",
+        database: true,
         id: 100,
         ruby: {},
         sapphire: {},
@@ -1405,6 +1515,7 @@ const pokemonData = {
     },
     101: {
         name: "Electrode",
+        database: true,
         id: 101,
         ruby: {},
         sapphire: {},
@@ -1416,6 +1527,7 @@ const pokemonData = {
     },
     102: {
         name: "Exeggute",
+        database: true,
         id: 102,
         ruby: {},
         sapphire: {},
@@ -1427,6 +1539,7 @@ const pokemonData = {
     },
     103: {
         name: "Exeggutor",
+        database: true,
         id: 103,
         ruby: {},
         sapphire: {},
@@ -1438,6 +1551,7 @@ const pokemonData = {
     },
     104: {
         name: "Cubone",
+        database: true,
         id: 104,
         ruby: {},
         sapphire: {},
@@ -1449,6 +1563,7 @@ const pokemonData = {
     },
     105: {
         name: "Marowak",
+        database: true,
         id: 105,
         ruby: {},
         sapphire: {},
@@ -1460,6 +1575,7 @@ const pokemonData = {
     },
     106: {
         name: "Hitmonlee",
+        database: true,
         id: 106,
         ruby: {},
         sapphire: {},
@@ -1471,6 +1587,7 @@ const pokemonData = {
     },
     107: {
         name: "Hitmonchan",
+        database: true,
         id: 107,
         ruby: {},
         sapphire: {},
@@ -1482,6 +1599,7 @@ const pokemonData = {
     },
     108: {
         name: "Lickitung",
+        database: true,
         id: 108,
         ruby: {},
         sapphire: {},
@@ -1493,6 +1611,7 @@ const pokemonData = {
     },
     109: {
         name: "Koffing",
+        database: true,
         id: 109,
         ruby: {},
         sapphire: {},
@@ -1504,6 +1623,7 @@ const pokemonData = {
     },
     110: {
         name: "Weezing",
+        database: true,
         id: 110,
         ruby: {},
         sapphire: {},
@@ -1515,6 +1635,7 @@ const pokemonData = {
     },
     111: {
         name: "Rhyhorn",
+        database: true,
         id: 111,
         ruby: {},
         sapphire: {},
@@ -1526,6 +1647,7 @@ const pokemonData = {
     },
     112: {
         name: "Rhydon",
+        database: true,
         id: 112,
         ruby: {},
         sapphire: {},
@@ -1537,6 +1659,7 @@ const pokemonData = {
     },
     113: {
         name: "Chansey",
+        database: true,
         id: 113,
         ruby: {},
         sapphire: {},
@@ -1548,6 +1671,7 @@ const pokemonData = {
     },
     114: {
         name: "Tangela",
+        database: true,
         id: 114,
         ruby: {},
         sapphire: {},
@@ -1559,6 +1683,7 @@ const pokemonData = {
     },
     115: {
         name: "Kangaskhan",
+        database: true,
         id: 115,
         ruby: {},
         sapphire: {},
@@ -1570,6 +1695,7 @@ const pokemonData = {
     },
     116: {
         name: "Horsea",
+        database: true,
         id: 116,
         ruby: {},
         sapphire: {},
@@ -1581,6 +1707,7 @@ const pokemonData = {
     },
     117: {
         name: "Seadra",
+        database: true,
         id: 117,
         ruby: {},
         sapphire: {},
@@ -1592,6 +1719,7 @@ const pokemonData = {
     },
     118: {
         name: "Goldeen",
+        database: true,
         id: 118,
         ruby: {},
         sapphire: {},
@@ -1603,6 +1731,7 @@ const pokemonData = {
     },
     119: {
         name: "Seaking",
+        database: true,
         id: 119,
         ruby: {},
         sapphire: {},
@@ -1614,6 +1743,7 @@ const pokemonData = {
     },
     120: {
         name: "Staryu",
+        database: true,
         id: 120,
         ruby: {},
         sapphire: {},
@@ -1625,6 +1755,7 @@ const pokemonData = {
     },
     121: {
         name: "Starmie",
+        database: true,
         id: 121,
         ruby: {},
         sapphire: {},
@@ -1636,6 +1767,7 @@ const pokemonData = {
     },
     122: {
         name: "Mr. Mime",
+        database: true,
         id: 122,
         ruby: {},
         sapphire: {},
@@ -1647,6 +1779,7 @@ const pokemonData = {
     },
     123: {
         name: "Scyther",
+        database: true,
         id: 123,
         ruby: {},
         sapphire: {},
@@ -1658,6 +1791,7 @@ const pokemonData = {
     },
     124: {
         name: "Jynx",
+        database: true,
         id: 124,
         ruby: {},
         sapphire: {},
@@ -1669,6 +1803,7 @@ const pokemonData = {
     },
     125: {
         name: "Electabuzz",
+        database: true,
         id: 125,
         ruby: {},
         sapphire: {},
@@ -1680,6 +1815,7 @@ const pokemonData = {
     },
     126: {
         name: "Magmar",
+        database: true,
         id: 126,
         ruby: {},
         sapphire: {},
@@ -1691,6 +1827,7 @@ const pokemonData = {
     },
     127: {
         name: "Pinsir",
+        database: true,
         id: 127,
         ruby: {},
         sapphire: {},
@@ -1702,6 +1839,7 @@ const pokemonData = {
     },
     128: {
         name: "Tauros",
+        database: true,
         id: 128,
         ruby: {},
         sapphire: {},
@@ -1713,6 +1851,7 @@ const pokemonData = {
     },
     129: {
         name: "Magikarp",
+        database: true,
         id: 129,
         ruby: {},
         sapphire: {},
@@ -1724,6 +1863,7 @@ const pokemonData = {
     },
     130: {
         name: "Gyarados",
+        database: true,
         id: 130,
         ruby: {},
         sapphire: {},
@@ -1735,6 +1875,7 @@ const pokemonData = {
     },
     131: {
         name: "Lapras",
+        database: true,
         id: 131,
         ruby: {},
         sapphire: {},
@@ -1746,6 +1887,7 @@ const pokemonData = {
     },
     132: {
         name: "Ditto",
+        database: true,
         id: 132,
         ruby: {},
         sapphire: {},
@@ -1757,6 +1899,7 @@ const pokemonData = {
     },
     133: {
         name: "Eevee",
+        database: true,
         id: 133,
         ruby: {},
         sapphire: {},
@@ -1768,6 +1911,7 @@ const pokemonData = {
     },
     134: {
         name: "Vaporeon",
+        database: true,
         id: 134,
         ruby: {},
         sapphire: {},
@@ -1779,6 +1923,7 @@ const pokemonData = {
     },
     135: {
         name: "Jolteon",
+        database: true,
         id: 135,
         ruby: {},
         sapphire: {},
@@ -1790,6 +1935,7 @@ const pokemonData = {
     },
     136: {
         name: "Flareon",
+        database: true,
         id: 136,
         ruby: {},
         sapphire: {},
@@ -1801,6 +1947,7 @@ const pokemonData = {
     },
     137: {
         name: "Porygon",
+        database: true,
         id: 137,
         ruby: {},
         sapphire: {},
@@ -1812,6 +1959,7 @@ const pokemonData = {
     },
     138: {
         name: "Omanyte",
+        database: true,
         id: 138,
         ruby: {},
         sapphire: {},
@@ -1823,6 +1971,7 @@ const pokemonData = {
     },
     139: {
         name: "Omastar",
+        database: true,
         id: 139,
         ruby: {},
         sapphire: {},
@@ -1834,6 +1983,7 @@ const pokemonData = {
     },
     140: {
         name: "Kabuto",
+        database: true,
         id: 140,
         ruby: {},
         sapphire: {},
@@ -1845,6 +1995,7 @@ const pokemonData = {
     },
     141: {
         name: "Kabutops",
+        database: true,
         id: 141,
         ruby: {},
         sapphire: {},
@@ -1856,6 +2007,7 @@ const pokemonData = {
     },
     142: {
         name: "Aerodactyl",
+        database: true,
         id: 142,
         ruby: {},
         sapphire: {},
@@ -1867,6 +2019,7 @@ const pokemonData = {
     },
     143: {
         name: "Snorlax",
+        database: true,
         id: 143,
         ruby: {},
         sapphire: {},
@@ -1878,6 +2031,7 @@ const pokemonData = {
     },
     144: {
         name: "Articuno",
+        database: true,
         id: 144,
         ruby: {},
         sapphire: {},
@@ -1889,6 +2043,7 @@ const pokemonData = {
     },
     145: {
         name: "Zapdos",
+        database: true,
         id: 145,
         ruby: {},
         sapphire: {},
@@ -1900,6 +2055,7 @@ const pokemonData = {
     },
     146: {
         name: "Moltres",
+        database: true,
         id: 146,
         ruby: {},
         sapphire: {},
@@ -1911,6 +2067,7 @@ const pokemonData = {
     },
     147: {
         name: "Dratini",
+        database: true,
         id: 147,
         ruby: {},
         sapphire: {},
@@ -1922,6 +2079,7 @@ const pokemonData = {
     },
     148: {
         name: "Dragonair",
+        database: true,
         id: 148,
         ruby: {},
         sapphire: {},
@@ -1933,6 +2091,7 @@ const pokemonData = {
     },
     149: {
         name: "Dragonite",
+        database: true,
         id: 149,
         ruby: {},
         sapphire: {},
@@ -1944,6 +2103,7 @@ const pokemonData = {
     },
     150: {
         name: "Mewtwo",
+        database: true,
         id: 150,
         ruby: {},
         sapphire: {},
@@ -1955,6 +2115,7 @@ const pokemonData = {
     },
     151: {
         name: "Mew",
+        database: true,
         id: 151,
         ruby: {methods:[{status: obtainStatus.importable},]},
         sapphire: {methods:[{status: obtainStatus.importable},]},
@@ -1981,6 +2142,7 @@ const pokemonData = {
 //     
     152: {
         name: "Chikorita",
+        database: true,
         id: 152,
         ruby: {methods:[{status: obtainStatus.importable},]},
         sapphire: {methods:[{status: obtainStatus.importable},]},
@@ -1992,6 +2154,7 @@ const pokemonData = {
     },
     153: {
         name: "Bayleaf",
+        database: true,
         id: 153,
         ruby: {},
         sapphire: {},
@@ -2003,6 +2166,7 @@ const pokemonData = {
     },
     154: {
         name: "Meganium",
+        database: true,
         id: 154,
         ruby: {},
         sapphire: {},
@@ -2014,6 +2178,7 @@ const pokemonData = {
     },
     155: {
         name: "Cyndaquil",
+        database: true,
         id: 155,
         ruby: {},
         sapphire: {},
@@ -2025,6 +2190,7 @@ const pokemonData = {
     },
     156: {
         name: "Quilava",
+        database: true,
         id: 156,
         ruby: {},
         sapphire: {},
@@ -2036,6 +2202,7 @@ const pokemonData = {
     },
     157: {
         name: "Typhlosion",
+        database: true,
         id: 157,
         ruby: {},
         sapphire: {},
@@ -2047,6 +2214,7 @@ const pokemonData = {
     },
     158: {
         name: "Totodile",
+        database: true,
         id: 158,
         ruby: {},
         sapphire: {},
@@ -2058,6 +2226,7 @@ const pokemonData = {
     },
     159: {
         name: "Croconaw",
+        database: true,
         id: 159,
         ruby: {},
         sapphire: {},
@@ -2069,6 +2238,7 @@ const pokemonData = {
     },
     160: {
         name: "Feraligatr",
+        database: true,
         id: 160,
         ruby: {},
         sapphire: {},
@@ -2080,6 +2250,7 @@ const pokemonData = {
     },
     161: {
         name: "Sentret",
+        database: true,
         id: 161,
         ruby: {},
         sapphire: {},
@@ -2091,6 +2262,7 @@ const pokemonData = {
     },
     162: {
         name: "Furret",
+        database: true,
         id: 162,
         ruby: {},
         sapphire: {},
@@ -2102,6 +2274,7 @@ const pokemonData = {
     },
     163: {
         name: "Hoothoot",
+        database: true,
         id: 163,
         ruby: {},
         sapphire: {},
@@ -2113,6 +2286,7 @@ const pokemonData = {
     },
     164: {
         name: "Noctowl",
+        database: true,
         id: 164,
         ruby: {},
         sapphire: {},
@@ -2124,6 +2298,7 @@ const pokemonData = {
     },
     165: {
         name: "Ledyba",
+        database: true,
         id: 165,
         ruby: {},
         sapphire: {},
@@ -2135,6 +2310,7 @@ const pokemonData = {
     },
     166: {
         name: "Ledian",
+        database: true,
         id: 166,
         ruby: {},
         sapphire: {},
@@ -2146,6 +2322,7 @@ const pokemonData = {
     },
     167: {
         name: "Spinarak",
+        database: true,
         id: 167,
         ruby: {},
         sapphire: {},
@@ -2157,6 +2334,7 @@ const pokemonData = {
     },
     168: {
         name: "Ariados",
+        database: true,
         id: 168,
         ruby: {},
         sapphire: {},
@@ -2168,6 +2346,7 @@ const pokemonData = {
     },
     169: {
         name: "Crobat",
+        database: true,
         id: 169,
         ruby: {},
         sapphire: {},
@@ -2179,6 +2358,7 @@ const pokemonData = {
     },
     170: {
         name: "Chinchou",
+        database: true,
         id: 170,
         ruby: {},
         sapphire: {},
@@ -2190,6 +2370,7 @@ const pokemonData = {
     },
     171: {
         name: "Lanturn",
+        database: true,
         id: 171,
         ruby: {},
         sapphire: {},
@@ -2201,6 +2382,7 @@ const pokemonData = {
     },
     172: {
         name: "Pichu",
+        database: true,
         id: 172,
         ruby: {},
         sapphire: {},
@@ -2212,6 +2394,7 @@ const pokemonData = {
     },
     173: {
         name: "Cleffa",
+        database: true,
         id: 173,
         ruby: {},
         sapphire: {},
@@ -2223,6 +2406,7 @@ const pokemonData = {
     },
     174: {
         name: "Igglybuff",
+        database: true,
         id: 174,
         ruby: {},
         sapphire: {},
@@ -2234,6 +2418,7 @@ const pokemonData = {
     },
     175: {
         name: "Togepi",
+        database: true,
         id: 175,
         ruby: {},
         sapphire: {},
@@ -2245,6 +2430,7 @@ const pokemonData = {
     },
     176: {
         name: "Togetic",
+        database: true,
         id: 176,
         ruby: {},
         sapphire: {},
@@ -2256,6 +2442,7 @@ const pokemonData = {
     },
     177: {
         name: "Natu",
+        database: true,
         id: 177,
         ruby: {},
         sapphire: {},
@@ -2267,6 +2454,7 @@ const pokemonData = {
     },
     178: {
         name: "Xatu",
+        database: true,
         id: 178,
         ruby: {},
         sapphire: {},
@@ -2278,6 +2466,7 @@ const pokemonData = {
     },
     179: {
         name: "Mareep",
+        database: true,
         id: 179,
         ruby: {},
         sapphire: {},
@@ -2289,6 +2478,7 @@ const pokemonData = {
     },
     180: {
         name: "Flaaffy",
+        database: true,
         id: 180,
         ruby: {},
         sapphire: {},
@@ -2300,6 +2490,7 @@ const pokemonData = {
     },
     181: {
         name: "Ampharos",
+        database: true,
         id: 181,
         ruby: {},
         sapphire: {},
@@ -2311,6 +2502,7 @@ const pokemonData = {
     },
     182: {
         name: "Bellossom",
+        database: true,
         id: 182,
         ruby: {},
         sapphire: {},
@@ -2322,6 +2514,7 @@ const pokemonData = {
     },
     183: {
         name: "Maril",
+        database: true,
         id: 183,
         ruby: {},
         sapphire: {},
@@ -2333,6 +2526,7 @@ const pokemonData = {
     },
     184: {
         name: "Azumaril",
+        database: true,
         id: 184,
         ruby: {},
         sapphire: {},
@@ -2344,6 +2538,7 @@ const pokemonData = {
     },
     185: {
         name: "Sudowudo",
+        database: true,
         id: 185,
         ruby: {},
         sapphire: {},
@@ -2355,6 +2550,7 @@ const pokemonData = {
     },
     186: {
         name: "Politoed",
+        database: true,
         id: 186,
         ruby: {},
         sapphire: {},
@@ -2366,6 +2562,7 @@ const pokemonData = {
     },
     187: {
         name: "Hoppip",
+        database: true,
         id: 187,
         ruby: {},
         sapphire: {},
@@ -2377,6 +2574,7 @@ const pokemonData = {
     },
     188: {
         name: "Skiploom",
+        database: true,
         id: 188,
         ruby: {},
         sapphire: {},
@@ -2388,6 +2586,7 @@ const pokemonData = {
     },
     189: {
         name: "Jumpluff",
+        database: true,
         id: 189,
         ruby: {},
         sapphire: {},
@@ -2399,6 +2598,7 @@ const pokemonData = {
     },
     190: {
         name: "Aipom",
+        database: true,
         id: 190,
         ruby: {},
         sapphire: {},
@@ -2410,6 +2610,7 @@ const pokemonData = {
     },
     191: {
         name: "Sunkern",
+        database: true,
         id: 191,
         ruby: {},
         sapphire: {},
@@ -2421,6 +2622,7 @@ const pokemonData = {
     },
     192: {
         name: "Sunflora",
+        database: true,
         id: 192,
         ruby: {},
         sapphire: {},
@@ -2432,6 +2634,7 @@ const pokemonData = {
     },
     193: {
         name: "Yanma",
+        database: true,
         id: 193,
         ruby: {},
         sapphire: {},
@@ -2443,6 +2646,7 @@ const pokemonData = {
     },
     194: {
         name: "Wooper",
+        database: true,
         id: 194,
         ruby: {},
         sapphire: {},
@@ -2454,6 +2658,7 @@ const pokemonData = {
     },
     195: {
         name: "Quagsire",
+        database: true,
         id: 195,
         ruby: {},
         sapphire: {},
@@ -2465,6 +2670,7 @@ const pokemonData = {
     },
     196: {
         name: "Espeon",
+        database: true,
         id: 196,
         ruby: {},
         sapphire: {},
@@ -2476,6 +2682,7 @@ const pokemonData = {
     },
     197: {
         name: "Umbreon",
+        database: true,
         id: 197,
         ruby: {},
         sapphire: {},
@@ -2487,6 +2694,7 @@ const pokemonData = {
     },
     198: {
         name: "Murkrow",
+        database: true,
         id: 198,
         ruby: {},
         sapphire: {},
@@ -2498,6 +2706,7 @@ const pokemonData = {
     },
     199: {
         name: "Slowking",
+        database: true,
         id: 199,
         ruby: {},
         sapphire: {},
@@ -2509,6 +2718,7 @@ const pokemonData = {
     },
     200: {
         name: "Misdreavus",
+        database: true,
         id: 200,
         ruby: {},
         sapphire: {},
@@ -2520,17 +2730,20 @@ const pokemonData = {
     },
     201: {
         name: "Unown",
+        database: true,
         id: 201,
-        ruby: {},
-        sapphire: {},
-        firered: {},
-        leafgreen: {},
-        emerald: {},
-        colosseum: {},
-        xd: {},
+        forms: [387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414],
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._tanoby_chambers]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._tanoby_chambers]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
     },
     202: {
         name: "Wobbuffet",
+        database: true,
         id: 202,
         ruby: {},
         sapphire: {},
@@ -2542,6 +2755,7 @@ const pokemonData = {
     },
     203: {
         name: "Girafarig",
+        database: true,
         id: 203,
         ruby: {},
         sapphire: {},
@@ -2553,6 +2767,7 @@ const pokemonData = {
     },
     204: {
         name: "Pineco",
+        database: true,
         id: 204,
         ruby: {},
         sapphire: {},
@@ -2564,6 +2779,7 @@ const pokemonData = {
     },
     205: {
         name: "Forretress",
+        database: true,
         id: 205,
         ruby: {},
         sapphire: {},
@@ -2575,6 +2791,7 @@ const pokemonData = {
     },
     206: {
         name: "Dunsparse",
+        database: true,
         id: 206,
         ruby: {},
         sapphire: {},
@@ -2586,6 +2803,7 @@ const pokemonData = {
     },
     207: {
         name: "Gligar",
+        database: true,
         id: 207,
         ruby: {},
         sapphire: {},
@@ -2597,6 +2815,7 @@ const pokemonData = {
     },
     208: {
         name: "Steelix",
+        database: true,
         id: 208,
         ruby: {},
         sapphire: {},
@@ -2608,6 +2827,7 @@ const pokemonData = {
     },
     209: {
         name: "Snubbull",
+        database: true,
         id: 209,
         ruby: {},
         sapphire: {},
@@ -2619,6 +2839,7 @@ const pokemonData = {
     },
     210: {
         name: "Granbull",
+        database: true,
         id: 210,
         ruby: {},
         sapphire: {},
@@ -2630,6 +2851,7 @@ const pokemonData = {
     },
     211: {
         name: "Qwilfish",
+        database: true,
         id: 211,
         ruby: {},
         sapphire: {},
@@ -2641,6 +2863,7 @@ const pokemonData = {
     },
     212: {
         name: "Scizor",
+        database: true,
         id: 212,
         ruby: {},
         sapphire: {},
@@ -2652,6 +2875,7 @@ const pokemonData = {
     },
     213: {
         name: "Shuckle",
+        database: true,
         id: 213,
         ruby: {},
         sapphire: {},
@@ -2663,6 +2887,7 @@ const pokemonData = {
     },
     214: {
         name: "Heracross",
+        database: true,
         id: 214,
         ruby: {},
         sapphire: {},
@@ -2674,6 +2899,7 @@ const pokemonData = {
     },
     215: {
         name: "Sneasel",
+        database: true,
         id: 215,
         ruby: {},
         sapphire: {},
@@ -2685,6 +2911,7 @@ const pokemonData = {
     },
     216: {
         name: "Teddiursa",
+        database: true,
         id: 216,
         ruby: {},
         sapphire: {},
@@ -2696,6 +2923,7 @@ const pokemonData = {
     },
     217: {
         name: "Ursaring",
+        database: true,
         id: 217,
         ruby: {},
         sapphire: {},
@@ -2707,6 +2935,7 @@ const pokemonData = {
     },
     218: {
         name: "Slugma",
+        database: true,
         id: 218,
         ruby: {},
         sapphire: {},
@@ -2718,6 +2947,7 @@ const pokemonData = {
     },
     219: {
         name: "Magcargo",
+        database: true,
         id: 219,
         ruby: {},
         sapphire: {},
@@ -2729,6 +2959,7 @@ const pokemonData = {
     },
     220: {
         name: "Swinub",
+        database: true,
         id: 220,
         ruby: {},
         sapphire: {},
@@ -2740,6 +2971,7 @@ const pokemonData = {
     },
     221: {
         name: "Piloswine",
+        database: true,
         id: 221,
         ruby: {},
         sapphire: {},
@@ -2751,6 +2983,7 @@ const pokemonData = {
     },
     222: {
         name: "Corsola",
+        database: true,
         id: 222,
         ruby: {},
         sapphire: {},
@@ -2762,6 +2995,7 @@ const pokemonData = {
     },
     223: {
         name: "Remoraid",
+        database: true,
         id: 223,
         ruby: {},
         sapphire: {},
@@ -2773,6 +3007,7 @@ const pokemonData = {
     },
     224: {
         name: "Octillery",
+        database: true,
         id: 224,
         ruby: {},
         sapphire: {},
@@ -2784,6 +3019,7 @@ const pokemonData = {
     },
     225: {
         name: "Delibird",
+        database: true,
         id: 225,
         ruby: {},
         sapphire: {},
@@ -2795,6 +3031,7 @@ const pokemonData = {
     },
     226: {
         name: "Mantine",
+        database: true,
         id: 226,
         ruby: {},
         sapphire: {},
@@ -2806,6 +3043,7 @@ const pokemonData = {
     },
     227: {
         name: "Skarmory",
+        database: true,
         id: 227,
         ruby: {},
         sapphire: {},
@@ -2817,6 +3055,7 @@ const pokemonData = {
     },
     228: {
         name: "Houndour",
+        database: true,
         id: 228,
         ruby: {},
         sapphire: {},
@@ -2828,6 +3067,7 @@ const pokemonData = {
     },
     229: {
         name: "Houndoom",
+        database: true,
         id: 229,
         ruby: {},
         sapphire: {},
@@ -2839,6 +3079,7 @@ const pokemonData = {
     },
     230: {
         name: "Kingdra",
+        database: true,
         id: 230,
         ruby: {},
         sapphire: {},
@@ -2850,6 +3091,7 @@ const pokemonData = {
     },
     231: {
         name: "Phanpy",
+        database: true,
         id: 231,
         ruby: {},
         sapphire: {},
@@ -2861,6 +3103,7 @@ const pokemonData = {
     },
     232: {
         name: "Donphan",
+        database: true,
         id: 232,
         ruby: {},
         sapphire: {},
@@ -2872,6 +3115,7 @@ const pokemonData = {
     },
     233: {
         name: "Porygon2",
+        database: true,
         id: 233,
         ruby: {},
         sapphire: {},
@@ -2883,6 +3127,7 @@ const pokemonData = {
     },
     234: {
         name: "Stantler",
+        database: true,
         id: 234,
         ruby: {},
         sapphire: {},
@@ -2894,6 +3139,7 @@ const pokemonData = {
     },
     235: {
         name: "Smeargle",
+        database: true,
         id: 235,
         ruby: {},
         sapphire: {},
@@ -2905,6 +3151,7 @@ const pokemonData = {
     },
     236: {
         name: "Tyrogue",
+        database: true,
         id: 236,
         ruby: {},
         sapphire: {},
@@ -2916,6 +3163,7 @@ const pokemonData = {
     },
     237: {
         name: "Hitmontop",
+        database: true,
         id: 237,
         ruby: {},
         sapphire: {},
@@ -2927,6 +3175,7 @@ const pokemonData = {
     },
     238: {
         name: "Smoochum",
+        database: true,
         id: 238,
         ruby: {},
         sapphire: {},
@@ -2938,6 +3187,7 @@ const pokemonData = {
     },
     239: {
         name: "Elekid",
+        database: true,
         id: 239,
         ruby: {},
         sapphire: {},
@@ -2949,6 +3199,7 @@ const pokemonData = {
     },
     240: {
         name: "Magby",
+        database: true,
         id: 240,
         ruby: {},
         sapphire: {},
@@ -2960,6 +3211,7 @@ const pokemonData = {
     },
     241: {
         name: "Miltank",
+        database: true,
         id: 241,
         ruby: {},
         sapphire: {},
@@ -2971,6 +3223,7 @@ const pokemonData = {
     },
     242: {
         name: "Blissey",
+        database: true,
         id: 242,
         ruby: {},
         sapphire: {},
@@ -2982,6 +3235,7 @@ const pokemonData = {
     },
     243: {
         name: "Raikou",
+        database: true,
         id: 243,
         ruby: {},
         sapphire: {},
@@ -2993,6 +3247,7 @@ const pokemonData = {
     },
     244: {
         name: "Entei",
+        database: true,
         id: 244,
         ruby: {},
         sapphire: {},
@@ -3004,6 +3259,7 @@ const pokemonData = {
     },
     245: {
         name: "Suicune",
+        database: true,
         id: 245,
         ruby: {},
         sapphire: {},
@@ -3015,6 +3271,7 @@ const pokemonData = {
     },
     246: {
         name: "Larvitar",
+        database: true,
         id: 246,
         ruby: {},
         sapphire: {},
@@ -3026,6 +3283,7 @@ const pokemonData = {
     },
     247: {
         name: "Pupitar",
+        database: true,
         id: 247,
         ruby: {},
         sapphire: {},
@@ -3037,6 +3295,7 @@ const pokemonData = {
     },
     248: {
         name: "Tyranitar",
+        database: true,
         id: 248,
         ruby: {},
         sapphire: {},
@@ -3048,6 +3307,7 @@ const pokemonData = {
     },
     249: {
         name: "Lugia",
+        database: true,
         id: 249,
         ruby: {},
         sapphire: {},
@@ -3059,6 +3319,7 @@ const pokemonData = {
     },
     250: {
         name: "Ho-oh",
+        database: true,
         id: 250,
         ruby: {},
         sapphire: {},
@@ -3070,6 +3331,7 @@ const pokemonData = {
     },
     251: {
         name: "Celebi",
+        database: true,
         id: 251,
         ruby: {},
         sapphire: {},
@@ -3096,6 +3358,7 @@ const pokemonData = {
 //     
     252: {
         name: "Treecko",
+        database: true,
         id: 252,
         ruby: {},
         sapphire: {},
@@ -3107,6 +3370,7 @@ const pokemonData = {
     },
     253: {
         name: "Grovyle",
+        database: true,
         id: 253,
         ruby: {},
         sapphire: {},
@@ -3118,6 +3382,7 @@ const pokemonData = {
     },
     254: {
         name: "Sceptile",
+        database: true,
         id: 254,
         ruby: {},
         sapphire: {},
@@ -3129,6 +3394,7 @@ const pokemonData = {
     },
     255: {
         name: "Torchic",
+        database: true,
         id: 255,
         ruby: {},
         sapphire: {},
@@ -3140,6 +3406,7 @@ const pokemonData = {
     },
     256: {
         name: "Combusken",
+        database: true,
         id: 256,
         ruby: {},
         sapphire: {},
@@ -3151,6 +3418,7 @@ const pokemonData = {
     },
     257: {
         name: "Blaziken",
+        database: true,
         id: 257,
         ruby: {},
         sapphire: {},
@@ -3162,6 +3430,7 @@ const pokemonData = {
     },
     258: {
         name: "Mudkip",
+        database: true,
         id: 258,
         ruby: {},
         sapphire: {},
@@ -3173,6 +3442,7 @@ const pokemonData = {
     },
     259: {
         name: "Marshtomp",
+        database: true,
         id: 259,
         ruby: {},
         sapphire: {},
@@ -3184,6 +3454,7 @@ const pokemonData = {
     },
     260: {
         name: "Swampert",
+        database: true,
         id: 260,
         ruby: {},
         sapphire: {},
@@ -3195,6 +3466,7 @@ const pokemonData = {
     },
     261: {
         name: "Poochyena",
+        database: true,
         id: 261,
         ruby: {},
         sapphire: {},
@@ -3206,6 +3478,7 @@ const pokemonData = {
     },
     262: {
         name: "Mightyena",
+        database: true,
         id: 262,
         ruby: {},
         sapphire: {},
@@ -3217,6 +3490,7 @@ const pokemonData = {
     },
     263: {
         name: "Zigzagoon",
+        database: true,
         id: 263,
         ruby: {},
         sapphire: {},
@@ -3228,6 +3502,7 @@ const pokemonData = {
     },
     264: {
         name: "Linoone",
+        database: true,
         id: 264,
         ruby: {},
         sapphire: {},
@@ -3239,6 +3514,7 @@ const pokemonData = {
     },
     265: {
         name: "Wurmple",
+        database: true,
         id: 265,
         ruby: {},
         sapphire: {},
@@ -3250,6 +3526,7 @@ const pokemonData = {
     },
     266: {
         name: "Silcoon",
+        database: true,
         id: 266,
         ruby: {},
         sapphire: {},
@@ -3261,6 +3538,7 @@ const pokemonData = {
     },
     267: {
         name: "Beautifly",
+        database: true,
         id: 267,
         ruby: {},
         sapphire: {},
@@ -3272,6 +3550,7 @@ const pokemonData = {
     },
     268: {
         name: "Cascoon",
+        database: true,
         id: 268,
         ruby: {},
         sapphire: {},
@@ -3283,6 +3562,7 @@ const pokemonData = {
     },
     269: {
         name: "Dustox",
+        database: true,
         id: 269,
         ruby: {},
         sapphire: {},
@@ -3294,6 +3574,7 @@ const pokemonData = {
     },
     270: {
         name: "Lotad",
+        database: true,
         id: 270,
         ruby: {},
         sapphire: {},
@@ -3305,6 +3586,7 @@ const pokemonData = {
     },
     271: {
         name: "Lombre",
+        database: true,
         id: 271,
         ruby: {},
         sapphire: {},
@@ -3316,6 +3598,7 @@ const pokemonData = {
     },
     272: {
         name: "Ludicolo",
+        database: true,
         id: 272,
         ruby: {},
         sapphire: {},
@@ -3327,6 +3610,7 @@ const pokemonData = {
     },
     273: {
         name: "Seedot",
+        database: true,
         id: 273,
         ruby: {},
         sapphire: {},
@@ -3338,6 +3622,7 @@ const pokemonData = {
     },
     274: {
         name: "Nuzleaf",
+        database: true,
         id: 274,
         ruby: {},
         sapphire: {},
@@ -3349,6 +3634,7 @@ const pokemonData = {
     },
     275: {
         name: "Shiftry",
+        database: true,
         id: 275,
         ruby: {},
         sapphire: {},
@@ -3360,6 +3646,7 @@ const pokemonData = {
     },
     276: {
         name: "Taillow",
+        database: true,
         id: 276,
         ruby: {},
         sapphire: {},
@@ -3371,6 +3658,7 @@ const pokemonData = {
     },
     277: {
         name: "Swellow",
+        database: true,
         id: 277,
         ruby: {},
         sapphire: {},
@@ -3382,6 +3670,7 @@ const pokemonData = {
     },
     278: {
         name: "Wingull",
+        database: true,
         id: 278,
         ruby: {},
         sapphire: {},
@@ -3393,6 +3682,7 @@ const pokemonData = {
     },
     279: {
         name: "Pelipper",
+        database: true,
         id: 279,
         ruby: {},
         sapphire: {},
@@ -3404,6 +3694,7 @@ const pokemonData = {
     },
     280: {
         name: "Ralts",
+        database: true,
         id: 280,
         ruby: {},
         sapphire: {},
@@ -3415,6 +3706,7 @@ const pokemonData = {
     },
     281: {
         name: "Kirlia",
+        database: true,
         id: 281,
         ruby: {},
         sapphire: {},
@@ -3426,6 +3718,7 @@ const pokemonData = {
     },
     282: {
         name: "Gardevoir",
+        database: true,
         id: 282,
         ruby: {},
         sapphire: {},
@@ -3437,6 +3730,7 @@ const pokemonData = {
     },
     283: {
         name: "Surskit",
+        database: true,
         id: 283,
         ruby: {},
         sapphire: {},
@@ -3448,6 +3742,7 @@ const pokemonData = {
     },
     284: {
         name: "Masquerain",
+        database: true,
         id: 284,
         ruby: {},
         sapphire: {},
@@ -3459,6 +3754,7 @@ const pokemonData = {
     },
     285: {
         name: "Shroomish",
+        database: true,
         id: 285,
         ruby: {},
         sapphire: {},
@@ -3470,6 +3766,7 @@ const pokemonData = {
     },
     286: {
         name: "Breloom",
+        database: true,
         id: 286,
         ruby: {},
         sapphire: {},
@@ -3481,6 +3778,7 @@ const pokemonData = {
     },
     287: {
         name: "Slakoth",
+        database: true,
         id: 287,
         ruby: {},
         sapphire: {},
@@ -3492,6 +3790,7 @@ const pokemonData = {
     },
     288: {
         name: "Vigoroth",
+        database: true,
         id: 288,
         ruby: {},
         sapphire: {},
@@ -3503,6 +3802,7 @@ const pokemonData = {
     },
     289: {
         name: "Slaking",
+        database: true,
         id: 289,
         ruby: {},
         sapphire: {},
@@ -3514,6 +3814,7 @@ const pokemonData = {
     },
     290: {
         name: "Nincada",
+        database: true,
         id: 290,
         ruby: {},
         sapphire: {},
@@ -3525,6 +3826,7 @@ const pokemonData = {
     },
     291: {
         name: "Ninjask",
+        database: true,
         id: 291,
         ruby: {},
         sapphire: {},
@@ -3536,6 +3838,7 @@ const pokemonData = {
     },
     292: {
         name: "Shedinja",
+        database: true,
         id: 292,
         ruby: {},
         sapphire: {},
@@ -3547,6 +3850,7 @@ const pokemonData = {
     },
     293: {
         name: "Whismur",
+        database: true,
         id: 293,
         ruby: {},
         sapphire: {},
@@ -3558,6 +3862,7 @@ const pokemonData = {
     },
     294: {
         name: "Loudred",
+        database: true,
         id: 294,
         ruby: {},
         sapphire: {},
@@ -3569,6 +3874,7 @@ const pokemonData = {
     },
     295: {
         name: "Exploud",
+        database: true,
         id: 295,
         ruby: {},
         sapphire: {},
@@ -3580,6 +3886,7 @@ const pokemonData = {
     },
     296: {
         name: "Makuhita",
+        database: true,
         id: 296,
         ruby: {},
         sapphire: {},
@@ -3591,6 +3898,7 @@ const pokemonData = {
     },
     297: {
         name: "Hariyama",
+        database: true,
         id: 297,
         ruby: {},
         sapphire: {},
@@ -3602,6 +3910,7 @@ const pokemonData = {
     },
     298: {
         name: "Azuril",
+        database: true,
         id: 298,
         ruby: {},
         sapphire: {},
@@ -3613,6 +3922,7 @@ const pokemonData = {
     },
     299: {
         name: "Nosepass",
+        database: true,
         id: 299,
         ruby: {},
         sapphire: {},
@@ -3624,6 +3934,7 @@ const pokemonData = {
     },
     300: {
         name: "Skitty",
+        database: true,
         id: 300,
         ruby: {},
         sapphire: {},
@@ -3635,6 +3946,7 @@ const pokemonData = {
     },
     301: {
         name: "Delcatty",
+        database: true,
         id: 301,
         ruby: {},
         sapphire: {},
@@ -3646,6 +3958,7 @@ const pokemonData = {
     },
     302: {
         name: "Sableye",
+        database: true,
         id: 302,
         ruby: {},
         sapphire: {},
@@ -3657,6 +3970,7 @@ const pokemonData = {
     },
     303: {
         name: "Mawile",
+        database: true,
         id: 303,
         ruby: {},
         sapphire: {},
@@ -3668,6 +3982,7 @@ const pokemonData = {
     },
     304: {
         name: "Aron",
+        database: true,
         id: 304,
         ruby: {},
         sapphire: {},
@@ -3679,6 +3994,7 @@ const pokemonData = {
     },
     305: {
         name: "Lairon",
+        database: true,
         id: 305,
         ruby: {},
         sapphire: {},
@@ -3690,6 +4006,7 @@ const pokemonData = {
     },
     306: {
         name: "Aggron",
+        database: true,
         id: 306,
         ruby: {},
         sapphire: {},
@@ -3701,6 +4018,7 @@ const pokemonData = {
     },
     307: {
         name: "Meditite",
+        database: true,
         id: 307,
         ruby: {},
         sapphire: {},
@@ -3712,6 +4030,7 @@ const pokemonData = {
     },
     308: {
         name: "Medicham",
+        database: true,
         id: 308,
         ruby: {},
         sapphire: {},
@@ -3723,6 +4042,7 @@ const pokemonData = {
     },
     309: {
         name: "Electrike",
+        database: true,
         id: 309,
         ruby: {},
         sapphire: {},
@@ -3734,6 +4054,7 @@ const pokemonData = {
     },
     310: {
         name: "Manectric",
+        database: true,
         id: 310,
         ruby: {},
         sapphire: {},
@@ -3745,6 +4066,7 @@ const pokemonData = {
     },
     311: {
         name: "Plusle",
+        database: true,
         id: 311,
         ruby: {},
         sapphire: {},
@@ -3756,6 +4078,7 @@ const pokemonData = {
     },
     312: {
         name: "Minun",
+        database: true,
         id: 312,
         ruby: {},
         sapphire: {},
@@ -3767,6 +4090,7 @@ const pokemonData = {
     },
     313: {
         name: "Volbeat",
+        database: true,
         id: 313,
         ruby: {},
         sapphire: {},
@@ -3778,6 +4102,7 @@ const pokemonData = {
     },
     314: {
         name: "Illumise",
+        database: true,
         id: 314,
         ruby: {},
         sapphire: {},
@@ -3789,6 +4114,7 @@ const pokemonData = {
     },
     315: {
         name: "Roselia",
+        database: true,
         id: 315,
         ruby: {},
         sapphire: {},
@@ -3800,6 +4126,7 @@ const pokemonData = {
     },
     316: {
         name: "Gulpin",
+        database: true,
         id: 316,
         ruby: {},
         sapphire: {},
@@ -3811,6 +4138,7 @@ const pokemonData = {
     },
     317: {
         name: "Swalot",
+        database: true,
         id: 317,
         ruby: {},
         sapphire: {},
@@ -3822,6 +4150,7 @@ const pokemonData = {
     },
     318: {
         name: "Carvanha",
+        database: true,
         id: 318,
         ruby: {},
         sapphire: {},
@@ -3833,6 +4162,7 @@ const pokemonData = {
     },
     319: {
         name: "Sharpedo",
+        database: true,
         id: 319,
         ruby: {},
         sapphire: {},
@@ -3844,6 +4174,7 @@ const pokemonData = {
     },
     320: {
         name: "Wailmer",
+        database: true,
         id: 320,
         ruby: {},
         sapphire: {},
@@ -3855,6 +4186,7 @@ const pokemonData = {
     },
     321: {
         name: "Wailord",
+        database: true,
         id: 321,
         ruby: {},
         sapphire: {},
@@ -3866,6 +4198,7 @@ const pokemonData = {
     },
     322: {
         name: "Numel",
+        database: true,
         id: 322,
         ruby: {},
         sapphire: {},
@@ -3877,6 +4210,7 @@ const pokemonData = {
     },
     323: {
         name: "Camerupt",
+        database: true,
         id: 323,
         ruby: {},
         sapphire: {},
@@ -3888,6 +4222,7 @@ const pokemonData = {
     },
     324: {
         name: "Torkoal",
+        database: true,
         id: 324,
         ruby: {},
         sapphire: {},
@@ -3899,6 +4234,7 @@ const pokemonData = {
     },
     325: {
         name: "Spoink",
+        database: true,
         id: 325,
         ruby: {},
         sapphire: {},
@@ -3910,6 +4246,7 @@ const pokemonData = {
     },
     326: {
         name: "Grumpig",
+        database: true,
         id: 326,
         ruby: {},
         sapphire: {},
@@ -3921,6 +4258,7 @@ const pokemonData = {
     },
     327: {
         name: "Spinda",
+        database: true,
         id: 327,
         ruby: {},
         sapphire: {},
@@ -3932,6 +4270,7 @@ const pokemonData = {
     },
     328: {
         name: "Trapinch",
+        database: true,
         id: 328,
         ruby: {},
         sapphire: {},
@@ -3943,6 +4282,7 @@ const pokemonData = {
     },
     329: {
         name: "Vibrava",
+        database: true,
         id: 329,
         ruby: {},
         sapphire: {},
@@ -3954,6 +4294,7 @@ const pokemonData = {
     },
     330: {
         name: "Flygon",
+        database: true,
         id: 330,
         ruby: {},
         sapphire: {},
@@ -3965,6 +4306,7 @@ const pokemonData = {
     },
     331: {
         name: "Cacnea",
+        database: true,
         id: 331,
         ruby: {},
         sapphire: {},
@@ -3976,6 +4318,7 @@ const pokemonData = {
     },
     332: {
         name: "Cacturne",
+        database: true,
         id: 332,
         ruby: {},
         sapphire: {},
@@ -3987,6 +4330,7 @@ const pokemonData = {
     },
     333: {
         name: "Swablu",
+        database: true,
         id: 333,
         ruby: {},
         sapphire: {},
@@ -3998,6 +4342,7 @@ const pokemonData = {
     },
     334: {
         name: "Altaria",
+        database: true,
         id: 334,
         ruby: {},
         sapphire: {},
@@ -4009,6 +4354,7 @@ const pokemonData = {
     },
     335: {
         name: "Zangoose",
+        database: true,
         id: 335,
         ruby: {},
         sapphire: {},
@@ -4020,6 +4366,7 @@ const pokemonData = {
     },
     336: {
         name: "Seviper",
+        database: true,
         id: 336,
         ruby: {},
         sapphire: {},
@@ -4031,6 +4378,7 @@ const pokemonData = {
     },
     337: {
         name: "Lunatone",
+        database: true,
         id: 337,
         ruby: {},
         sapphire: {},
@@ -4042,6 +4390,7 @@ const pokemonData = {
     },
     338: {
         name: "Solrock",
+        database: true,
         id: 338,
         ruby: {},
         sapphire: {},
@@ -4053,6 +4402,7 @@ const pokemonData = {
     },
     339: {
         name: "Barboach",
+        database: true,
         id: 339,
         ruby: {},
         sapphire: {},
@@ -4064,6 +4414,7 @@ const pokemonData = {
     },
     340: {
         name: "Whiscash",
+        database: true,
         id: 340,
         ruby: {},
         sapphire: {},
@@ -4075,6 +4426,7 @@ const pokemonData = {
     },
     341: {
         name: "Corphish",
+        database: true,
         id: 341,
         ruby: {},
         sapphire: {},
@@ -4086,6 +4438,7 @@ const pokemonData = {
     },
     342: {
         name: "Crawdaunt",
+        database: true,
         id: 342,
         ruby: {},
         sapphire: {},
@@ -4097,6 +4450,7 @@ const pokemonData = {
     },
     343: {
         name: "Baltoy",
+        database: true,
         id: 343,
         ruby: {},
         sapphire: {},
@@ -4108,6 +4462,7 @@ const pokemonData = {
     },
     344: {
         name: "Claydol",
+        database: true,
         id: 344,
         ruby: {},
         sapphire: {},
@@ -4119,6 +4474,7 @@ const pokemonData = {
     },
     345: {
         name: "Lileep",
+        database: true,
         id: 345,
         ruby: {},
         sapphire: {},
@@ -4130,6 +4486,7 @@ const pokemonData = {
     },
     346: {
         name: "Cradily",
+        database: true,
         id: 346,
         ruby: {},
         sapphire: {},
@@ -4141,6 +4498,7 @@ const pokemonData = {
     },
     347: {
         name: "Anorith",
+        database: true,
         id: 347,
         ruby: {},
         sapphire: {},
@@ -4152,6 +4510,7 @@ const pokemonData = {
     },
     348: {
         name: "Armaldo",
+        database: true,
         id: 348,
         ruby: {},
         sapphire: {},
@@ -4163,6 +4522,7 @@ const pokemonData = {
     },
     349: {
         name: "Feebas",
+        database: true,
         id: 349,
         ruby: {},
         sapphire: {},
@@ -4174,6 +4534,7 @@ const pokemonData = {
     },
     350: {
         name: "Milotic",
+        database: true,
         id: 350,
         ruby: {},
         sapphire: {},
@@ -4185,6 +4546,7 @@ const pokemonData = {
     },
     351: {
         name: "Castform",
+        database: true,
         id: 351,
         ruby: {},
         sapphire: {},
@@ -4196,6 +4558,7 @@ const pokemonData = {
     },
     352: {
         name: "Keckleon",
+        database: true,
         id: 352,
         ruby: {},
         sapphire: {},
@@ -4207,6 +4570,7 @@ const pokemonData = {
     },
     353: {
         name: "Shuppet",
+        database: true,
         id: 353,
         ruby: {},
         sapphire: {},
@@ -4218,6 +4582,7 @@ const pokemonData = {
     },
     354: {
         name: "Banette",
+        database: true,
         id: 354,
         ruby: {},
         sapphire: {},
@@ -4229,6 +4594,7 @@ const pokemonData = {
     },
     355: {
         name: "Duskull",
+        database: true,
         id: 355,
         ruby: {},
         sapphire: {},
@@ -4240,6 +4606,7 @@ const pokemonData = {
     },
     356: {
         name: "Dusclops",
+        database: true,
         id: 356,
         ruby: {},
         sapphire: {},
@@ -4251,6 +4618,7 @@ const pokemonData = {
     },
     357: {
         name: "Tropius",
+        database: true,
         id: 357,
         ruby: {},
         sapphire: {},
@@ -4262,6 +4630,7 @@ const pokemonData = {
     },
     358: {
         name: "Chimecho",
+        database: true,
         id: 358,
         ruby: {},
         sapphire: {},
@@ -4273,6 +4642,7 @@ const pokemonData = {
     },
     359: {
         name: "Absol",
+        database: true,
         id: 359,
         ruby: {},
         sapphire: {},
@@ -4284,6 +4654,7 @@ const pokemonData = {
     },
     360: {
         name: "Wynaut",
+        database: true,
         id: 360,
         ruby: {},
         sapphire: {},
@@ -4295,6 +4666,7 @@ const pokemonData = {
     },
     361: {
         name: "Snorunt",
+        database: true,
         id: 361,
         ruby: {},
         sapphire: {},
@@ -4306,6 +4678,7 @@ const pokemonData = {
     },
     362: {
         name: "Glalie",
+        database: true,
         id: 362,
         ruby: {},
         sapphire: {},
@@ -4317,6 +4690,7 @@ const pokemonData = {
     },
     363: {
         name: "Spheal",
+        database: true,
         id: 363,
         ruby: {},
         sapphire: {},
@@ -4328,6 +4702,7 @@ const pokemonData = {
     },
     364: {
         name: "Sealeo",
+        database: true,
         id: 364,
         ruby: {},
         sapphire: {},
@@ -4339,6 +4714,7 @@ const pokemonData = {
     },
     365: {
         name: "Walrein",
+        database: true,
         id: 365,
         ruby: {},
         sapphire: {},
@@ -4350,6 +4726,7 @@ const pokemonData = {
     },
     366: {
         name: "Clamperl",
+        database: true,
         id: 366,
         ruby: {},
         sapphire: {},
@@ -4361,6 +4738,7 @@ const pokemonData = {
     },
     367: {
         name: "Huntail",
+        database: true,
         id: 367,
         ruby: {},
         sapphire: {},
@@ -4372,6 +4750,7 @@ const pokemonData = {
     },
     368: {
         name: "Gorebyss",
+        database: true,
         id: 368,
         ruby: {},
         sapphire: {},
@@ -4383,6 +4762,7 @@ const pokemonData = {
     },
     369: {
         name: "Relicanth",
+        database: true,
         id: 369,
         ruby: {},
         sapphire: {},
@@ -4394,6 +4774,7 @@ const pokemonData = {
     },
     370: {
         name: "Luvdisc",
+        database: true,
         id: 370,
         ruby: {},
         sapphire: {},
@@ -4405,6 +4786,7 @@ const pokemonData = {
     },
     371: {
         name: "Bagon",
+        database: true,
         id: 371,
         ruby: {},
         sapphire: {},
@@ -4416,6 +4798,7 @@ const pokemonData = {
     },
     372: {
         name: "Shelgon",
+        database: true,
         id: 372,
         ruby: {},
         sapphire: {},
@@ -4427,6 +4810,7 @@ const pokemonData = {
     },
     373: {
         name: "Salamence",
+        database: true,
         id: 373,
         ruby: {},
         sapphire: {},
@@ -4438,6 +4822,7 @@ const pokemonData = {
     },
     374: {
         name: "Beldum",
+        database: true,
         id: 374,
         ruby: {},
         sapphire: {},
@@ -4449,6 +4834,7 @@ const pokemonData = {
     },
     375: {
         name: "Metang",
+        database: true,
         id: 375,
         ruby: {},
         sapphire: {},
@@ -4460,6 +4846,7 @@ const pokemonData = {
     },
     376: {
         name: "Metagross",
+        database: true,
         id: 376,
         ruby: {},
         sapphire: {},
@@ -4471,6 +4858,7 @@ const pokemonData = {
     },
     377: {
         name: "Regirock",
+        database: true,
         id: 377,
         ruby: {},
         sapphire: {},
@@ -4482,6 +4870,7 @@ const pokemonData = {
     },
     378: {
         name: "Regice",
+        database: true,
         id: 378,
         ruby: {},
         sapphire: {},
@@ -4493,6 +4882,7 @@ const pokemonData = {
     },
     379: {
         name: "Registeel",
+        database: true,
         id: 379,
         ruby: {},
         sapphire: {},
@@ -4504,6 +4894,7 @@ const pokemonData = {
     },
     380: {
         name: "Latias",
+        database: true,
         id: 380,
         ruby:{},
         sapphire: {},
@@ -4515,6 +4906,7 @@ const pokemonData = {
     },
     381: {
         name: "Latios",
+        database: true,
         id: 381,
         ruby: {},
         sapphire: {},
@@ -4526,6 +4918,7 @@ const pokemonData = {
     },
     382: {
         name: "Kyogre",
+        database: true,
         id: 382,
         ruby: {},
         sapphire: {},
@@ -4537,6 +4930,7 @@ const pokemonData = {
     },
     383: {
         name: "Groudon",
+        database: true,
         id: 383,
         ruby: {},
         sapphire: {},
@@ -4548,6 +4942,7 @@ const pokemonData = {
     },
     384: {
         name: "Rayquaza",
+        database: true,
         id: 384,
         ruby: {},
         sapphire: {},
@@ -4559,6 +4954,7 @@ const pokemonData = {
     },
     385: {
         name: "Jirachi",
+        database: true,
         id: 385,
         ruby: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.colosseum_bonus_us}, {status: obtainStatus.obtainable, method: obtainMethod.channel_pal}]},
         sapphire: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.colosseum_bonus_us}, {status: obtainStatus.obtainable, method: obtainMethod.channel_pal}]},
@@ -4570,6 +4966,7 @@ const pokemonData = {
     },
     386: {
         name: "Deoxys",
+        database: true,
         id: 386,
         ruby: {methods: [{status: obtainStatus.importable}]},
         sapphire: {methods: [{status: obtainStatus.importable}]},
@@ -4578,6 +4975,342 @@ const pokemonData = {
         emerald: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.pomeg_location, ticket: items._auroraticket, location: obtainLocation._birth_island}]},
         colosseum: {methods: [{status: obtainStatus.importable}]},
         xd: {methods: [{status: obtainStatus.importable}]},
+    },
+    387: {
+        name: "Unown (A Form)",
+        database: false,
+        id: "201-a",
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._monean_chamber]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._monean_chamber]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
+    },
+    388: {
+        name: "Unown (B Form)",
+        database: false,
+        id: "201-b",
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._rixy_chamber]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._rixy_chamber]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
+    },
+    389: {
+        name: "Unown (C Form)",
+        database: false,
+        id: "201-c",
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._liptoo_chamber]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._liptoo_chamber]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
+    },
+    390: {
+        name: "Unown (D Form)",
+        database: false,
+        id: "201-d",
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._liptoo_chamber]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._liptoo_chamber]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
+    },
+    391: {
+        name: "Unown (E Form)",
+        database: false,
+        id: "201-e",
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._weepth_chamber]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._weepth_chamber]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
+    },
+    392: {
+        name: "Unown (F Form)",
+        database: false,
+        id: "201-f",
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._scufib_chamber]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._scufib_chamber]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
+    },
+    393: {
+        name: "Unown (G Form)",
+        database: false,
+        id: "201-g",
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._scufib_chamber]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._scufib_chamber]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
+    },
+    394: {
+        name: "Unown (H Form)",
+        database: false,
+        id: "201-h",
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._liptoo_chamber]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._liptoo_chamber]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
+    },
+    395: {
+        name: "Unown (I Form)",
+        database: false,
+        id: "201-i",
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._weepth_chamber]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._weepth_chamber]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
+    },
+    396: {
+        name: "Unown (J Form)",
+        database: false,
+        id: "201-j",
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._dilford_chamber]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._dilford_chamber]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
+    },
+    397: {
+        name: "Unown (K Form)",
+        database: false,
+        id: "201-k",
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._scufib_chamber]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._scufib_chamber]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
+    },
+    398: {
+        name: "Unown (L Form)",
+        database: false,
+        id: "201-l",
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._dilford_chamber]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._dilford_chamber]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
+    },
+    399: {
+        name: "Unown (M Form)",
+        database: false,
+        id: "201-m",
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._rixy_chamber]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._rixy_chamber]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
+    },
+    400: {
+        name: "Unown (N Form)",
+        database: false,
+        id: "201-n",
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._weepth_chamber]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._weepth_chamber]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
+    },
+    401: {
+        name: "Unown (O Form)",
+        database: false,
+        id: "201-o",
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._liptoo_chamber]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._liptoo_chamber]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
+    },
+    402: {
+        name: "Unown (P Form)",
+        database: false,
+        id: "201-p",
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._dilford_chamber]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._dilford_chamber]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
+    },
+    403: {
+        name: "Unown (Q Form)",
+        database: false,
+        id: "201-q",
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._dilford_chamber]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._dilford_chamber]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
+    },
+    404: {
+        name: "Unown (R Form)",
+        database: false,
+        id: "201-r",
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._dilford_chamber]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._dilford_chamber]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
+    },
+    405: {
+        name: "Unown (S Form)",
+        database: false,
+        id: "201-s",
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._weepth_chamber]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._weepth_chamber]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
+    },
+    406: {
+        name: "Unown (F Form)",
+        database: false,
+        id: "201-f",
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._scufib_chamber]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._scufib_chamber]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
+    },
+    407: {
+        name: "Unown (F Form)",
+        database: false,
+        id: "201-f",
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._scufib_chamber]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._scufib_chamber]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
+    },
+    408: {
+        name: "Unown (F Form)",
+        database: false,
+        id: "201-f",
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._scufib_chamber]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._scufib_chamber]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
+    },
+    409: {
+        name: "Unown (F Form)",
+        database: false,
+        id: "201-f",
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._scufib_chamber]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._scufib_chamber]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
+    },
+    410: {
+        name: "Unown (F Form)",
+        database: false,
+        id: "201-f",
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._scufib_chamber]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._scufib_chamber]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
+    },
+    411: {
+        name: "Unown (F Form)",
+        database: false,
+        id: "201-f",
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._scufib_chamber]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._scufib_chamber]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
+    },
+    412: {
+        name: "Unown (F Form)",
+        database: false,
+        id: "201-f",
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._scufib_chamber]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._scufib_chamber]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
+    },
+    413: {
+        name: "Unown (F Form)",
+        database: false,
+        id: "201-f",
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._scufib_chamber]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._scufib_chamber]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
+    },
+    414: {
+        name: "Unown (F Form)",
+        database: false,
+        id: "201-f",
+        ruby: {methods: [{status: obtainStatus.importable},]},
+        sapphire: {methods: [{status: obtainStatus.importable},]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._scufib_chamber]},]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.catch, locations: [obtainLocation._scufib_chamber]},]},
+        emerald: {methods: [{status: obtainStatus.importable},]},
+        colosseum: {methods: [{status: obtainStatus.importable},]},
+        xd: {methods: [{status: obtainStatus.importable},]},
     },
 }
 
