@@ -410,6 +410,7 @@ const obtainStatus = {
     obtainable: "Obtainable",
     importable: "Transferrable",
     unobtainable: "Completely unobtainable",
+    incomplete: "Data is incomplete",
 }
 
 const obtainMethod = {
