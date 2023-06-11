@@ -699,19 +699,22 @@ addEventListener("load", () => {
     const infoDbIcon = document.createElement("img")
     infoDbIcon.src = "../other imgs/info.png"
     infoDbIcon.style.display = "none"
+    infoDbIcon.style.width = "0px"
+    infoDbIcon.style.height = "0px"
 
     const lowbtn = document.createElement("img")
     lowbtn.src = "../other imgs/up.png"
     lowbtn.style.display = "block"
-    lowbtn.style = "display: none; position: absolute; width: 100px; height: 100px; top: 100px; left: 0;"
+    lowbtn.style = "display: none; position: fixed; width: 100px; height: 100px; top: 100px; left: 0;"
     lowbtn.setAttribute("id", "gotop")
     lowbtn.setAttribute("class", "hoverhandle")
     document.getElementById("centered").append(lowbtn)
 
     addEventListener("scroll", (e) => {
-        if (window.scrollY > 9000) {
+        if (window.scrollY > 4500) {
             lowbtn.style.display = "block"
-            lowbtn.style.top = `${(scrollY+window.innerHeight)-130}px`
+            // lowbtn.style.top = `${(scrollY+window.innerHeight)-130}px`
+            lowbtn.style.top = `${(window.innerHeight)-130}px`
             console.log("btn")
         } else {
             lowbtn.style.display = "none"
@@ -773,7 +776,7 @@ addEventListener("load", () => {
             } else if (game == "gen3") {
                 boxheader.src = `${baseBoxURL}/header/rs/box${boxId}.png`
             }
-            
+
             boxheader.setAttribute("class", "boxheader")
             if (game == "gen3") boxheader.setAttribute("class", "boxheaderg3")
             boxheader.setAttribute("id", `box${boxId}header`)
@@ -793,6 +796,16 @@ addEventListener("load", () => {
             boxcontainer.append(infoDbIcon)
             boxheadercontainer.style.content = box[0].boxName
             document.getElementById("trackermenu").append(boxcontainer)
+            if (game == "gen3") {
+                const eText = document.createElement("h1")
+                eText.setAttribute("class", "pbrstitle")
+                eText.style = `position: absolute; top: ${(boxheader.getBoundingClientRect().top-(boxheader.getBoundingClientRect().height/2))+window.scrollY}px; left: ${(boxheader.getBoundingClientRect().left+(boxheader.getBoundingClientRect().width/3.2))}px;`
+                boxheader.onload = () => {
+                    eText.style = `position: absolute; top: ${(boxheader.getBoundingClientRect().top-(boxheader.getBoundingClientRect().height/2))+window.scrollY}px; left: ${(boxheader.getBoundingClientRect().left+(boxheader.getBoundingClientRect().width/3.2))}px;`
+                }
+                eText.innerText = box[0].boxName
+                boxheadercontainer.append(eText)
+            }
             box.forEach(pokemon => {
                 if (pokemon == null) pokemon = pokemonData[0]
                 if (pokemon.name != "getinfo") {
