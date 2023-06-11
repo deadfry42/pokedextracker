@@ -43,6 +43,9 @@ function getIndicesOf(searchStr, str, caseSensitive) {
 const adress = window.location.search
 const params = new URLSearchParams(adress)
 
+let save = params.get("save")
+if (save == undefined || save == null || save == "") {save = ""} else {save="-"+save}
+
 //content stuff
 let game = params.get("game")
 const supportedGames = [
@@ -129,7 +132,7 @@ addEventListener("load", () => {
     const options = document.getElementById("options")
     const help = document.getElementById("help")
     try {
-        db.ref(`/users/${localStorage.getItem("token")}/${game}/settings/${settings[0].dbname}`).on("value", function(snapshot) {
+        db.ref(`/users/${localStorage.getItem("token")}/${game}${save}/settings/${settings[0].dbname}`).on("value", function(snapshot) {
             const val = snapshot.val().value
             const setting = 0
             const optionDiv = document.getElementById(settings[setting].dbname)
@@ -137,7 +140,7 @@ addEventListener("load", () => {
             const input = optionDiv.childNodes[2]
             try {settings[setting].type.func(val, input, current)} catch(e) {console.log(e)}
         })
-        db.ref(`/users/${localStorage.getItem("token")}/${game}/settings/${settings[1].dbname}`).on("value", function(snapshot) {
+        db.ref(`/users/${localStorage.getItem("token")}/${game}${save}/settings/${settings[1].dbname}`).on("value", function(snapshot) {
             const val = snapshot.val().value
             const setting = 1
             const optionDiv = document.getElementById(settings[setting].dbname)
@@ -145,7 +148,7 @@ addEventListener("load", () => {
             const input = optionDiv.childNodes[2]
             try {settings[setting].type.func(val, input, current)} catch(e) {console.log(e)}
         })
-        db.ref(`/users/${localStorage.getItem("token")}/${game}/settings/${settings[2].dbname}`).on("value", function(snapshot) {
+        db.ref(`/users/${localStorage.getItem("token")}/${game}${save}/settings/${settings[2].dbname}`).on("value", function(snapshot) {
             const val = snapshot.val().value
             const setting = 2
             const optionDiv = document.getElementById(settings[setting].dbname)
@@ -153,7 +156,7 @@ addEventListener("load", () => {
             const input = optionDiv.childNodes[2]
             try {settings[setting].type.func(val, input, current)} catch(e) {console.log(e)}
         })
-        db.ref(`/users/${localStorage.getItem("token")}/${game}/settings/${settings[3].dbname}`).on("value", function(snapshot) {
+        db.ref(`/users/${localStorage.getItem("token")}/${game}${save}/settings/${settings[3].dbname}`).on("value", function(snapshot) {
             const val = snapshot.val().value
             const setting = 3
             const optionDiv = document.getElementById(settings[setting].dbname)
@@ -169,7 +172,7 @@ addEventListener("load", () => {
             const input = optionDiv.childNodes[2]
             try {settings[setting].type.func(val, input, current)} catch(e) {console.log(e)}
         })
-        db.ref(`/users/${localStorage.getItem("token")}/${game}/settings/${settings[5].dbname}`).on("value", function(snapshot) {
+        db.ref(`/users/${localStorage.getItem("token")}/${game}${save}/settings/${settings[5].dbname}`).on("value", function(snapshot) {
             const val = snapshot.val().value
             const setting = 5
             const optionDiv = document.getElementById(settings[setting].dbname)
@@ -739,7 +742,7 @@ addEventListener("load", () => {
             headerContainer.setAttribute("id", `boxH${headerId}container`)
             const header = document.createElement("h1")
             header.innerText = box[0].boxName
-            header.style = "font-size: 50px;"
+            header.setAttribute("class", "pbrstitle")
             if (!extraVal) headerContainer.setAttribute("class", "boxcontainershort")
             if (extraVal) headerContainer.setAttribute("class", "boxcontainershort extrabox")
             if (game == "gen3") {
@@ -872,17 +875,17 @@ addEventListener("load", () => {
                                 }
                             } else {
                                 try {
-                                    db.ref(`/users/${localStorage.getItem("token")}/${game}/pkmn/${pokemon.id}`).once("value", function(snapshot) {
+                                    db.ref(`/users/${localStorage.getItem("token")}/${game}${save}/pkmn/${pokemon.id}`).once("value", function(snapshot) {
                                         try {
                                             const data = snapshot.val()
                                             const obtained = data["obtained"]
-                                            db.ref(`/users/${localStorage.getItem("token")}/${game}/pkmn/${pokemon.id}`).set({
+                                            db.ref(`/users/${localStorage.getItem("token")}/${game}${save}/pkmn/${pokemon.id}`).set({
                                                 id: pokemon.id,
                                                 obtained: !obtained,
                                             })
                                         } catch(e) {
                                             try {
-                                                db.ref(`/users/${localStorage.getItem("token")}/${game}/pkmn/${pokemon.id}`).set({
+                                                db.ref(`/users/${localStorage.getItem("token")}/${game}${save}/pkmn/${pokemon.id}`).set({
                                                     id: pokemon.id,
                                                     obtained: true,
                                                 })
@@ -906,7 +909,7 @@ addEventListener("load", () => {
     document.getElementById("email").onclick = () => { window.location.href = "mailto:nk.personal.work@gmail.com" }
     document.getElementById("home").onclick = () => { window.location.href = "../" }
     document.getElementById("gotop").onclick = () => { window.scrollTo(window.scrollY, 0) }
-    document.getElementById("reftxt").onclick = () => { window.location.href = "./" }
+    document.getElementById("reftxt").onclick = () => { window.location.href = `./?game=${game}&save=${save.substring(1,save.length)}` }
     document.getElementById("lyras").onclick = () => { window.location.href = "http://i-made-a.website" }
     document.getElementById("bulba").onclick = () => { window.location.href = "https://bulbapedia.bulbagarden.net/wiki/Main_Page" }
     document.getElementById("sereb").onclick = () => { window.location.href = "https://www.serebii.net" }
@@ -925,7 +928,7 @@ addEventListener("load", () => {
         const usernameTxt = document.getElementById("user")
         usernameTxt.innerText = "Signed in as: "+username
     })
-    db.ref(`/users/${localStorage.getItem("token")}/${game}/pkmn/`).on("value", function(snapshot) {
+    db.ref(`/users/${localStorage.getItem("token")}/${game}${save}/pkmn/`).on("value", function(snapshot) {
         const data = snapshot.val()
         let array;
         try {array = Object.keys(data)} catch(e) {array=0;console.log(e)}
@@ -991,7 +994,7 @@ addEventListener("load", () => {
             element.onchange = () => {
                 setting["value"] = element.value
                 const dbname = setting.dbname
-                db.ref(`/users/${localStorage.getItem("token")}/${game}/settings/${dbname}`).set({
+                db.ref(`/users/${localStorage.getItem("token")}/${game}${save}/settings/${dbname}`).set({
                     value: element.value
                 })
             }
@@ -1013,7 +1016,7 @@ addEventListener("load", () => {
             element.onchange = () => {
                 setting["value"] = element.checked
                 const dbname = setting.dbname
-                db.ref(`/users/${localStorage.getItem("token")}/${game}/settings/${dbname}`).set({
+                db.ref(`/users/${localStorage.getItem("token")}/${game}${save}/settings/${dbname}`).set({
                     value: element.checked
                 })
             }
