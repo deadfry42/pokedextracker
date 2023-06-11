@@ -40,7 +40,7 @@ function signup() {
                 password: pw.value,
               }) .then(() => {
                 localStorage.setItem("token", token)
-                window.location.href = "../tracker/"
+                window.location.href = "../select/"
               })
             }
           } catch(e) {

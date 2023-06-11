@@ -241,7 +241,7 @@ const box8 = [
     pokemonData[0],pokemonData[0],pokemonData[0],
 ]
 
-const extraHeader = [{id: 1, name:"getinfo", boxName:"Boxes w/ extras", header: true,},]
+const extraHeader = [{id: 1, name:"getinfo", boxName:"Boxes w/ extras", header: true, extra: true,},]
 
 const pbrsboxes = [
     box1,

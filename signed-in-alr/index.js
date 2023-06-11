@@ -25,7 +25,7 @@ function signin() {
   const error = document.getElementById("error")
   error.innerText = ""
   if (decodedUname) {
-    window.location.href = "../tracker/"
+    window.location.href = "../select/"
   } else {
     error.innerText = "There was an error signing in! Try signing out and back in if the issue persists."
   }

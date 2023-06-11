@@ -36,7 +36,7 @@ function signin() {
         const password = data.password
         if (name == uname.value && password == pw.value) {
           localStorage.setItem("token", token)
-          window.location.href = "../tracker/"
+          window.location.href = "../select/"
         }
       }) 
     }

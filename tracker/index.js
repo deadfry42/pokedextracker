@@ -12,6 +12,7 @@ const firebaseConfig = {
 
 // things to add & do:
 //  - hold ctrl and click on pkmn to bring to db info --- DONE
+//  - go to top btn --- DONE
 //  - add a search feature
 //  - make pkmn icons in database match current settings --- DONE
 //  - finish database
@@ -39,8 +40,19 @@ function getIndicesOf(searchStr, str, caseSensitive) {
     return indices;
 }
 
+const adress = window.location.search
+const params = new URLSearchParams(adress)
+
 //content stuff
-let game = "pbrs"
+let game = params.get("game")
+const supportedGames = [
+    "pbrs",
+    "gen3"
+]
+var found = false
+supportedGames.forEach(sGame => {
+    if (sGame == game) found = true
+});
 
 let gametitle = ""
 if (game == "gen3") gametitle = "Pokemon Generation 3"
@@ -84,6 +96,7 @@ if (game == "gen3") {
     settings = gen3settings
     vars = gen3vars
 }
+if (found == false) window.location.href = "../"
 
 
 
@@ -110,9 +123,11 @@ addEventListener("load", () => {
     const trackermenu = document.getElementById("trackermenu")
     const databasemenu = document.getElementById("databasemenu")
     const optionsmenu = document.getElementById("optionsmenu")
+    const helpmenu = document.getElementById("helpmenu")
     const tracker = document.getElementById("tracker")
     const database = document.getElementById("database")
     const options = document.getElementById("options")
+    const help = document.getElementById("help")
     try {
         db.ref(`/users/${localStorage.getItem("token")}/${game}/settings/${settings[0].dbname}`).on("value", function(snapshot) {
             const val = snapshot.val().value
@@ -682,6 +697,25 @@ addEventListener("load", () => {
     infoDbIcon.src = "../other imgs/info.png"
     infoDbIcon.style.display = "none"
 
+    const lowbtn = document.createElement("img")
+    lowbtn.src = "../other imgs/up.png"
+    lowbtn.style.display = "block"
+    lowbtn.style = "display: none; position: absolute; width: 100px; height: 100px; top: 100px; left: 0;"
+    lowbtn.setAttribute("id", "gotop")
+    lowbtn.setAttribute("class", "hoverhandle")
+    document.getElementById("centered").append(lowbtn)
+
+    addEventListener("scroll", (e) => {
+        if (window.scrollY > 9000) {
+            lowbtn.style.display = "block"
+            lowbtn.style.top = `${(scrollY+window.innerHeight)-130}px`
+            console.log("btn")
+        } else {
+            lowbtn.style.display = "none"
+            console.log("btnGONE (vineboom)")
+        }
+    })
+
     document.onkeydown = (e) => {
         if (e.key == "Control" || e.key == "Meta" || e.key == "Alt") {
             ctrl = true
@@ -696,29 +730,39 @@ addEventListener("load", () => {
         }
     }
 
-    // infoDbIcon.style.display = "none"
-
     boxes.forEach((box, i) => {
         if (box[0].header == true) {
             const headerId = box[0].id
+            const extraVal = box[0].extra
             const headerContainer = document.createElement("div")
             headerContainer.setAttribute("class", "boxcontainershort")
-            if (game == "gen3") headerContainer.setAttribute("class", "boxcontainerg3short")
             headerContainer.setAttribute("id", `boxH${headerId}container`)
             const header = document.createElement("h1")
             header.innerText = box[0].boxName
             header.style = "font-size: 50px;"
+            if (!extraVal) headerContainer.setAttribute("class", "boxcontainershort")
+            if (extraVal) headerContainer.setAttribute("class", "boxcontainershort extrabox")
+            if (game == "gen3") {
+                if (!extraVal) headerContainer.setAttribute("class", "boxcontainerg3short")
+                if (extraVal) headerContainer.setAttribute("class", "boxcontainerg3short extrabox")
+            }
             headerContainer.append(header)
             document.getElementById("trackermenu").append(headerContainer)
         } else {
             const boxId = box[0].id
             const extraVal = box[0].extra
             const boxcontainer = document.createElement("div")
-            boxcontainer.setAttribute("class", "boxcontainer")
-            if (game == "gen3") boxcontainer.setAttribute("class", "boxcontainerg3")
+            if (!extraVal) boxcontainer.setAttribute("class", "boxcontainer")
+            if (extraVal) boxcontainer.setAttribute("class", "boxcontainer extrabox")
+            if (game == "gen3") if (!extraVal) boxcontainer.setAttribute("class", "boxcontainerg3")
+            if (game == "gen3") if (extraVal) boxcontainer.setAttribute("class", "boxcontainerg3 extrabox")
             boxcontainer.setAttribute("id", `box${boxId}container`)
+
+            const boxheadercontainer = document.createElement("div")
+            boxheadercontainer.setAttribute("class", "headerthingy")
             
             const boxheader = document.createElement("img")
+            boxheadercontainer.append(boxheader)
             if (game == "pbrs") {
                 const numberedHeadings = settings[2].value
                 if (numberedHeadings) boxheader.src = `${baseBoxURL}/header/numbered/box${boxId}.png`
@@ -740,10 +784,11 @@ addEventListener("load", () => {
             const br = document.createElement("br")
             const br2 = document.createElement("br")
             boxcontainer.append(br)
-            boxcontainer.append(boxheader)
+            boxcontainer.append(boxheadercontainer)
             boxcontainer.append(boxE)
             boxcontainer.append(br2)
             boxcontainer.append(infoDbIcon)
+            boxheadercontainer.style.content = box[0].boxName
             document.getElementById("trackermenu").append(boxcontainer)
             box.forEach(pokemon => {
                 if (pokemon == null) pokemon = pokemonData[0]
@@ -757,8 +802,8 @@ addEventListener("load", () => {
                     pkmnImg.setAttribute("id", "pkmnimg"+pokemon.id)
                     pkmnImg.setAttribute("pkmnid", pokemon.id)
                     pkmnImg.setAttribute("class", "pkmnimg")
-                    pkmnImg.style = `object-fit: contain; opacity: 1; border-radius: 10px; width: ${boxE.clientWidth / imgSize}px; height: ${boxE.clientWidth / (imgSize+1.5)}px; user-select: none;`;
-                    if (game == "gen3") pkmnImg.style.height = `${boxE.clientWidth / (imgSize+1)}px`
+                    pkmnImg.style = `object-fit: contain; opacity: 1; border-radius: 10px; width: ${boxE.clientWidth / imgSize}px; height: ${boxE.clientWidth / (imgSize+1)}px; user-select: none;`;
+                    if (game == "pbrs") pkmnImg.style.height = `${boxE.clientWidth / (imgSize+1.39)}px`
                     const pkmnSubtitleDiv = document.createElement("div")
                     pkmnSubtitleDiv.style = `text-align:center; position: absolute; top:-100%; right:50%; transform:translate(50%, -50%); background-color: rgba(255, 255, 255, 0.2); border-radius: 15px; height: 1vw; user-select: none; display:none;`
                     const pkmnSubtitle = document.createElement("p")
@@ -860,6 +905,7 @@ addEventListener("load", () => {
     });
     document.getElementById("email").onclick = () => { window.location.href = "mailto:nk.personal.work@gmail.com" }
     document.getElementById("home").onclick = () => { window.location.href = "../" }
+    document.getElementById("gotop").onclick = () => { window.scrollTo(window.scrollY, 0) }
     document.getElementById("reftxt").onclick = () => { window.location.href = "./" }
     document.getElementById("lyras").onclick = () => { window.location.href = "http://i-made-a.website" }
     document.getElementById("bulba").onclick = () => { window.location.href = "https://bulbapedia.bulbagarden.net/wiki/Main_Page" }
@@ -869,6 +915,7 @@ addEventListener("load", () => {
     document.getElementById("trackermenu").style.display = "inline"
     document.getElementById("databasemenu").style.display = "none"
     document.getElementById("optionsmenu").style.display = "none"
+    document.getElementById("helpmenu").style.display = "none"
     document.getElementById("notutd").style.display = "block"
     document.getElementById("tracker").style.textDecoration = "underline"
     document.getElementById("gametitle").innerText = `(${gametitle})`
@@ -979,28 +1026,47 @@ addEventListener("load", () => {
         trackermenu.style.display = "inline"
         databasemenu.style.display = "none"
         optionsmenu.style.display = "none"
+        helpmenu.style.display = "none"
         tracker.style.textDecoration = "underline"
         database.style.textDecoration = "none"
         options.style.textDecoration = "none"
+        help.style.textDecoration = "none"
     }
     function databaseMenu() {
         trackermenu.style.display = "none"
         databasemenu.style.display = "inline"
         optionsmenu.style.display = "none"
+        helpmenu.style.display = "none"
         tracker.style.textDecoration = "none"
         database.style.textDecoration = "underline"
         options.style.textDecoration = "none"
+        help.style.textDecoration = "none"
     }
     function optionsMenu() {
         trackermenu.style.display = "none"
         databasemenu.style.display = "none"
         optionsmenu.style.display = "inline"
+        helpmenu.style.display = "none"
         tracker.style.textDecoration = "none"
         database.style.textDecoration = "none"
         options.style.textDecoration = "underline"
+        help.style.textDecoration = "none"
+    }
+    function helpMenu() {
+        trackermenu.style.display = "none"
+        databasemenu.style.display = "none"
+        optionsmenu.style.display = "none"
+        helpmenu.style.display = "inline"
+        tracker.style.textDecoration = "none"
+        database.style.textDecoration = "none"
+        options.style.textDecoration = "none"
+        help.style.textDecoration = "underline"
     }
 
-    document.getElementById("tracker").onclick = trackerMenu
-    document.getElementById("database").onclick = databaseMenu
-    document.getElementById("options").onclick = optionsMenu
+    tracker.onclick = trackerMenu
+    database.onclick = databaseMenu
+    options.onclick = optionsMenu
+    help.onclick = helpMenu
+
+    document.getElementById("helpmenuinner").innerHTML = `<h1>How to use</h1><h3>Now, if you clicked on this tab out of pure necessity, I will first explain the basics.<br>This website is designed to be a pokedex tracker for ${gametitle}.<br>You can click on the different pokemon images to mark them as "obtained" and click on them again to unmark them. The "marking" is shown as the pokemon being slightly translucent (and darker if you have a specific setting enabled).<br>This website is supposed to be the one website you need to start and eventually finish (hopefully) your living dex, with information on where to find the pokemon being readily available in the Pokemon Database tab.</h3><br><h1>Extra controls</h1><h3>There are some hidden controls, but as of now, there is only one. By holding (windows/linux: CTRL/ALT, mac: CTRL/Option/Command), you can then press on a specific pokemon and it will take you to the database entry of that pokemon. Unfortunately, there is no way to do this on mobile. You can do this on different forms, but it will only bring you to the database entry of the base form.</h3><br><br<`
 })
