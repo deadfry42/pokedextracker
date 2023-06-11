@@ -132,54 +132,64 @@ addEventListener("load", () => {
     const options = document.getElementById("options")
     const help = document.getElementById("help")
     try {
-        db.ref(`/users/${localStorage.getItem("token")}/${game}${save}/settings/${settings[0].dbname}`).on("value", function(snapshot) {
-            const val = snapshot.val().value
-            const setting = 0
-            const optionDiv = document.getElementById(settings[setting].dbname)
-            const current = optionDiv.childNodes[1]
-            const input = optionDiv.childNodes[2]
-            try {settings[setting].type.func(val, input, current)} catch(e) {console.log(e)}
+        Object.keys(settings).forEach((id) => {
+            const setting = settings[id]
+            db.ref(`/users/${localStorage.getItem("token")}/${game}${save}/settings/${setting.dbname}`).on("value", function(snapshot) {
+                const val = snapshot.val().value
+                const optionDiv = document.getElementById(setting.dbname)
+                const current = optionDiv.childNodes[1]
+                const input = optionDiv.childNodes[2]
+                try {setting.type.func(val, input, current)} catch(e) {console.log(e)}
+            })
         })
-        db.ref(`/users/${localStorage.getItem("token")}/${game}${save}/settings/${settings[1].dbname}`).on("value", function(snapshot) {
-            const val = snapshot.val().value
-            const setting = 1
-            const optionDiv = document.getElementById(settings[setting].dbname)
-            const current = optionDiv.childNodes[1]
-            const input = optionDiv.childNodes[2]
-            try {settings[setting].type.func(val, input, current)} catch(e) {console.log(e)}
-        })
-        db.ref(`/users/${localStorage.getItem("token")}/${game}${save}/settings/${settings[2].dbname}`).on("value", function(snapshot) {
-            const val = snapshot.val().value
-            const setting = 2
-            const optionDiv = document.getElementById(settings[setting].dbname)
-            const current = optionDiv.childNodes[1]
-            const input = optionDiv.childNodes[2]
-            try {settings[setting].type.func(val, input, current)} catch(e) {console.log(e)}
-        })
-        db.ref(`/users/${localStorage.getItem("token")}/${game}${save}/settings/${settings[3].dbname}`).on("value", function(snapshot) {
-            const val = snapshot.val().value
-            const setting = 3
-            const optionDiv = document.getElementById(settings[setting].dbname)
-            const current = optionDiv.childNodes[1]
-            const input = optionDiv.childNodes[2]
-            try {settings[setting].type.func(val, input, current)} catch(e) {console.log(e)}
-        })
-        db.ref(`/users/${localStorage.getItem("token")}/${game}/settings/${settings[4].dbname}`).on("value", function(snapshot) {
-            const val = snapshot.val().value
-            const setting = 4
-            const optionDiv = document.getElementById(settings[setting].dbname)
-            const current = optionDiv.childNodes[1]
-            const input = optionDiv.childNodes[2]
-            try {settings[setting].type.func(val, input, current)} catch(e) {console.log(e)}
-        })
-        db.ref(`/users/${localStorage.getItem("token")}/${game}${save}/settings/${settings[5].dbname}`).on("value", function(snapshot) {
-            const val = snapshot.val().value
-            const setting = 5
-            const optionDiv = document.getElementById(settings[setting].dbname)
-            const current = optionDiv.childNodes[1]
-            const input = optionDiv.childNodes[2]
-            try {settings[setting].type.func(val, input, current)} catch(e) {console.log(e)}
-        })
+        // db.ref(`/users/${localStorage.getItem("token")}/${game}${save}/settings/${settings[0].dbname}`).on("value", function(snapshot) {
+        //     const val = snapshot.val().value
+        //     const setting = 0
+        //     const optionDiv = document.getElementById(settings[setting].dbname)
+        //     const current = optionDiv.childNodes[1]
+        //     const input = optionDiv.childNodes[2]
+        //     try {settings[setting].type.func(val, input, current)} catch(e) {console.log(e)}
+        // })
+        // db.ref(`/users/${localStorage.getItem("token")}/${game}${save}/settings/${settings[1].dbname}`).on("value", function(snapshot) {
+        //     const val = snapshot.val().value
+        //     const setting = 1
+        //     const optionDiv = document.getElementById(settings[setting].dbname)
+        //     const current = optionDiv.childNodes[1]
+        //     const input = optionDiv.childNodes[2]
+        //     try {settings[setting].type.func(val, input, current)} catch(e) {console.log(e)}
+        // })
+        // db.ref(`/users/${localStorage.getItem("token")}/${game}${save}/settings/${settings[2].dbname}`).on("value", function(snapshot) {
+        //     const val = snapshot.val().value
+        //     const setting = 2
+        //     const optionDiv = document.getElementById(settings[setting].dbname)
+        //     const current = optionDiv.childNodes[1]
+        //     const input = optionDiv.childNodes[2]
+        //     try {settings[setting].type.func(val, input, current)} catch(e) {console.log(e)}
+        // })
+        // db.ref(`/users/${localStorage.getItem("token")}/${game}${save}/settings/${settings[3].dbname}`).on("value", function(snapshot) {
+        //     const val = snapshot.val().value
+        //     const setting = 3
+        //     const optionDiv = document.getElementById(settings[setting].dbname)
+        //     const current = optionDiv.childNodes[1]
+        //     const input = optionDiv.childNodes[2]
+        //     try {settings[setting].type.func(val, input, current)} catch(e) {console.log(e)}
+        // })
+        // db.ref(`/users/${localStorage.getItem("token")}/${game}/settings/${settings[4].dbname}`).on("value", function(snapshot) {
+        //     const val = snapshot.val().value
+        //     const setting = 4
+        //     const optionDiv = document.getElementById(settings[setting].dbname)
+        //     const current = optionDiv.childNodes[1]
+        //     const input = optionDiv.childNodes[2]
+        //     try {settings[setting].type.func(val, input, current)} catch(e) {console.log(e)}
+        // })
+        // db.ref(`/users/${localStorage.getItem("token")}/${game}${save}/settings/${settings[5].dbname}`).on("value", function(snapshot) {
+        //     const val = snapshot.val().value
+        //     const setting = 5
+        //     const optionDiv = document.getElementById(settings[setting].dbname)
+        //     const current = optionDiv.childNodes[1]
+        //     const input = optionDiv.childNodes[2]
+        //     try {settings[setting].type.func(val, input, current)} catch(e) {console.log(e)}
+        // })
     } catch(e) {
         console.log(e)
     }
@@ -798,12 +808,14 @@ addEventListener("load", () => {
             document.getElementById("trackermenu").append(boxcontainer)
             if (game == "gen3") {
                 const eText = document.createElement("h1")
-                eText.setAttribute("class", "pbrstitle")
+                eText.setAttribute("class", "pbrstitle boxheadertitletext")
+                eText.setAttribute("boxid", i)
                 eText.style = `position: absolute; top: ${(boxheader.getBoundingClientRect().top-(boxheader.getBoundingClientRect().height/2))+window.scrollY}px; left: ${(boxheader.getBoundingClientRect().left+(boxheader.getBoundingClientRect().width/3.2))}px;`
                 boxheader.onload = () => {
                     eText.style = `position: absolute; top: ${(boxheader.getBoundingClientRect().top-(boxheader.getBoundingClientRect().height/2))+window.scrollY}px; left: ${(boxheader.getBoundingClientRect().left+(boxheader.getBoundingClientRect().width/3.2))}px;`
                 }
-                eText.innerText = box[0].boxName
+                if (vars.numberedHeadings) eText.innerText = box[0].altboxName
+                if (!vars.numberedHeadings)  eText.innerText = box[0].boxName
                 boxheadercontainer.append(eText)
             }
             box.forEach(pokemon => {

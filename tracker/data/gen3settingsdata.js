@@ -1,9 +1,12 @@
+import { gen3boxesheaderless } from "./gen3boxesdata.js"
+
 //settings
 let sprites = 3
 let emeraldAnimation = 0
 let boxgame = "rs"
 let shiny = "no"
 let darkenWhenUnobtained = true
+let numberedHeadings = true
 let extras = false
 
 let gen3vars = {
@@ -12,6 +15,7 @@ let gen3vars = {
     boxgame: boxgame,
     shiny: shiny,
     darkenWhenUnobtained: darkenWhenUnobtained,
+    numberedHeadings: numberedHeadings,
     extras: extras,
 }
 
@@ -170,6 +174,28 @@ let gen3settings = [
                 for (let element of names) {
                     const id = element.getAttribute("boxid")
                     element.src = `${baseBoxURL}/header/${origin}/box${id}.png`
+                };
+            }
+        },
+    },
+    {
+        name: "Numbered headings",
+        dbname: "numHead",
+        desc: "Changes what the box headers say. If true, an example would be (1-60). If false, an example would be (BOX 1)",
+        value: true,
+        var: numberedHeadings,
+        type: {
+            type: "boolean",
+            func: function (val, input, current) {
+                numberedHeadings = val
+                gen3vars.numberedHeadings = val
+                input.checked = val
+                current.innerText = val
+                const names = document.getElementsByClassName("boxheadertitletext")
+                for (let element of names) {
+                    const boxid = element.getAttribute("boxid")
+                    if (val) element.innerText = gen3boxesheaderless[parseInt(boxid)][0].altboxName
+                    if (!val) element.innerText = gen3boxesheaderless[parseInt(boxid)][0].boxName
                 };
             }
         },

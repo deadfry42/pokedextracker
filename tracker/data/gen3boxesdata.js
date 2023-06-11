@@ -3,7 +3,7 @@ let pokemonData = gen3pokemonData
 
 const box1basenum = 0
 const box1 = [
-    {id: 1, name:"getinfo", boxName:"Box 1", header: false, extra: false,},
+    {id: 1, name:"getinfo", boxName:"Box 1", altboxName: "1-30", header: false, extra: false,},
     //row1
     pokemonData[box1basenum+1], pokemonData[box1basenum+2], pokemonData[box1basenum+3], pokemonData[box1basenum+4], pokemonData[box1basenum+5],
     //row2
@@ -20,7 +20,7 @@ const box1 = [
 
 const box2basenum = 30
 const box2 = [
-    {id: 2, name:"getinfo", boxName:"Box 2", header: false, extra: false,},
+    {id: 2, name:"getinfo", boxName:"Box 2", altboxName: "31-60", header: false, extra: false,},
     //row1
     pokemonData[box2basenum+1], pokemonData[box2basenum+2], pokemonData[box2basenum+3], pokemonData[box2basenum+4], pokemonData[box2basenum+5],
     //row2
@@ -37,7 +37,7 @@ const box2 = [
 
 const box3basenum = 60
 const box3 = [
-    {id: 3, name:"getinfo", boxName:"Box 3", header: false, extra: false,},
+    {id: 3, name:"getinfo", boxName:"Box 3", altboxName: "61-90", header: false, extra: false,},
     //row1
     pokemonData[box3basenum+1], pokemonData[box3basenum+2], pokemonData[box3basenum+3], pokemonData[box3basenum+4], pokemonData[box3basenum+5],
     //row2
@@ -54,7 +54,7 @@ const box3 = [
 
 const box4basenum = 90
 const box4 = [
-    {id: 4, name:"getinfo", boxName:"Box 4", header: false, extra: false,},
+    {id: 4, name:"getinfo", boxName:"Box 4", altboxName: "91-120", header: false, extra: false,},
     //row1
     pokemonData[box4basenum+1], pokemonData[box4basenum+2], pokemonData[box4basenum+3], pokemonData[box4basenum+4], pokemonData[box4basenum+5],
     //row2
@@ -71,7 +71,7 @@ const box4 = [
 
 const box5basenum = 120
 const box5 = [
-    {id: 5, name:"getinfo", boxName:"Box 5", header: false, extra: false,},
+    {id: 5, name:"getinfo", boxName:"Box 5", altboxName: "121-150", header: false, extra: false,},
     //row1
     pokemonData[box5basenum+1], pokemonData[box5basenum+2], pokemonData[box5basenum+3], pokemonData[box5basenum+4], pokemonData[box5basenum+5],
     //row2
@@ -88,7 +88,7 @@ const box5 = [
 
 const box6basenum = 150
 const box6 = [
-    {id: 6, name:"getinfo", boxName:"Box 6", header: false, extra: false,},
+    {id: 6, name:"getinfo", boxName:"Box 6", altboxName: "151-180", header: false, extra: false,},
     //row1
     pokemonData[box6basenum+1], pokemonData[box6basenum+2], pokemonData[box6basenum+3], pokemonData[box6basenum+4], pokemonData[box6basenum+5],
     //row2
@@ -105,7 +105,7 @@ const box6 = [
 
 const box7basenum = 180
 const box7 = [
-    {id: 7, name:"getinfo", boxName:"Box 7", header: false, extra: false,},
+    {id: 7, name:"getinfo", boxName:"Box 7", altboxName: "181-240", header: false, extra: false,},
     //row1
     pokemonData[box7basenum+1], pokemonData[box7basenum+2], pokemonData[box7basenum+3], pokemonData[box7basenum+4], pokemonData[box7basenum+5],
     //row2
@@ -122,7 +122,7 @@ const box7 = [
 
 const box8basenum = 210
 const box8 = [
-    {id: 8, name:"getinfo", boxName:"Box 8", header: false, extra: false,},
+    {id: 8, name:"getinfo", boxName:"Box 8", altboxName: "211-240", header: false, extra: false,},
     //row1
     pokemonData[box8basenum+1], pokemonData[box8basenum+2], pokemonData[box8basenum+3], pokemonData[box8basenum+4], pokemonData[box8basenum+5],
     //row2
@@ -139,7 +139,7 @@ const box8 = [
 
 const box9basenum = 240
 const box9 = [
-    {id: 9, name:"getinfo", boxName:"Box 9", header: false, extra: false,},
+    {id: 9, name:"getinfo", boxName:"Box 9", altboxName: "241-270", header: false, extra: false,},
     //row1
     pokemonData[box9basenum+1], pokemonData[box9basenum+2], pokemonData[box9basenum+3], pokemonData[box9basenum+4], pokemonData[box9basenum+5],
     //row2
@@ -155,7 +155,7 @@ const box9 = [
 ]
 const box10basenum = 270
 const box10 = [
-    {id: 10, name:"getinfo", boxName:"Box 10", header: false, extra: false,},
+    {id: 10, name:"getinfo", boxName:"Box 10", altboxName: "271-300", header: false, extra: false,},
     //row1
     pokemonData[box10basenum+1], pokemonData[box10basenum+2], pokemonData[box10basenum+3], pokemonData[box10basenum+4], pokemonData[box10basenum+5],
     //row2
@@ -171,7 +171,7 @@ const box10 = [
 ]
 const box11basenum = 300
 const box11 = [
-    {id: 8, name:"getinfo", boxName:"Box 11", header: false, extra: false,},
+    {id: 8, name:"getinfo", boxName:"Box 11", altboxName: "301-330", header: false, extra: false,},
     //row1
     pokemonData[box11basenum+1], pokemonData[box11basenum+2], pokemonData[box11basenum+3], pokemonData[box11basenum+4], pokemonData[box11basenum+5],
     //row2
@@ -187,7 +187,7 @@ const box11 = [
 ]
 const box12basenum = 330
 const box12 = [
-    {id: 12, name:"getinfo", boxName:"Box 12", header: false, extra: false,},
+    {id: 12, name:"getinfo", boxName:"Box 12", altboxName: "331-360", header: false, extra: false,},
     //row1
     pokemonData[box12basenum+1], pokemonData[box12basenum+2], pokemonData[box12basenum+3], pokemonData[box12basenum+4], pokemonData[box12basenum+5],
     //row2
@@ -203,7 +203,7 @@ const box12 = [
 ]
 const box13basenum = 360
 const box13 = [
-    {id: 13, name:"getinfo", boxName:"Box 13", header: false, extra: false,},
+    {id: 13, name:"getinfo", boxName:"Box 13", altboxName: "361-386", header: false, extra: false,},
     //row1
     pokemonData[box13basenum+1], pokemonData[box13basenum+2], pokemonData[box13basenum+3], pokemonData[box13basenum+4], pokemonData[box13basenum+5],
     //row2
@@ -222,7 +222,7 @@ const extraHeader = [{id: 1, name:"getinfo", boxName:"Boxes w/ extras", header: 
 
 const box14basenum = 386
 const box14 = [
-    {id: 14, name:"getinfo", boxName:"Box 14", header: false, extra: false,},
+    {id: 14, name:"getinfo", boxName:"Box 14", altboxName: "201 A-!", header: false, extra: false,},
     //row1
     pokemonData[box14basenum+1], pokemonData[box14basenum+2], pokemonData[box14basenum+3], pokemonData[box14basenum+4], pokemonData[box14basenum+5],
     //row2
@@ -255,4 +255,21 @@ const gen3boxes = [
     box14
 ]
 
-export {gen3boxes}
+const gen3boxesheaderless = [
+    box1,
+    box2,
+    box3,
+    box4,
+    box5,
+    box6,
+    box7,
+    box8,
+    box9,
+    box10,
+    box11,
+    box12,
+    box13,
+    box14
+]
+
+export {gen3boxes, gen3boxesheaderless}
