@@ -1,6 +1,24 @@
 .boxcontainer {
-    width: 1000px;
+    width: 1000px; /*530px for gen3 boxes*/
     min-height: 300px;
+    border-color: black;
+    background-color: rgba(200, 200, 200, 0.5);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    user-select: none;
+}
+.boxcontainerg3 {
+    width: 706px; /*530px for gen3 boxes*/
+    min-height: 330px;
+    border-color: black;
+    background-color: rgba(200, 200, 200, 0.5);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    user-select: none;
+}
+
+.boxcontainerg3short {
+    width: 515px;
     border-color: black;
     background-color: rgba(200, 200, 200, 0.5);
     border-radius: 10px;
@@ -44,6 +62,11 @@
 .boxheader {
     width: 300px;
     height: 50px;
+}
+
+.boxheaderg3 {
+    width: 450px;
+    height: 75px;
 }
 
 .pkmnSubtitle {

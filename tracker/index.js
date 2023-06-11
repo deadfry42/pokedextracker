@@ -14,10 +14,9 @@ const firebaseConfig = {
 //  - hold ctrl and click on pkmn to bring to db info --- DONE
 //  - add a search feature
 //  - make pkmn icons in database match current settings --- DONE
-//  - finish databse
+//  - finish database
 //  - add polish
 //  - add pkmn box icons as a sprite option --- DONE
-//  - maybe add some more settings
 
 // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
@@ -43,6 +42,10 @@ function getIndicesOf(searchStr, str, caseSensitive) {
 //content stuff
 let game = "pbrs"
 
+let gametitle = ""
+if (game == "gen3") gametitle = "Pokemon Generation 3"
+if (game == "pbrs") gametitle = "Pokemon Box: Ruby & Sapphire"
+
 const url = "https://fpt-imgs.up.railway.app/"
 
 const baseImgURL = `${url}icon/${game}` //https://fpt-imgs.up.railway.app/icon/pbrs/{vars.spritesNum}/{normal/frame2/animated}/{shiny/no}/{file}
@@ -54,7 +57,8 @@ const baseBoxURL = `${url}box/${game}` //https://fpt-imgs.up.railway.app/box/(bo
 let ctrl = false
 
 //hard coded vars
-const imgSize = 12
+let imgSize = 12
+if (game == "gen3") imgSize = 6
 
 let boxes = []
 let pokemonData = {}
@@ -64,7 +68,9 @@ let vars = {}
 import {obtainStatus, obtainMethod} from "./data/basedata.js"
 import {gen3pokemonData} from "./data/gen3data.js"
 import {pbrsboxes} from "./data/pbrsboxesdata.js"
+import {gen3boxes} from "./data/gen3boxesdata.js"
 import {pbrssettings, pbrsvars} from "./data/pbrssettingsdata.js"
+import {gen3settings, gen3vars} from "./data/gen3settingsdata.js"
 
 if (game == "pbrs") {
     boxes = pbrsboxes
@@ -73,10 +79,33 @@ if (game == "pbrs") {
     vars = pbrsvars
 }
 if (game == "gen3") {
+    boxes = gen3boxes
     pokemonData = gen3pokemonData
+    settings = gen3settings
+    vars = gen3vars
 }
 
+
+
 addEventListener("load", () => {
+    // const scale = document.createElement("input")
+    // scale.setAttribute("type", "range")
+    // scale.setAttribute("min", 0)
+    // scale.setAttribute("max", 1000)
+    // document.getElementById("trackermenu").append(scale)
+
+    // scale.onchange = () => {
+    //     console.log(scale.value)
+    //     const boxbgs = document.getElementsByClassName("boxcontainerg3")
+    //     for (let box of boxbgs) {
+    //         box.style.width = `${scale.value}px`
+    //     }
+    //     const pkmns = document.getElementsByClassName("pkmnimg")
+    //     for (let pkmn of pkmns) {
+    //         let boxE = document.getElementById("box1")
+    //         pkmn.style = `object-fit: contain; opacity: 1; border-radius: 10px; width: ${boxE.clientWidth / imgSize}px; height: ${boxE.clientWidth / (imgSize+1)}px; user-select: none;`;
+    //     }
+    // }
     if (localStorage.getItem("token") == null) window.location.href = "../"
     const trackermenu = document.getElementById("trackermenu")
     const databasemenu = document.getElementById("databasemenu")
@@ -674,6 +703,7 @@ addEventListener("load", () => {
             const headerId = box[0].id
             const headerContainer = document.createElement("div")
             headerContainer.setAttribute("class", "boxcontainershort")
+            if (game == "gen3") headerContainer.setAttribute("class", "boxcontainerg3short")
             headerContainer.setAttribute("id", `boxH${headerId}container`)
             const header = document.createElement("h1")
             header.innerText = box[0].boxName
@@ -684,20 +714,29 @@ addEventListener("load", () => {
             const boxId = box[0].id
             const extraVal = box[0].extra
             const boxcontainer = document.createElement("div")
-            if (extraVal) boxcontainer.setAttribute("class", "boxcontainer extrabox")
-            if (!extraVal) boxcontainer.setAttribute("class", "boxcontainer")
+            boxcontainer.setAttribute("class", "boxcontainer")
+            if (game == "gen3") boxcontainer.setAttribute("class", "boxcontainerg3")
             boxcontainer.setAttribute("id", `box${boxId}container`)
+            
             const boxheader = document.createElement("img")
-            const numberedHeadings = settings[2].value
-            if (numberedHeadings) boxheader.src = `${baseBoxURL}/header/numbered/box${boxId}.png`
-            if (!numberedHeadings) boxheader.src = `${baseBoxURL}/header/standard/box${boxId}.png`
+            if (game == "pbrs") {
+                const numberedHeadings = settings[2].value
+                if (numberedHeadings) boxheader.src = `${baseBoxURL}/header/numbered/box${boxId}.png`
+                if (!numberedHeadings) boxheader.src = `${baseBoxURL}/header/standard/box${boxId}.png`
+            } else if (game == "gen3") {
+                boxheader.src = `${baseBoxURL}/header/rs/box${boxId}.png`
+            }
+            
             boxheader.setAttribute("class", "boxheader")
+            if (game == "gen3") boxheader.setAttribute("class", "boxheaderg3")
             boxheader.setAttribute("id", `box${boxId}header`)
             boxheader.setAttribute("boxid", `${boxId}`)
             const boxE = document.createElement("div")
             boxE.setAttribute("class", "box")
+            boxE.setAttribute("boxid", boxId)
             boxE.setAttribute("id", `box${boxId}`)
-            boxE.style = `background-image: url("${baseBoxURL}/body/standard/box${boxId}.png");`
+            if (game == "pbrs") {boxE.style = `background-image: url("${baseBoxURL}/body/standard/box${boxId}.png");`}
+            if (game == "gen3") {boxE.style = `background-image: url("${baseBoxURL}/body/${vars.boxgame}/box${boxId}.png");`}
             const br = document.createElement("br")
             const br2 = document.createElement("br")
             boxcontainer.append(br)
@@ -719,6 +758,7 @@ addEventListener("load", () => {
                     pkmnImg.setAttribute("pkmnid", pokemon.id)
                     pkmnImg.setAttribute("class", "pkmnimg")
                     pkmnImg.style = `object-fit: contain; opacity: 1; border-radius: 10px; width: ${boxE.clientWidth / imgSize}px; height: ${boxE.clientWidth / (imgSize+1.5)}px; user-select: none;`;
+                    if (game == "gen3") pkmnImg.style.height = `${boxE.clientWidth / (imgSize+1)}px`
                     const pkmnSubtitleDiv = document.createElement("div")
                     pkmnSubtitleDiv.style = `text-align:center; position: absolute; top:-100%; right:50%; transform:translate(50%, -50%); background-color: rgba(255, 255, 255, 0.2); border-radius: 15px; height: 1vw; user-select: none; display:none;`
                     const pkmnSubtitle = document.createElement("p")
@@ -831,6 +871,7 @@ addEventListener("load", () => {
     document.getElementById("optionsmenu").style.display = "none"
     document.getElementById("notutd").style.display = "block"
     document.getElementById("tracker").style.textDecoration = "underline"
+    document.getElementById("gametitle").innerText = `(${gametitle})`
     db.ref(`/users/${localStorage.getItem("token")}`).once("value", function(snapshot) {
         const data = snapshot.val()
         const username = data.username
