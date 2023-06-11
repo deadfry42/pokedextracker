@@ -20,10 +20,10 @@ Object.keys(games).forEach(gameID => {
     h1.innerText = game.title
     const h3 = document.createElement("h3")
     var desc = game.description
-    const charlimit = 100
+    const charlimit = 75
     desc = desc.substring(0, charlimit)
     var a = false
-    if (game.description.length > 100) {
+    if (game.description.length > charlimit) {
         desc = desc + "..."
         h3.onclick = () => {
             a = !a
