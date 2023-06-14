@@ -932,7 +932,7 @@ addEventListener("load", () => {
         }
     });
     document.getElementById("email").onclick = () => { window.location.href = "mailto:nk.personal.work@gmail.com" }
-    document.getElementById("home").onclick = () => { window.location.href = "../" }
+    document.getElementById("home").onclick = () => { window.location.href = "../select/" }
     document.getElementById("gotop").onclick = () => { window.scrollTo(window.scrollY, 0) }
     document.getElementById("reftxt").onclick = () => { window.location.href = `./?game=${game}&save=${save.substring(1,save.length)}` }
     document.getElementById("lyras").onclick = () => { window.location.href = "http://i-made-a.website" }
