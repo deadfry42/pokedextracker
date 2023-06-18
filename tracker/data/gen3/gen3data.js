@@ -1,4 +1,4 @@
-import {items, obtainStatus, obtainMethod} from "./basedata.js"
+import {items, obtainStatus, obtainMethod} from "../basedata.js"
 
 const obtainLocation = {
     //kanto & sevii islands
@@ -1793,13 +1793,13 @@ const gen3pokemonData = {
         name: "Jynx",
         database: true,
         id: 124,
-        ruby: {},
-        sapphire: {},
-        firered: {},
-        leafgreen: {},
-        emerald: {},
-        colosseum: {},
-        xd: {},
+        ruby: {methods: [{status: obtainStatus.importable}]},
+        sapphire: {methods: [{status: obtainStatus.importable}]},
+        firered: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.trade_ingame, an: false, on: false, recipient: "Dontae", send: 61, location: obtainLocation._cerulean_city}]},
+        leafgreen: {methods: [{status: obtainStatus.obtainable, method: obtainMethod.trade_ingame, an: false, on: false, recipient: "Dontae", send: 61, location: obtainLocation._cerulean_city}]},
+        emerald: {methods: [{status: obtainStatus.importable}]},
+        colosseum: {methods: [{status: obtainStatus.importable}]},
+        xd: {methods: [{status: obtainStatus.importable}]},
     },
     125: {
         name: "Electabuzz",

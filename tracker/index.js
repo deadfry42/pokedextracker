@@ -79,25 +79,30 @@ let boxes = []
 let pokemonData = {}
 let settings = []
 let vars = {}
+let gamespecificinfo = ""
 
 import {obtainStatus, obtainMethod} from "./data/basedata.js"
-import {gen3pokemonData} from "./data/gen3data.js"
-import {pbrsboxes} from "./data/pbrsboxesdata.js"
-import {gen3boxes} from "./data/gen3boxesdata.js"
-import {pbrssettings, pbrsvars} from "./data/pbrssettingsdata.js"
-import {gen3settings, gen3vars} from "./data/gen3settingsdata.js"
+import {gen3pokemonData} from "./data/gen3/gen3data.js"
+import {pbrsboxes} from "./data/pbrs/pbrsboxesdata.js"
+import {pbrsinfo} from "./data/pbrs/pbrsinfo.js"
+import {gen3boxes} from "./data/gen3/gen3boxesdata.js"
+import {pbrssettings, pbrsvars} from "./data/pbrs/pbrssettingsdata.js"
+import {gen3settings, gen3vars} from "./data/gen3/gen3settingsdata.js"
+import {gen3info} from "./data/gen3/gen3info.js"
 
 if (game == "pbrs") {
     boxes = pbrsboxes
     pokemonData = gen3pokemonData
     settings = pbrssettings
     vars = pbrsvars
+    gamespecificinfo = pbrsinfo
 }
 if (game == "gen3") {
     boxes = gen3boxes
     pokemonData = gen3pokemonData
     settings = gen3settings
     vars = gen3vars
+    gamespecificinfo = gen3info
 }
 if (found == false) window.location.href = "../"
 
@@ -127,10 +132,12 @@ addEventListener("load", () => {
     const databasemenu = document.getElementById("databasemenu")
     const optionsmenu = document.getElementById("optionsmenu")
     const helpmenu = document.getElementById("helpmenu")
+    const infoplusmenu = document.getElementById("infoplusmenu")
     const tracker = document.getElementById("tracker")
     const database = document.getElementById("database")
     const options = document.getElementById("options")
     const help = document.getElementById("help")
+    const infoplus = document.getElementById("infoplus")
     try {
         Object.keys(settings).forEach((id) => {
             const setting = settings[id]
@@ -256,6 +263,21 @@ addEventListener("load", () => {
                                     case obtainMethod.evolve_trade_item:
                                         rubyMsg = rubyMsg + method.item
                                     break;
+                                    case obtainMethod.trade_ingame:
+                                        if (method.an) {
+                                            if (method.on) {
+                                                rubyMsg = rubyMsg + pokemonData[""+method.send].name + " to " +method.recipient + " on " +method.location
+                                            } else {
+                                                rubyMsg = rubyMsg + pokemonData[""+method.send].name + " to " +method.recipient + " in " +method.location
+                                            }
+                                        } else {
+                                            if (method.on) {
+                                                rubyMsg = rubyMsg + "n" + pokemonData[""+method.send].name + " to " +method.recipient + " on " +method.location
+                                            } else {
+                                                rubyMsg = rubyMsg + "n" + pokemonData[""+method.send].name + " to " +method.recipient + " in " +method.location
+                                            }
+                                        }
+                                    break;
                                     case obtainMethod.evolve_item:
                                         rubyMsg = rubyMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
                                     break;
@@ -298,6 +320,21 @@ addEventListener("load", () => {
                                     break;
                                     case obtainMethod.evolve_trade_item:
                                         sapphireMsg = sapphireMsg + method.item
+                                    break;
+                                    case obtainMethod.trade_ingame:
+                                        if (method.an) {
+                                            if (method.on) {
+                                                sapphireMsg = sapphireMsg + pokemonData[""+method.send].name + " to " +method.recipient + " on " +method.location
+                                            } else {
+                                                sapphireMsg = sapphireMsg + pokemonData[""+method.send].name + " to " +method.recipient + " in " +method.location
+                                            }
+                                        } else {
+                                            if (method.on) {
+                                                sapphireMsg = sapphireMsg + "n" + pokemonData[""+method.send].name + " to " +method.recipient + " on " +method.location
+                                            } else {
+                                                sapphireMsg = sapphireMsg + "n" + pokemonData[""+method.send].name + " to " +method.recipient + " in " +method.location
+                                            }
+                                        }
                                     break;
                                     case obtainMethod.evolve_item:
                                         sapphireMsg = sapphireMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
@@ -342,6 +379,21 @@ addEventListener("load", () => {
                                     case obtainMethod.evolve_trade_item:
                                         fireredMsg = fireredMsg + method.item
                                     break;
+                                    case obtainMethod.trade_ingame:
+                                        if (method.an) {
+                                            if (method.on) {
+                                                fireredMsg = fireredMsg + pokemonData[""+method.send].name + " to " +method.recipient + " on " +method.location
+                                            } else {
+                                                fireredMsg = fireredMsg + pokemonData[""+method.send].name + " to " +method.recipient + " in " +method.location
+                                            }
+                                        } else {
+                                            if (method.on) {
+                                                fireredMsg = fireredMsg + "n" + pokemonData[""+method.send].name + " to " +method.recipient + " on " +method.location
+                                            } else {
+                                                fireredMsg = fireredMsg + "n" + pokemonData[""+method.send].name + " to " +method.recipient + " in " +method.location
+                                            }
+                                        }
+                                    break;
                                     case obtainMethod.evolve_item:
                                         fireredMsg = fireredMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
                                     break;
@@ -384,6 +436,21 @@ addEventListener("load", () => {
                                     break;
                                     case obtainMethod.evolve_trade_item:
                                         leafgreenMsg = leafgreenMsg + method.item
+                                    break;
+                                    case obtainMethod.trade_ingame:
+                                        if (method.an) {
+                                            if (method.on) {
+                                                leafgreenMsg = leafgreenMsg + pokemonData[""+method.send].name + " to " +method.recipient + " on " +method.location
+                                            } else {
+                                                leafgreenMsg = leafgreenMsg + pokemonData[""+method.send].name + " to " +method.recipient + " in " +method.location
+                                            }
+                                        } else {
+                                            if (method.on) {
+                                                leafgreenMsg = leafgreenMsg + "n" + pokemonData[""+method.send].name + " to " +method.recipient + " on " +method.location
+                                            } else {
+                                                leafgreenMsg = leafgreenMsg + "n" + pokemonData[""+method.send].name + " to " +method.recipient + " in " +method.location
+                                            }
+                                        }
                                     break;
                                     case obtainMethod.evolve_item:
                                         leafgreenMsg = leafgreenMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
@@ -428,6 +495,21 @@ addEventListener("load", () => {
                                     case obtainMethod.evolve_trade_item:
                                         emeraldMsg = emeraldMsg + method.item
                                     break;
+                                    case obtainMethod.trade_ingame:
+                                        if (method.an) {
+                                            if (method.on) {
+                                                emeraldMsg = emeraldMsg + pokemonData[""+method.send].name + " to " +method.recipient + " on " +method.location
+                                            } else {
+                                                emeraldMsg = emeraldMsg + pokemonData[""+method.send].name + " to " +method.recipient + " in " +method.location
+                                            }
+                                        } else {
+                                            if (method.on) {
+                                                emeraldMsg = emeraldMsg + "n" + pokemonData[""+method.send].name + " to " +method.recipient + " on " +method.location
+                                            } else {
+                                                emeraldMsg = emeraldMsg + "n" + pokemonData[""+method.send].name + " to " +method.recipient + " in " +method.location
+                                            }
+                                        }
+                                    break;
                                     case obtainMethod.evolve_item:
                                         emeraldMsg = emeraldMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
                                     break;
@@ -471,6 +553,21 @@ addEventListener("load", () => {
                                     case obtainMethod.evolve_trade_item:
                                         colosseumMsg = colosseumMsg + method.item
                                     break;
+                                    case obtainMethod.trade_ingame:
+                                        if (method.an) {
+                                            if (method.on) {
+                                                colosseumMsg = colosseumMsg + pokemonData[""+method.send].name + " to " +method.recipient + " on " +method.location
+                                            } else {
+                                                colosseumMsg = colosseumMsg + pokemonData[""+method.send].name + " to " +method.recipient + " in " +method.location
+                                            }
+                                        } else {
+                                            if (method.on) {
+                                                colosseumMsg = colosseumMsg + "n" + pokemonData[""+method.send].name + " to " +method.recipient + " on " +method.location
+                                            } else {
+                                                colosseumMsg = colosseumMsg + "n" + pokemonData[""+method.send].name + " to " +method.recipient + " in " +method.location
+                                            }
+                                        }
+                                    break;
                                     case obtainMethod.evolve_item:
                                         colosseumMsg = colosseumMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
                                     break;
@@ -513,6 +610,21 @@ addEventListener("load", () => {
                                     break;
                                     case obtainMethod.evolve_trade_item:
                                         xdMsg = xdMsg + method.item
+                                    break;
+                                    case obtainMethod.trade_ingame:
+                                        if (method.an) {
+                                            if (method.on) {
+                                                xdMsg = xdMsg + pokemonData[""+method.send].name + " to " +method.recipient + " on " +method.location
+                                            } else {
+                                                xdMsg = xdMsg + pokemonData[""+method.send].name + " to " +method.recipient + " in " +method.location
+                                            }
+                                        } else {
+                                            if (method.on) {
+                                                xdMsg = xdMsg + "n" + pokemonData[""+method.send].name + " to " +method.recipient + " on " +method.location
+                                            } else {
+                                                xdMsg = xdMsg + "n" + pokemonData[""+method.send].name + " to " +method.recipient + " in " +method.location
+                                            }
+                                        }
                                     break;
                                     case obtainMethod.evolve_item:
                                         xdMsg = xdMsg + ".<br>Evolves from "+pokemonData[""+method.base].name+" by using "+method.item
@@ -944,6 +1056,7 @@ addEventListener("load", () => {
     document.getElementById("databasemenu").style.display = "none"
     document.getElementById("optionsmenu").style.display = "none"
     document.getElementById("helpmenu").style.display = "none"
+    document.getElementById("infoplusmenu").style.display = "none"
     document.getElementById("notutd").style.display = "block"
     document.getElementById("tracker").style.textDecoration = "underline"
     document.getElementById("gametitle").innerText = `(${gametitle})`
@@ -1054,47 +1167,69 @@ addEventListener("load", () => {
         trackermenu.style.display = "inline"
         databasemenu.style.display = "none"
         optionsmenu.style.display = "none"
+        infoplusmenu.style.display = "none"
         helpmenu.style.display = "none"
         tracker.style.textDecoration = "underline"
         database.style.textDecoration = "none"
         options.style.textDecoration = "none"
+        infoplus.style.textDecoration = "none"
         help.style.textDecoration = "none"
     }
     function databaseMenu() {
         trackermenu.style.display = "none"
         databasemenu.style.display = "inline"
         optionsmenu.style.display = "none"
+        infoplusmenu.style.display = "none"
         helpmenu.style.display = "none"
         tracker.style.textDecoration = "none"
         database.style.textDecoration = "underline"
         options.style.textDecoration = "none"
+        infoplus.style.textDecoration = "none"
         help.style.textDecoration = "none"
     }
     function optionsMenu() {
         trackermenu.style.display = "none"
         databasemenu.style.display = "none"
         optionsmenu.style.display = "inline"
+        infoplusmenu.style.display = "none"
         helpmenu.style.display = "none"
         tracker.style.textDecoration = "none"
         database.style.textDecoration = "none"
         options.style.textDecoration = "underline"
+        infoplus.style.textDecoration = "none"
+        help.style.textDecoration = "none"
+    }
+    function infoplusMenu() {
+        trackermenu.style.display = "none"
+        databasemenu.style.display = "none"
+        optionsmenu.style.display = "none"
+        infoplusmenu.style.display = "inline"
+        helpmenu.style.display = "none"
+        tracker.style.textDecoration = "none"
+        database.style.textDecoration = "none"
+        options.style.textDecoration = "none"
+        infoplus.style.textDecoration = "underline"
         help.style.textDecoration = "none"
     }
     function helpMenu() {
         trackermenu.style.display = "none"
         databasemenu.style.display = "none"
         optionsmenu.style.display = "none"
+        infoplusmenu.style.display = "none"
         helpmenu.style.display = "inline"
         tracker.style.textDecoration = "none"
         database.style.textDecoration = "none"
         options.style.textDecoration = "none"
+        infoplus.style.textDecoration = "none"
         help.style.textDecoration = "underline"
     }
-
+    
     tracker.onclick = trackerMenu
     database.onclick = databaseMenu
     options.onclick = optionsMenu
+    infoplus.onclick = infoplusMenu
     help.onclick = helpMenu
 
-    document.getElementById("helpmenuinner").innerHTML = `<h1>How to use</h1><h3>Now, if you clicked on this tab out of pure necessity, I will first explain the basics.<br>This website is designed to be a pokedex tracker for ${gametitle}.<br>You can click on the different pokemon images to mark them as "obtained" and click on them again to unmark them. The "marking" is shown as the pokemon being slightly translucent (and darker if you have a specific setting enabled).<br>This website is supposed to be the one website you need to start and eventually finish (hopefully) your living dex, with information on where to find the pokemon being readily available in the Pokemon Database tab.</h3><br><h1>Extra controls</h1><h3>There are some hidden controls, but as of now, there is only one. By holding (windows/linux: CTRL/ALT, mac: CTRL/Option/Command), you can then press on a specific pokemon and it will take you to the database entry of that pokemon. Unfortunately, there is no way to do this on mobile. You can do this on different forms, but it will only bring you to the database entry of the base form.</h3><br><br<`
+    document.getElementById("infoplusmenuinner").innerHTML = `<h1>Game information</h1><h3>This page is for giving some needed information you might need to know in each specific game. This will include things like restrictions, relatively unknown mechanics and other things.</h3>${gamespecificinfo}<br><br>`
+    document.getElementById("helpmenuinner").innerHTML = `<h1>How to use</h1><h3>Now, if you clicked on this tab out of pure necessity, I will first explain the basics.<br>This website is designed to be a pokedex tracker for ${gametitle}.<br>You can click on the different pokemon images to mark them as "obtained" and click on them again to unmark them. The "marking" is shown as the pokemon being slightly translucent (and darker if you have a specific setting enabled).<br>This website is supposed to be the one website you need to start and eventually finish (hopefully) your living dex, with information on where to find the pokemon being readily available in the Pokemon Database tab.</h3><br><h1>Extra controls</h1><h3>There are some hidden controls, but as of now, there is only one. By holding (windows/linux: CTRL/ALT, mac: Option/Command), you can then press on a specific pokemon and it will take you to the database entry of that pokemon. Unfortunately, there is no way to do this on mobile. You can do this on different forms, but it will only bring you to the database entry of the base form.</h3><br><br>`
 })

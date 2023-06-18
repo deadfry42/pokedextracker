@@ -1,4 +1,4 @@
-import {gen3pokemonData} from "./gen3data.js"
+import {gen3pokemonData} from "../gen3/gen3data.js"
 let pokemonData = gen3pokemonData
 
 const box1basenum = 0

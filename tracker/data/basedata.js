@@ -423,6 +423,7 @@ const obtainMethod = {
     evolve_friendship: "Evolved by friendship",
     evolve_trade: "Evolve by trading",
     evolve_trade_item: "Evolve by trading while holding ",
+    trade_ingame: "Trade a ",
     unobtainable: "Unable to be obtained at all",
     pomeg: "Able to be glitched in using Glitzer popping",
     pomeg_location: "Able to use Glitzer popping to spawn in ",
