@@ -62,7 +62,7 @@ const gen3summarise = function(dta, endTxt) {
                         rubyMsg = rubyMsg + method.item
                     break;
                     case obtainMethod.trade_ingame:
-                        if (method.an) {
+                        if (!method.an) {
                             if (method.on) {
                                 rubyMsg = rubyMsg + pokemonData[""+method.send].name + " to " +method.recipient + " on " +method.location
                             } else {
@@ -120,7 +120,7 @@ const gen3summarise = function(dta, endTxt) {
                         sapphireMsg = sapphireMsg + method.item
                     break;
                     case obtainMethod.trade_ingame:
-                        if (method.an) {
+                        if (!method.an) {
                             if (method.on) {
                                 sapphireMsg = sapphireMsg + pokemonData[""+method.send].name + " to " +method.recipient + " on " +method.location
                             } else {
@@ -178,7 +178,7 @@ const gen3summarise = function(dta, endTxt) {
                         fireredMsg = fireredMsg + method.item
                     break;
                     case obtainMethod.trade_ingame:
-                        if (method.an) {
+                        if (!method.an) {
                             if (method.on) {
                                 fireredMsg = fireredMsg + pokemonData[""+method.send].name + " to " +method.recipient + " on " +method.location
                             } else {
@@ -236,7 +236,7 @@ const gen3summarise = function(dta, endTxt) {
                         leafgreenMsg = leafgreenMsg + method.item
                     break;
                     case obtainMethod.trade_ingame:
-                        if (method.an) {
+                        if (!method.an) {
                             if (method.on) {
                                 leafgreenMsg = leafgreenMsg + pokemonData[""+method.send].name + " to " +method.recipient + " on " +method.location
                             } else {
@@ -294,7 +294,7 @@ const gen3summarise = function(dta, endTxt) {
                         emeraldMsg = emeraldMsg + method.item
                     break;
                     case obtainMethod.trade_ingame:
-                        if (method.an) {
+                        if (!method.an) {
                             if (method.on) {
                                 emeraldMsg = emeraldMsg + pokemonData[""+method.send].name + " to " +method.recipient + " on " +method.location
                             } else {
@@ -352,7 +352,7 @@ const gen3summarise = function(dta, endTxt) {
                         colosseumMsg = colosseumMsg + method.item
                     break;
                     case obtainMethod.trade_ingame:
-                        if (method.an) {
+                        if (!method.an) {
                             if (method.on) {
                                 colosseumMsg = colosseumMsg + pokemonData[""+method.send].name + " to " +method.recipient + " on " +method.location
                             } else {
@@ -410,7 +410,7 @@ const gen3summarise = function(dta, endTxt) {
                         xdMsg = xdMsg + method.item
                     break;
                     case obtainMethod.trade_ingame:
-                        if (method.an) {
+                        if (!method.an) {
                             if (method.on) {
                                 xdMsg = xdMsg + pokemonData[""+method.send].name + " to " +method.recipient + " on " +method.location
                             } else {
