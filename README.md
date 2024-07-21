@@ -1,5 +1,8 @@
 # pokedextracker
 
+> [!WARNING]
+> outdated, use [the newer version](https://github.com/deadfry42/pokedex-tracker) instead
+
 this is the source code for a pokedex tracker website. The website uses a database to store data, which will be hidden eventually.
 
 ### note
